@@ -1,0 +1,35 @@
+{
+  "name": "hyperdigital/hd_structureddata",
+  "type": "typo3-cms-extension",
+  "description": "",
+  "license": "GPL-2.0-or-later",
+  "version": "dev-master",
+  "authors": [
+    {
+		"name": "hyperdigital.de",
+		"email": "developer@hyperdigital.de",
+		"homepage": "https://www.hyperdigital.de/",
+		"role": "Developer"
+	},
+	{
+		"name": "coma.de",
+		"email": "info@coma.de",
+		"homepage": "https://www.coma.de/",
+		"role": "Developer"
+	}
+  ],
+  "require": {
+    "typo3/cms-core": "^12.4",
+  	"sjbr/static-info-tables":  "*"
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "hd_structureddata"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Hyperdigital\\HdStructureddata\\": "Classes/"
+    }
+  }
+}

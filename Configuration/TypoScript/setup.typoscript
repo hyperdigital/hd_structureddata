@@ -1,0 +1,2 @@
+page.headerData.90 = USER
+page.headerData.90.userFunc = Hyperdigital\HdStructureddata\UserFunctions\StructuredDataPrint->printTags
