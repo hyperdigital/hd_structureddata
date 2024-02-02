@@ -5,6 +5,7 @@ use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Article;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Faq;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\LearningVideo;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Organization;
+use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Review;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Video;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -55,7 +56,7 @@ class StructuredDataPrint
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
             ->getQueryBuilderForTable('tx_hdstructureddata_domain_model_structureddata');
 
-        if (empty($conf)) {
+        if (empty($conf['tableName'])) {
             $where = [
                 $queryBuilder->expr()->eq('pid', $queryBuilder->createNamedParameter($this->pid, Connection::PARAM_INT)),
                 $queryBuilder->expr()->eq('sys_language_uid',  $queryBuilder->createNamedParameter($this->sysLanguageUid, Connection::PARAM_INT))
@@ -142,8 +143,8 @@ class StructuredDataPrint
             case 'video':
                 $return = GeneralUtility::makeInstance(Video::class)->setOriginalRow($row)->returnData();
                 break;
-            case 'learningVideo':
-                $return = GeneralUtility::makeInstance(LearningVideo::class)->setOriginalRow($row)->returnData();
+            case 'review':
+                $return = GeneralUtility::makeInstance(Review::class)->setOriginalRow($row)->returnData();
                 break;
         }
 
