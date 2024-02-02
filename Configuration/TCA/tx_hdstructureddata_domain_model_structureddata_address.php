@@ -57,6 +57,7 @@ return [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
+                'default' => 'PostalAddress',
                 'items' => [
                     [
                         'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.columns.type.PostalAddress',

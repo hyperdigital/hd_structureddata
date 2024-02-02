@@ -38,6 +38,15 @@ class Review extends AbstractData
         $return = [];
         $return['@type'] = 'Restaurant';
         $return['name'] = $this->originalRow['title'];
+        if (!empty($this->originalRow['telephone'])) {
+            $return['telephone'] = $this->originalRow['telephone'];
+        }
+        if (!empty($this->originalRow['addresses'])) {
+            $address = $this->getAddresses($this->originalRow['uid'], 'addresses', 'tx_hdstructureddata_domain_model_structureddata');
+            if (!empty($address)) {
+                $return['address'] = $address;
+            }
+        }
 
         return $return;
     }
