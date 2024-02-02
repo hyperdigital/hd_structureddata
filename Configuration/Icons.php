@@ -28,4 +28,8 @@ return [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hd_structureddata/Resources/Public/Icons/video.svg',
     ],
+    'hd_structureddata_review' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hd_structureddata/Resources/Public/Icons/review.svg',
+    ],
 ];

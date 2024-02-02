@@ -48,5 +48,6 @@ defined('TYPO3') || die();
         'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.type.article',
         'value' => 'article'
     ];
+    $GLOBALS['TCA']['tx_hdstructureddata_domain_model_structureddata']['columns']['type']['config']['default'] = 'article';
     $GLOBALS['TCA']['tx_hdstructureddata_domain_model_structureddata']['ctrl']['typeicon_classes']['article'] = 'hd_structureddata_article';
 })();
