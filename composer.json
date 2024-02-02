@@ -1,7 +1,7 @@
 {
   "name": "hyperdigital/hd_structureddata",
   "type": "typo3-cms-extension",
-  "description": "",
+  "description": "Extension for adding structured JSON-LD into page headers",
   "license": "GPL-2.0-or-later",
   "version": "dev-master",
   "authors": [
