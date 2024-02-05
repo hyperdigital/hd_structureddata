@@ -251,6 +251,107 @@ return [
                 'type' => 'input',
             ]
         ],
+        'rating_value' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.rating_value',
+            'config' => [
+                'type' => 'number',
+                'format' => 'decimal',
+                'nullable' => true,
+            ]
+        ],
+        'rating_count' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.rating_count',
+            'config' => [
+                'type' => 'number',
+                'nullable' => true,
+            ]
+        ],
+        'best_rating' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.best_rating',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.best_rating.description',
+            'config' => [
+                'type' => 'number',
+                'nullable' => true,
+            ]
+        ],
+        'worst_rating' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.worse_rating',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.worse_rating.description',
+            'config' => [
+                'type' => 'number',
+                'nullable' => true,
+            ]
+        ],
+        'price_range' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.price_range',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.price_range.description',
+            'config' => [
+                'type' => 'input',
+            ]
+        ],
+        'serves_cuisine' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.serves_cuisine',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.serves_cuisine.description',
+            'config' => [
+                'type' => 'input',
+            ]
+        ],
+        'menu' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.menu',
+            'config' => [
+                'type' => 'link',
+                'appearance' => [
+                    'allowedOptions' => ['params'],
+                ],
+            ]
+        ],
+        'accepts_reservations' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.accepts_reservations',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'nullable' => true,
+                'items' => [
+                    [
+                        'label' => '',
+                        'value' => 0
+                    ],
+                    [
+                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.accepts_reservations.accepted',
+                        'value' => 1
+                    ],
+                    [
+                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.accepts_reservations.not_accepted',
+                        'value' => -1
+                    ]
+                ],
+            ]
+        ],
+        'opening_hours' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.opening_hours',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata_openinghour',
+                'foreign_field' => 'foreign_uid',
+                'foreign_sortby' => 'sorting',
+                'foreign_table_field' => 'tablename',
+                'foreign_match_fields' => [
+                    'fieldname' => 'opening_hours',
+                ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ],
+            ],
+        ],
         'hidden' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.enabled',

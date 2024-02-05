@@ -21,6 +21,15 @@ CREATE TABLE tx_hdstructureddata_domain_model_structureddata (
 	addresses int(11) DEFAULT 0 NOT NULL,
 	vat_id varchar(255) DEFAULT '' NOT NULL,
 	tax_id varchar(255) DEFAULT '' NOT NULL,
+	price_range varchar(255) DEFAULT '' NOT NULL,
+	serves_cuisine TEXT,
+	opening_hours int(11) DEFAULT 0 NOT NULL,
+	menu varchar(255) DEFAULT '' NOT NULL,
+	accepts_reservations int(1) NULL,
+	rating_value float(14) NULL,
+	rating_count int(11) NULL,
+	best_rating int(11) NULL,
+	worst_rating int(11) NULL,
 
 	clips int(11) DEFAULT 0 NOT NULL,
 
@@ -71,6 +80,16 @@ CREATE TABLE tx_hdstructureddata_domain_model_structureddata_clip(
 	start_offset int(11) DEFAULT 0 NOT NULL,
 	end_offset int(11) DEFAULT NULL,
 	url varchar(255) DEFAULT '' NOT NULL,
+
+	t3ver_label varchar(255) DEFAULT '' NOT NULL,
+	tablename varchar(255) DEFAULT '' NOT NULL,
+	foreign_uid int(11) DEFAULT 0 NOT NULL,
+	fieldname varchar(255) DEFAULT '' NOT NULL,
+);
+CREATE TABLE tx_hdstructureddata_domain_model_structureddata_openinghour(
+	days TEXT,
+	opens varchar(255) DEFAULT '' NOT NULL,
+	closes varchar(255) DEFAULT '' NOT NULL,
 
 	t3ver_label varchar(255) DEFAULT '' NOT NULL,
 	tablename varchar(255) DEFAULT '' NOT NULL,

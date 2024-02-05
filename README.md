@@ -2,6 +2,7 @@
 TYPO3 extension for handling Google structured data into your page.
 ## Initialization
 - install the extension
+- include static typoscript file
 - go to edit page properties
 - open tab "Structured data"
 - add a new structured data item
@@ -20,6 +21,9 @@ Source: https://developers.google.com/search/docs/appearance/structured-data/org
 ### Video
 Source: https://developers.google.com/search/docs/appearance/structured-data/video
 
+### Review
+Source: https://developers.google.com/search/docs/appearance/structured-data/review-snippet
+
 ## Possibility to use it on detail pages (news, products, etc.)
 
 First add a field into database and TCA
@@ -32,7 +36,7 @@ CREATE TABLE tx_news_domain_model_news (
 ```
 
 _Configuration/TCA/Overrides/tx_news_domain_model_news.php_
-```php 
+```php
 $tempColumns = [
     'structured_data' => [
         'label' => 'Structured data',

@@ -27,6 +27,9 @@ class Organization extends AbstractData
         if (!empty($this->originalRow['description'])) {
             $return['description'] = $this->originalRow['description'];
         }
+        if (!empty($this->originalRow['price_range'])) {
+            $return['priceRange'] = $this->originalRow['price_range'];
+        }
          if (!empty($this->originalRow['date_published'])) {
              $date = new \DateTime($this->originalRow['date_published']);
              $return['foundingDate'] = $date;
@@ -51,6 +54,12 @@ class Organization extends AbstractData
             $address = $this->getAddresses($this->originalRow['uid'], 'addresses', 'tx_hdstructureddata_domain_model_structureddata');
             if (!empty($address)) {
                 $return['address'] = $address;
+            }
+        }
+        if (!empty($this->originalRow['opening_hours'])) {
+            $openingHours = $this->getOpeningHours($this->originalRow['uid'], 'opening_hours', 'tx_hdstructureddata_domain_model_structureddata');
+            if (!empty($openingHours)) {
+                $return['openingHoursSpecification'] = $openingHours;
             }
         }
 

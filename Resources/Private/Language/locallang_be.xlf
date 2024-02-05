@@ -117,11 +117,65 @@
 			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.subtype.review.Restaurant">
 				<source>Restaurant</source>
 			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.worse_rating">
+				<source>Worse rating</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.best_rating">
+				<source>Best rating</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.worse_rating.description">
+				<source>The lowest value allowed in this rating system</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.best_rating.description">
+				<source>The highest value allowed in this rating system</source>
+			</trans-unit>
 			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.authors">
 				<source>Authors</source>
 			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.rating_value">
+				<source>Rating value</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.rating_count">
+				<source>Rating count</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.opening_hours">
+				<source>Opening hours</source>
+			</trans-unit>
 			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.authors.review">
 				<source>Review authors</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.subtype.review.Organization">
+				<source>Organization</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.subtype.review.OrganizationGroup">
+				<source>Organizations</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.accepts_reservations">
+				<source>Accepts Reservations</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.accepts_reservations.accepted">
+				<source>Accepted</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.accepts_reservations.not_accepted">
+				<source>Not Accepted</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.price_range">
+				<source>Price range</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.price_range.description">
+				<source>(Recomended) a numerical range (for example, "$10-15") or a normalized number of currency signs (for example, "$$$")</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.serves_cuisine">
+				<source>Serves Cuisine</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.serves_cuisine.description">
+				<source>(Recomended) American,Italian,..</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.menu">
+				<source>MENU (url)</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.palette.reviewItem">
+				<source>Reviewed Item</source>
 			</trans-unit>
 			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.images">
 				<source>Images</source>
@@ -230,6 +284,51 @@
 			</trans-unit>
 			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_clip.columns.url.description">
 				<source>Recommended. URL that point to the start time of this clip (youtube: ...?t=120)</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_openinghour">
+				<source>Opening hour</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_openinghour.div.access">
+				<source>Access</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_openinghour.palette.access">
+				<source>Access</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_openinghour.columns.days">
+				<source>Days</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_openinghour.columns.days.monday">
+				<source>Monday</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_openinghour.columns.days.tuesday">
+				<source>Tuesday</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_openinghour.columns.days.wednesday">
+				<source>Wednesday</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_openinghour.columns.days.thursday">
+				<source>Thursday</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_openinghour.columns.days.friday">
+				<source>Friday</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_openinghour.columns.days.saturday">
+				<source>Saturday</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_openinghour.columns.days.sunday">
+				<source>Sunday</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_openinghour.columns.opens">
+				<source>Opens</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_openinghour.columns.opens.description">
+				<source>hours:minutes format => 10:30</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_openinghour.columns.closes">
+				<source>Closes</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_openinghour.columns.closes.description">
+				<source>hours:minutes format => 10:30</source>
 			</trans-unit>
 		</body>
 	</file>

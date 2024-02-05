@@ -1,6 +1,7 @@
 <?php
 namespace Hyperdigital\HdStructureddata\Domain\Model\Structureddata;
 
+use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Organization\Restaurant;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
@@ -13,7 +14,18 @@ class Review extends AbstractData
         $return['@type'] = 'Review';
         switch ($this->originalRow['subtype']) {
             case 'Restaurant':
-                $itemReviewed = $this->getRestaurantData();
+                $itemReviewed = GeneralUtility::makeInstance(Restaurant::class)->setOriginalRow($this->originalRow)->returnData();
+                $rating = $this->reviewRating();
+                if ($rating) {
+                    $return['reviewRating'] = $rating;
+                }
+                break;
+            case 'Organization':
+                $itemReviewed = GeneralUtility::makeInstance(Organization::class)->setOriginalRow($this->originalRow)->returnData();
+                $rating = $this->reviewRating();
+                if ($rating) {
+                    $return['reviewRating'] = $rating;
+                }
                 break;
         }
 
@@ -33,21 +45,26 @@ class Review extends AbstractData
         return $return;
     }
 
-    public function getRestaurantData()
+    protected function reviewRating()
     {
         $return = [];
-        $return['@type'] = 'Restaurant';
-        $return['name'] = $this->originalRow['title'];
-        if (!empty($this->originalRow['telephone'])) {
-            $return['telephone'] = $this->originalRow['telephone'];
+        $return['@type'] = 'Rating';
+        if (!is_null($this->originalRow['rating_value'])) {
+            $return['ratingValue'] = $this->originalRow['rating_value'];
         }
-        if (!empty($this->originalRow['addresses'])) {
-            $address = $this->getAddresses($this->originalRow['uid'], 'addresses', 'tx_hdstructureddata_domain_model_structureddata');
-            if (!empty($address)) {
-                $return['address'] = $address;
-            }
+        if (!is_null($this->originalRow['rating_count'])) {
+            $return['ratingCount'] = $this->originalRow['rating_count'];
+        }
+        if (!is_null($this->originalRow['best_rating'])) {
+            $return['bestRating'] = $this->originalRow['best_rating'];
+        }
+        if (!is_null($this->originalRow['worst_rating'])) {
+            $return['worstRating'] = $this->originalRow['worst_rating'];
         }
 
+        if (count($return) < 2) {
+            return false;
+        }
         return $return;
     }
 }

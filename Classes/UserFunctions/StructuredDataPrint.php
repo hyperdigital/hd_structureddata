@@ -138,7 +138,14 @@ class StructuredDataPrint
                 $return = GeneralUtility::makeInstance(Faq::class)->setOriginalRow($row)->returnData();
                 break;
             case 'organization':
-                $return = GeneralUtility::makeInstance(Organization::class)->setOriginalRow($row)->returnData();
+                switch ($row['subtype']) {
+                    case 'Restaurant':
+                        $return = GeneralUtility::makeInstance(Organization\Restaurant::class)->setOriginalRow($row)->returnData();
+                        break;
+                    default:
+                        $return = GeneralUtility::makeInstance(Organization::class)->setOriginalRow($row)->returnData();
+                        break;
+                }
                 break;
             case 'video':
                 $return = GeneralUtility::makeInstance(Video::class)->setOriginalRow($row)->returnData();
