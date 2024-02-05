@@ -3,7 +3,6 @@
   "type": "typo3-cms-extension",
   "description": "Extension for adding structured JSON-LD into page headers",
   "license": "GPL-2.0-or-later",
-  "version": "dev-master",
   "authors": [
     {
 		"name": "hyperdigital.de",
@@ -20,7 +19,7 @@
   ],
   "require": {
     "typo3/cms-core": "^12.4",
-  	"sjbr/static-info-tables":  "*"
+  	"sjbr/static-info-tables":  "^12.4"
   },
   "extra": {
     "typo3/cms": {
