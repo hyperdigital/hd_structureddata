@@ -2,7 +2,7 @@
 TYPO3 extension for handling Google structured data into your page.
 ## Initialization
 - install the extension
-- include static typoscript file
+- include static typoscript file (HD Structured data)
 - go to edit page properties
 - open tab "Structured data"
 - add a new structured data item

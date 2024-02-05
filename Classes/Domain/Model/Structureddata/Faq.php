@@ -70,6 +70,9 @@ class Faq extends AbstractData
             if (!empty($faqContent)) {
                 $return['@context'] = 'https://schema.org';
                 $return['@type'] = 'FAQPage';
+                if (!empty($this->originalRow['title'])) {
+                    $return['name'] = $this->originalRow['title'];
+                }
                 $return['mainEntity'] = $faqContent;
             }
         }
