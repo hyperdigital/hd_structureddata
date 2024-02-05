@@ -1,7 +1,7 @@
 <?php
 
 $EM_CONF[$_EXTKEY] = array(
-    'title' => 'HD Structured Data',
+    'title' => 'Structured Data',
     'description' => 'Extension for adding structured JSON-LD into page headers',
     'category' => 'fe',
     'author' => 'Martin Pribyl',
