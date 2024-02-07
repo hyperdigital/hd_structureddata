@@ -2,6 +2,7 @@
 namespace Hyperdigital\HdStructureddata\UserFunctions;
 
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Article;
+use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Event;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Faq;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\LearningVideo;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Organization;
@@ -133,6 +134,9 @@ class StructuredDataPrint
         switch ($row['type']) {
             case 'article':
                 $return = GeneralUtility::makeInstance(Article::class)->setOriginalRow($row)->returnData();
+                break;
+            case 'event':
+                $return = GeneralUtility::makeInstance(Event::class)->setOriginalRow($row)->returnData();
                 break;
             case 'faq':
                 $return = GeneralUtility::makeInstance(Faq::class)->setOriginalRow($row)->returnData();

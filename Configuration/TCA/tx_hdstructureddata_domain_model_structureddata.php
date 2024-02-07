@@ -93,6 +93,26 @@ return [
                 'type' => 'input',
             ]
         ],
+        'start_date' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.start_date',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'dbType' => 'datetime',
+                'nullable' => true,
+            ]
+        ],
+        'end_date' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.end_date',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'dbType' => 'datetime',
+                'nullable' => true,
+            ]
+        ],
         'date_published' => [
             'exclude' => true,
             'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.date_published',
@@ -111,6 +131,14 @@ return [
                 'renderType' => 'inputDateTime',
                 'dbType' => 'datetime',
                 'nullable' => true,
+            ]
+        ],
+        'status' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.status',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle'
             ]
         ],
         'abstract' => [

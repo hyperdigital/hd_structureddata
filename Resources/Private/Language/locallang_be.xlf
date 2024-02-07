@@ -42,6 +42,9 @@
 			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.type.review">
 				<source>Review</source>
 			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.type.event">
+				<source>Event</source>
+			</trans-unit>
 			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.subtype">
 				<source>Specific type</source>
 			</trans-unit>
@@ -161,6 +164,33 @@
 			</trans-unit>
 			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.price_range">
 				<source>Price range</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.start_date">
+				<source>Start date</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.end_date">
+				<source>End date</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.status">
+				<source>Status</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.status.event">
+				<source>Event status</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.status.event.EventCancelled">
+				<source>Event cancelled [don't remove original start date]</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.status.event.EventMovedOnline">
+				<source>Moved from in-person to online</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.status.event.EventPostponed">
+				<source>Event postponed (moved, date is not known yes) [don't remove original start date]</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.status.event.EventRescheduled">
+				<source>Event rescheduled (moved, date is known)</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.status.event.EventScheduled">
+				<source>Event scheduled</source>
 			</trans-unit>
 			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.price_range.description">
 				<source>(Recomended) a numerical range (for example, "$10-15") or a normalized number of currency signs (for example, "$$$")</source>

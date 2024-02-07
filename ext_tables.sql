@@ -30,11 +30,12 @@ CREATE TABLE tx_hdstructureddata_domain_model_structureddata (
 	rating_count int(11) NULL,
 	best_rating int(11) NULL,
 	worst_rating int(11) NULL,
-
+	status varchar(255) DEFAULT '' NOT NULL,
 	clips int(11) DEFAULT 0 NOT NULL,
-
 	date_published datetime default NULL,
 	date_modified datetime default NULL,
+	start_date datetime default NULL,
+	end_date datetime default NULL,
 
 	t3ver_label varchar(255) DEFAULT '' NOT NULL,
 	tablename varchar(255) DEFAULT '' NOT NULL,

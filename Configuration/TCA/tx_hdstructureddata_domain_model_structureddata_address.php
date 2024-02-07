@@ -39,7 +39,10 @@ return [
         ],
         'postalAddress' => [
             'showitem' => 'street_address, address_locality, postal_code, --linebreak--, address_region, address_country'
-        ]
+        ],
+        'VirtualLocation' => [
+            'showitem' => 'url'
+        ],
     ],
     'types' => [
         '0' => [

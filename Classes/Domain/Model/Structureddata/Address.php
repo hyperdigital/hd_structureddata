@@ -14,27 +14,28 @@ class Address extends AbstractData
         $return['@context'] = 'https://schema.org';
 
         switch ($this->originalRow['type']) {
-            default:
+            case 'PostalAddress':
                 $return['@type'] = 'PostalAddress';
+
+                if (!empty($this->originalRow['street_address'])) {
+                    $return['streetAddress'] = $this->originalRow['street_address'];
+                }
+                if (!empty($this->originalRow['address_locality'])) {
+                    $return['addressLocality'] = $this->originalRow['address_locality'];
+                }
+                if (!empty($this->originalRow['postal_code'])) {
+                    $return['addressRegion'] = $this->originalRow['postal_code'];
+                }
+                if (!empty($this->originalRow['address_region'])) {
+                    $return['postalCode'] = $this->originalRow['address_region'];
+                }
+                if (!empty($this->originalRow['address_country'])) {
+                    $country = $this->getCountry($this->originalRow['address_country']);
+                    if ($country && !empty($country['cn_iso_2'])) {
+                        $return['addressCountry'] = $country['cn_iso_2'];
+                    }
+                }
                 break;
-        }
-        if (!empty($this->originalRow['street_address'])) {
-            $return['streetAddress'] = $this->originalRow['street_address'];
-        }
-        if (!empty($this->originalRow['address_locality'])) {
-            $return['addressLocality'] = $this->originalRow['address_locality'];
-        }
-        if (!empty($this->originalRow['postal_code'])) {
-            $return['addressRegion'] = $this->originalRow['postal_code'];
-        }
-        if (!empty($this->originalRow['address_region'])) {
-            $return['postalCode'] = $this->originalRow['address_region'];
-        }
-        if (!empty($this->originalRow['address_country'])) {
-            $country = $this->getCountry($this->originalRow['address_country']);
-            if ($country && !empty($country['cn_iso_2'])) {
-                $return['addressCountry'] = $country['cn_iso_2'];
-            }
         }
 
         return $return;
