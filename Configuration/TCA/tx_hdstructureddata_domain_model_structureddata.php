@@ -231,6 +231,23 @@ return [
                 ],
             ],
         ],
+        'locations' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.locations',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata_location',
+                'foreign_field' => 'foreign_uid',
+                'foreign_sortby' => 'sorting',
+                'foreign_table_field' => 'tablename',
+                'foreign_match_fields' => [
+                    'fieldname' => 'locations',
+                ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ],
+            ],
+        ],
         'addresses' => [
             'exclude' => true,
             'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.addresses',
@@ -247,6 +264,23 @@ return [
                     'allowLanguageSynchronization' => true
                 ],
             ],
+        ],
+        'offers' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.offers',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata_offer',
+                'foreign_field' => 'foreign_uid',
+                'foreign_sortby' => 'sorting',
+                'foreign_table_field' => 'tablename',
+                'foreign_match_fields' => [
+                    'fieldname' => 'offers',
+                ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ],
+            ],  
         ],
         'clips' => [
             'exclude' => true,

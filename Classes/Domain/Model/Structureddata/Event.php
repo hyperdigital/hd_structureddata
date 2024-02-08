@@ -35,6 +35,69 @@ class Event extends AbstractData
             $return['name'] = $this->originalRow['title'];
         }
 
-        return $return;
+        if (!is_null($this->originalRow['start_date']) && !is_null($this->originalRow['end_date'])) {
+            $dateStart = new \DateTime($this->originalRow['start_date']);
+            $dateEnd = new \DateTime($this->originalRow['end_date']);
+            $interval = $dateStart->diff($dateEnd);
+            if ($interval->days > 1) {
+                $return['startDate'] = $dateStart->format('Y-m-d');
+                $return['endDate'] = $dateEnd->format('Y-m-d');
+            } else {
+                $return['startDate'] = $dateStart->format(DATE_ATOM);
+                $return['endDate'] = $dateEnd->format(DATE_ATOM);
+            }
+        } else if (!is_null($this->originalRow['start_date'])) {
+            $dateStart = new \DateTime($this->originalRow['start_date']);
+            $return['startDate'] = $dateStart->format(DATE_ATOM);
+        } else if (!is_null($this->originalRow['end_date'])) {
+            $dateEnd = new \DateTime($this->originalRow['end_date']);
+            $return['endDate'] = $dateEnd->format(DATE_ATOM);
+        }
+
+        if (!empty($this->originalRow['description'])) {
+            $return['description'] = $this->originalRow['description'];
+        }
+
+        if (!empty($this->originalRow['images'])) {
+            $images = $this->getImages($this->originalRow['uid'], 'images', 'tx_hdstructureddata_domain_model_structureddata');
+            if (!empty($images)) {
+                $return['image'] = $images;
+            }
+        }
+
+        if (!empty($this->originalRow['locations'])) {
+            $locations = $this->getLocations($this->originalRow['uid'], 'locations', 'tx_hdstructureddata_domain_model_structureddata');
+            $isOnline = false;
+            $isOffline = false;
+            foreach ($locations as $location) {
+                switch ($location['@type']) {
+                    case 'VirtualLocation':
+                        $isOnline = true;
+                        break;
+                    default:
+                        $isOffline = true;
+                }
+            }
+            if (!empty($locations)) {
+                $return['location'] = $locations;
+            }
+
+            if ($isOffline && $isOnline) {
+                $return['eventAttendanceMode'] = 'https://schema.org/MixedEventAttendanceMode';
+            } else if ($isOnline) {
+                $return['eventAttendanceMode'] = 'https://schema.org/OnlineEventAttendanceMode';
+            } else {
+                $return['eventAttendanceMode'] = 'https://schema.org/OfflineEventAttendanceMode';
+            }
+        }
+
+        if (!empty($this->originalRow['offers'])) {
+            $offers = $this->getOffers($this->originalRow['uid'], 'offers', 'tx_hdstructureddata_domain_model_structureddata');
+            if (!empty($offers)) {
+                $return['offers'] = $offers;
+            }
+        }
+
+            return $return;
     }
 }

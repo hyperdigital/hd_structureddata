@@ -3,10 +3,10 @@ defined('TYPO3') || die();
 
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address',
-        'label' => 'type',
-//        'label_alt' => 'name',
-//        'label_alt_force' => true,
+        'title' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer',
+        'label' => 'availability',
+        'label_alt' => 'price,valid_from',
+        'label_alt_force' => true,
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'versioningWS' => true,
@@ -16,7 +16,7 @@ return [
         'transOrigDiffSourceField' => 'l10n_diffsource',
         'translationSource' => 'l10n_source',
         'delete' => 'deleted',
-        'iconfile' => 'EXT:hd_structureddata/Resources/Public/Icons/location.svg',
+        'iconfile' => 'EXT:hd_structureddata/Resources/Public/Icons/clock.svg',
         'enablecolumns' => [
             'disabled' => 'hidden',
             'starttime' => 'starttime',
@@ -27,81 +27,92 @@ return [
         'security' => [
             'ignorePageTypeRestriction' => true,
         ],
-        'type' => 'type',
     ],
     'palettes' => [
         'access' => [
-            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.palette.access',
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.palette.access',
             'showitem' => 'hidden, --linebreak--,starttime,endtime,--linebreak--,fe_group,'
         ],
-        'type' => [
-            'showitem' => 'type'
-        ],
-        'postalAddress' => [
-            'showitem' => 'street_address, address_locality, postal_code, --linebreak--, address_region, address_country'
+        'base' => [
+            'showitem' => 'availability,valid_from,--linebreak--,price,price_currency,--linebreak--,url'
         ],
     ],
     'types' => [
         '0' => [
-            'showitem' => '--palette--;;type,
-            --div--;LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.div.access,--palette--;;access,'
-        ],
-        'PostalAddress' => [
-            'showitem' => '--palette--;;type,--palette--;;postalAddress,
-            --div--;LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.div.access,--palette--;;access,'
+            'showitem' => '--palette--;;type,--palette--;;base,
+            --div--;LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.div.access,--palette--;;access,'
         ],
     ],
     'columns' => [
-        'type' => [
-            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.columns.type',
+        'availability' => [
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.availability',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'default' => 'PostalAddress',
+                'default' => 'InStock',
                 'items' => [
                     [
-                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.columns.type.PostalAddress',
-                        'value' => 'PostalAddress'
+                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.availability.InStock',
+                        'value' => 'InStock'
+                    ],
+                    [
+                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.availability.SoldOut',
+                        'value' => 'SoldOut'
+                    ],
+                    [
+                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.availability.PreOrder',
+                        'value' => 'PreOrder'
                     ]
                 ]
             ]
         ],
-        'street_address' => [
-            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.columns.street_address',
+        'url' => [
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.url',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:recommended',
             'config' => [
-                'type' => 'input'
+                'type' => 'link',
+                'appearance' => [
+                    'allowedOptions' => ['params'],
+                ],
             ]
         ],
-        'address_locality' => [
-            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.columns.address_locality',
+        'price' => [
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.price',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:recommended',
             'config' => [
-                'type' => 'input'
+                'default' => 0,
+                'type' => 'number',
+                'format' => 'decimal',
             ]
         ],
-        'address_region' => [
-            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.columns.address_region',
+        'price_currency' => [
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.priceCurrency',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:recommended',
             'config' => [
-                'type' => 'input'
+                'type' => 'input',
+                'valuePicker' => [
+                    'prepend' => true,
+                    'items' => [
+                        [
+                            'EUR',
+                            'EUR',
+                        ],
+                        [
+                            'USD',
+                            'USD',
+                        ],
+                    ],
+                ],
             ]
         ],
-        'address_country' => [
-            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.columns.address_country',
+        'valid_from' => [
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.valid_from',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:recommended',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'foreign_table' => 'static_countries',
-                'items' => [
-                    [
-                        'label' => '',
-                        'value' => 0
-                    ]
-                ]
-            ]
-        ],
-        'postal_code' => [
-            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.columns.postal_code',
-            'config' => [
-                'type' => 'input'
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'dbType' => 'datetime',
+                'nullable' => true,
             ]
         ],
         'hidden' => [
@@ -203,10 +214,10 @@ return [
                         'value' => 0,
                     ],
                 ],
-                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata_address',
+                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata_offer',
                 'foreign_table_where' =>
-                    'AND {#tx_hdstructureddata_domain_model_structureddata_address}.{#pid}=###CURRENT_PID###'
-                    . ' AND {#tx_hdstructureddata_domain_model_structureddata_address}.{#sys_language_uid} IN (-1,0)',
+                    'AND {#tx_hdstructureddata_domain_model_structureddata_offer}.{#pid}=###CURRENT_PID###'
+                    . ' AND {#tx_hdstructureddata_domain_model_structureddata_offer}.{#sys_language_uid} IN (-1,0)',
                 'default' => 0,
             ],
         ],

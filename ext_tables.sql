@@ -19,6 +19,8 @@ CREATE TABLE tx_hdstructureddata_domain_model_structureddata (
 	medias int(11) DEFAULT 0 NOT NULL,
 	faqs int(11) DEFAULT 0 NOT NULL,
 	addresses int(11) DEFAULT 0 NOT NULL,
+	locations int(11) DEFAULT 0 NOT NULL,
+	offers int(11) DEFAULT 0 NOT NULL,
 	vat_id varchar(255) DEFAULT '' NOT NULL,
 	tax_id varchar(255) DEFAULT '' NOT NULL,
 	price_range varchar(255) DEFAULT '' NOT NULL,
@@ -91,6 +93,29 @@ CREATE TABLE tx_hdstructureddata_domain_model_structureddata_openinghour(
 	days TEXT,
 	opens varchar(255) DEFAULT '' NOT NULL,
 	closes varchar(255) DEFAULT '' NOT NULL,
+
+	t3ver_label varchar(255) DEFAULT '' NOT NULL,
+	tablename varchar(255) DEFAULT '' NOT NULL,
+	foreign_uid int(11) DEFAULT 0 NOT NULL,
+	fieldname varchar(255) DEFAULT '' NOT NULL,
+);
+CREATE TABLE tx_hdstructureddata_domain_model_structureddata_location(
+	type varchar(255) DEFAULT '' NOT NULL,
+	url varchar(255) DEFAULT '' NOT NULL,
+	name varchar(255) DEFAULT '' NOT NULL,
+	addresses int(11) DEFAULT 0 NOT NULL,
+
+	t3ver_label varchar(255) DEFAULT '' NOT NULL,
+	tablename varchar(255) DEFAULT '' NOT NULL,
+	foreign_uid int(11) DEFAULT 0 NOT NULL,
+	fieldname varchar(255) DEFAULT '' NOT NULL,
+);
+CREATE TABLE tx_hdstructureddata_domain_model_structureddata_offer(
+	availability varchar(255) DEFAULT '' NOT NULL,
+	price float(14) DEFAULT 0 NOT NULL,
+	price_currency varchar(255) DEFAULT '' NOT NULL,
+	valid_from datetime default NULL,
+	url varchar(255) DEFAULT '' NOT NULL,
 
 	t3ver_label varchar(255) DEFAULT '' NOT NULL,
 	tablename varchar(255) DEFAULT '' NOT NULL,

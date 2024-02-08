@@ -3,7 +3,7 @@ defined('TYPO3') || die();
 
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address',
+        'title' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_location',
         'label' => 'type',
 //        'label_alt' => 'name',
 //        'label_alt_force' => true,
@@ -31,78 +31,101 @@ return [
     ],
     'palettes' => [
         'access' => [
-            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.palette.access',
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_location.palette.access',
             'showitem' => 'hidden, --linebreak--,starttime,endtime,--linebreak--,fe_group,'
         ],
         'type' => [
             'showitem' => 'type'
         ],
-        'postalAddress' => [
-            'showitem' => 'street_address, address_locality, postal_code, --linebreak--, address_region, address_country'
+        'Place' => [
+            'showitem' => 'name,--linebreak--,addresses'
         ],
+        'VirtualLocation' => [
+            'showitem' => 'url'
+        ]
     ],
     'types' => [
         '0' => [
             'showitem' => '--palette--;;type,
-            --div--;LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.div.access,--palette--;;access,'
+            --div--;LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_location.div.access,--palette--;;access,'
         ],
-        'PostalAddress' => [
-            'showitem' => '--palette--;;type,--palette--;;postalAddress,
-            --div--;LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.div.access,--palette--;;access,'
+        'Place' => [
+            'showitem' => '--palette--;;type,--palette--;;Place,
+            --div--;LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_location.div.access,--palette--;;access,',
+            'columnsOverrides' => [
+                'addresses' => [
+                    'config' => [
+                        'minitems' => 1
+                    ]
+                ],
+                'name' => [
+                    'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:recommended'
+                ]
+            ]
         ],
+        'VirtualLocation' => [
+            'showitem' => '--palette--;;type,--palette--;;VirtualLocation,
+            --div--;LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_location.div.access,--palette--;;access,',
+            'columnsOverrides' => [
+                'url' => [
+                    'config' => [
+                        'required' => true
+                    ]
+                ]
+            ]
+        ]
     ],
     'columns' => [
         'type' => [
-            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.columns.type',
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_location.columns.type',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'default' => 'PostalAddress',
+                'default' => 'Place',
                 'items' => [
                     [
-                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.columns.type.PostalAddress',
-                        'value' => 'PostalAddress'
+                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_location.columns.type.Place',
+                        'value' => 'Place'
+                    ],
+                    [
+                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_location.columns.type.VirtualLocation',
+                        'value' => 'VirtualLocation'
                     ]
                 ]
             ]
         ],
-        'street_address' => [
-            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.columns.street_address',
+        'url' => [
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_location.columns.url',
             'config' => [
-                'type' => 'input'
+                'type' => 'link',
+                'appearance' => [
+                    'allowedOptions' => ['params'],
+                ],
             ]
         ],
-        'address_locality' => [
-            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.columns.address_locality',
+        'name' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_location.columns.name',
             'config' => [
-                'type' => 'input'
+                'type' => 'input',
             ]
         ],
-        'address_region' => [
-            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.columns.address_region',
+        'addresses' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_location.columns.addresses',
             'config' => [
-                'type' => 'input'
-            ]
-        ],
-        'address_country' => [
-            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.columns.address_country',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'foreign_table' => 'static_countries',
-                'items' => [
-                    [
-                        'label' => '',
-                        'value' => 0
-                    ]
-                ]
-            ]
-        ],
-        'postal_code' => [
-            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.columns.postal_code',
-            'config' => [
-                'type' => 'input'
-            ]
+                'type' => 'inline',
+                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata_address',
+                'foreign_field' => 'foreign_uid',
+                'foreign_sortby' => 'sorting',
+                'foreign_table_field' => 'tablename',
+                'foreign_match_fields' => [
+                    'fieldname' => 'addresses',
+                ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ],
+            ],
         ],
         'hidden' => [
             'exclude' => true,
@@ -203,10 +226,10 @@ return [
                         'value' => 0,
                     ],
                 ],
-                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata_address',
+                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata_location',
                 'foreign_table_where' =>
-                    'AND {#tx_hdstructureddata_domain_model_structureddata_address}.{#pid}=###CURRENT_PID###'
-                    . ' AND {#tx_hdstructureddata_domain_model_structureddata_address}.{#sys_language_uid} IN (-1,0)',
+                    'AND {#tx_hdstructureddata_domain_model_structureddata_location}.{#pid}=###CURRENT_PID###'
+                    . ' AND {#tx_hdstructureddata_domain_model_structureddata_location}.{#sys_language_uid} IN (-1,0)',
                 'default' => 0,
             ],
         ],

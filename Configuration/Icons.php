@@ -36,4 +36,8 @@ return [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hd_structureddata/Resources/Public/Icons/clock.svg',
     ],
+    'hd_structureddata_event' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hd_structureddata/Resources/Public/Icons/event.svg',
+    ],
 ];

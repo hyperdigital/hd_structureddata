@@ -57,6 +57,9 @@
 			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.logo">
 				<source>Logo</source>
 			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.locations">
+				<source>Locations</source>
+			</trans-unit>
 			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.legal_name">
 				<source>Legal Name</source>
 			</trans-unit>
@@ -359,6 +362,69 @@
 			</trans-unit>
 			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_openinghour.columns.closes.description">
 				<source>hours:minutes format => 10:30</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_location">
+				<source>Location</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_location.div.access">
+				<source>Access</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_location.palette.access">
+				<source>Access</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_location.columns.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_location.columns.type.Place">
+				<source>Place</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_location.columns.type.VirtualLocation">
+				<source>Virtual location</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_location.columns.url">
+				<source>URL</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_location.columns.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_location.columns.addresses">
+				<source>Addresses</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_offer">
+				<source>Offer</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_offer.div.access">
+				<source>Access</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_offer.palette.access">
+				<source>Access</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_offer.columns.url">
+				<source>URL (where wo buy tickets)</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_offer.columns.availability">
+				<source>Availability</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_offer.columns.availability.InStock">
+				<source>In stock</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_offer.columns.availability.SoldOut">
+				<source>Sold out</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_offer.columns.availability.PreOrder">
+				<source>Available for preorder</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_offer.columns.price">
+				<source>Price</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_offer.columns.priceCurrency">
+				<source>Price currency (3-letter)</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_offer.columns.valid_from">
+				<source>Valid from</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.offers">
+				<source>Offers</source>
 			</trans-unit>
 		</body>
 	</file>
