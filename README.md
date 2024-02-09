@@ -24,6 +24,12 @@ Source: https://developers.google.com/search/docs/appearance/structured-data/vid
 ### Review
 Source: https://developers.google.com/search/docs/appearance/structured-data/review-snippet
 
+### Events
+Source: https://developers.google.com/search/docs/appearance/structured-data/event
+
+#### Possibility to attach already used Organization as organizer
+Events should contain organizer. It's possible to attach already exiting organization over field "Pointer to already existing organizers" where is possible to choose different structured data entries, but only Organization type would be used in Frontend output.
+
 ## Possibility to use it on detail pages (news, products, etc.)
 
 First add a field into database and TCA
