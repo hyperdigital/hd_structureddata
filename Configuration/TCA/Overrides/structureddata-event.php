@@ -3,7 +3,7 @@ defined('TYPO3') || die();
 
 (function () {
     $GLOBALS['TCA']['tx_hdstructureddata_domain_model_structureddata']['palettes']['event'] = [
-        'showitem' => 'title,status,--linebreak--,start_date,end_date,--linebreak--,locations,--linebreak--,description,--linebreak--,images,--linebreak--,offers,'
+        'showitem' => 'title,status,--linebreak--,start_date,end_date,--linebreak--,locations,--linebreak--,description,--linebreak--,images,--linebreak--,offers,--linebreak--,organizers,--linebreak--,organizers_pointer,--linebreak--,performers'
     ];
 
     $GLOBALS['TCA']['tx_hdstructureddata_domain_model_structureddata']['types']['event'] = [
@@ -23,7 +23,7 @@ defined('TYPO3') || die();
             'locations' => [
                 'config' => [
                     'minitems' => 1
-                ]  
+                ]
             ],
             'images' => [
                 'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:recommended'
@@ -35,6 +35,9 @@ defined('TYPO3') || die();
                 'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:recommended',
             ],
             'offers'=> [
+                'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:recommended',
+            ],
+            'performers' => [
                 'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:recommended',
             ],
             'status' => [

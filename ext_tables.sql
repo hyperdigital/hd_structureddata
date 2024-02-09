@@ -38,6 +38,10 @@ CREATE TABLE tx_hdstructureddata_domain_model_structureddata (
 	date_modified datetime default NULL,
 	start_date datetime default NULL,
 	end_date datetime default NULL,
+	organizers int(11) NULL,
+	organizers_pointer int(11) NULL,
+	pointed_as_organizer int(11) NULL,
+	performers int(11) NULL,
 
 	t3ver_label varchar(255) DEFAULT '' NOT NULL,
 	tablename varchar(255) DEFAULT '' NOT NULL,
@@ -121,4 +125,14 @@ CREATE TABLE tx_hdstructureddata_domain_model_structureddata_offer(
 	tablename varchar(255) DEFAULT '' NOT NULL,
 	foreign_uid int(11) DEFAULT 0 NOT NULL,
 	fieldname varchar(255) DEFAULT '' NOT NULL,
+);
+
+CREATE TABLE tx_hdstructureddata_structureddata_organizers_mm (
+		 uid_local int(11) DEFAULT '0' NOT NULL,
+		 uid_foreign int(11) DEFAULT '0' NOT NULL,
+		 sorting int(11) DEFAULT '0' NOT NULL,
+		 sorting_foreign int(11) DEFAULT '0' NOT NULL,
+
+		 KEY uid_local (uid_local),
+		 KEY uid_foreign (uid_foreign)
 );

@@ -10,7 +10,14 @@ class Person extends AbstractData
     {
         $return = [];
         $return['@context'] = 'https://schema.org';
-        $return['@type'] = 'Person';
+        switch ($this->originalRow['type']) {
+            case 'PerformingGroup':
+                $return['@type'] = 'PerformingGroup';
+                break;
+            default:
+                $return['@type'] = 'Person';
+                break;
+        }
         $return['name'] = $this->originalRow['name'];
         if (!empty($this->originalRow['url'])) {
             $url = $this->getUrl($this->originalRow['url']);

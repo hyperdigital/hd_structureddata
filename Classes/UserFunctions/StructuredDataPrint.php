@@ -100,7 +100,7 @@ class StructuredDataPrint
         while ($row = $result->fetchAssociative()) {
             $GLOBALS['TSFE']->sys_page->versionOL('tx_hdstructureddata_domain_model_structureddata',$row);
             if (is_array($row)) {
-                $return[] = $this->getSpecificStructuredData($row);
+                $return[] = self::getSpecificStructuredData($row);
             }
         }
 
@@ -127,7 +127,7 @@ class StructuredDataPrint
     /**
      * @param $row - database row from tx_hdstructureddata_domain_model_structureddata
      */
-    public function getSpecificStructuredData($row)
+    public static function getSpecificStructuredData($row)
     {
         $return = false;
 

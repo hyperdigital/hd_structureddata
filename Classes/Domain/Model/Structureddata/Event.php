@@ -98,6 +98,32 @@ class Event extends AbstractData
             }
         }
 
+        $organizers = [];
+        if (!empty($this->originalRow['organizers'])) {
+            $tempOrgs = $this->getStructuredData($this->originalRow['uid'], 'organizers', 'tx_hdstructureddata_domain_model_structureddata');
+            if (!empty($tempOrgs)) {
+                $organizers = $tempOrgs;
+            }
+        }
+        if (!empty($this->originalRow['organizers_pointer'])) {
+            $tempOrgs = $this->getStructuredDataByMM($this->originalRow['uid'], 'tx_hdstructureddata_structureddata_organizers_mm', ['organization', 'person']);
+            if (!empty($tempOrgs)) {
+                foreach ($tempOrgs as $tempOrg) {
+                    $organizers[] = $tempOrg;
+                }
+            }
+        }
+        if (!empty($organizers)) {
+            $return['organizer'] = $organizers;
+        }
+
+        if (!empty($this->originalRow['performers'])) {
+            $temp = $this->getPeople($this->originalRow['uid'], 'performers', 'tx_hdstructureddata_domain_model_structureddata');
+            if (!empty($temp)) {
+                $return['performer'] = $temp;
+            }
+        }
+
             return $return;
     }
 }

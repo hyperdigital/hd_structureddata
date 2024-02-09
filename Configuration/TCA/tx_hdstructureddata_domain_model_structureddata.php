@@ -23,7 +23,6 @@ return [
             'endtime' => 'endtime',
             'fe_group' => 'fe_group'
         ],
-        'hideTable' => true,
         'security' => [
             'ignorePageTypeRestriction' => true,
         ],
@@ -280,7 +279,69 @@ return [
                 'behaviour' => [
                     'allowLanguageSynchronization' => true
                 ],
-            ],  
+            ],
+        ],
+        'organizers' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.organizers',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata',
+                'foreign_field' => 'foreign_uid',
+                'foreign_sortby' => 'sorting',
+                'foreign_table_field' => 'tablename',
+                'foreign_match_fields' => [
+                    'fieldname' => 'organizers',
+                ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ],
+                'overrideChildTca' => [
+                    'columns' => [
+                        'type' => [
+                            'config' => [
+                                'type' => 'user',
+                                'renderType' => 'hdNotEditableField',
+                                'default' => 'organization'
+                            ]
+                        ],
+                        'telephone' => [
+                            'config' => [
+                                'required' => false,
+                            ]
+                        ]
+                    ]
+                ]
+            ],
+        ],
+        'organizers_pointer' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.organizers_pointer',
+            'config' => [
+                'type' => 'group',
+                'allowed' => 'tx_hdstructureddata_domain_model_structureddata',
+                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata',
+                'MM' => 'tx_hdstructureddata_structureddata_organizers_mm',
+                'multiple' => true,
+                'suggestOptions' => [
+                    'tx_hdstructureddata_domain_model_structureddata' => [
+                        'searchCondition' => 'AND type = "organization"'
+                    ]
+                ]
+            ]
+        ],
+        'pointed_as_organizer' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.pointed_as_organizer',
+            'config' => [
+                'type' => 'group',
+                'allowed' => 'tx_hdstructureddata_domain_model_structureddata',
+                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata',
+                'MM_opposite_field' => 'organizers_pointer',
+                'MM' => 'tx_hdstructureddata_structureddata_organizers_mm',
+                'multiple' => true,
+                'readOnly' => true,
+            ]
         ],
         'clips' => [
             'exclude' => true,
@@ -408,6 +469,23 @@ return [
                 'foreign_table_field' => 'tablename',
                 'foreign_match_fields' => [
                     'fieldname' => 'opening_hours',
+                ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ],
+            ],
+        ],
+        'performers' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.performers',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata_person',
+                'foreign_field' => 'foreign_uid',
+                'foreign_sortby' => 'sorting',
+                'foreign_table_field' => 'tablename',
+                'foreign_match_fields' => [
+                    'fieldname' => 'performers',
                 ],
                 'behaviour' => [
                     'allowLanguageSynchronization' => true

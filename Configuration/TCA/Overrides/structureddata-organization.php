@@ -3,7 +3,7 @@ defined('TYPO3') || die();
 
 (function () {
     $GLOBALS['TCA']['tx_hdstructureddata_domain_model_structureddata']['palettes']['organization'] = [
-        'showitem' => 'subtype, title,legal_name,--linebreak--,telephone,email,--linebreak--,url,--linebreak--,price_range,serves_cuisine,--linebreak--,accepts_reservations,menu,--linebreak--,opening_hours,--linebreak--,date_published,vat_id,tax_id,--linebreak--,description,--linebreak--,logo,--linebreak--,images,--linebreak--,addresses'
+        'showitem' => 'subtype, title,legal_name,--linebreak--,telephone,email,--linebreak--,url,--linebreak--,price_range,serves_cuisine,--linebreak--,accepts_reservations,menu,--linebreak--,opening_hours,--linebreak--,date_published,vat_id,tax_id,--linebreak--,description,--linebreak--,logo,--linebreak--,images,--linebreak--,addresses,--linebreak--,pointed_as_organizer'
     ];
 
     $GLOBALS['TCA']['tx_hdstructureddata_domain_model_structureddata']['types']['organization'] = [
