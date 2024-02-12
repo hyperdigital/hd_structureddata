@@ -11,7 +11,7 @@ class Organization extends AbstractData
         $return['@context'] = 'https://schema.org';
         $return['@type'] = 'Organization';
         $return['name'] = $this->originalRow['title'] ?? '';
-        $return['telephone'] = $this->originalRow['title'] ?? '';
+        $return['telephone'] = $this->originalRow['telephone'] ?? '';
         if (!empty($this->originalRow['email'])) {
             $return['email'] = $this->originalRow['email'];
         }
