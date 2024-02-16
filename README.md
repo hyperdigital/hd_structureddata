@@ -24,6 +24,9 @@ Source: https://developers.google.com/search/docs/appearance/structured-data/vid
 ### Review
 Source: https://developers.google.com/search/docs/appearance/structured-data/review-snippet
 
+### Products
+Source: https://developers.google.com/search/docs/appearance/structured-data/product
+
 ### Events
 Source: https://developers.google.com/search/docs/appearance/structured-data/event
 

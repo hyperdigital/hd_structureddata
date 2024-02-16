@@ -33,6 +33,10 @@ class Offer extends AbstractData
             $date = new \DateTime($this->originalRow['valid_from']);
             $return['validFrom'] = $date->format(DATE_ATOM);
         }
+        if(!is_null($this->originalRow['valid_until'])) {
+            $date = new \DateTime($this->originalRow['valid_until']);
+            $return['priceValidUntil'] = $date->format(DATE_ATOM);
+        }
         if (!empty($this->originalRow['url'])) {
             $return['url'] = $this->getUrl($this->originalRow['url']);
         }

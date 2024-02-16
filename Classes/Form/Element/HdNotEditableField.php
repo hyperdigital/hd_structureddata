@@ -31,7 +31,7 @@ class HdNotEditableField extends AbstractFormElement
         $itemValue = $parameterArray['itemFormElValue'];
 
         $html = [];
-        $html[] = '<div class="formengine-field-item t3js-formengine-field-item" style="padding: 5px; background-color: ' . $color . ';">';
+        $html[] = '<div class="formengine-field-item t3js-formengine-field-item">';
         $html[] = $fieldInformationHtml;
         $html[] =   '<div class="form-wizards-wrap">';
         $html[] =      '<div class="form-wizards-element">';

@@ -40,4 +40,8 @@ return [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hd_structureddata/Resources/Public/Icons/event.svg',
     ],
+    'hd_structureddata_product' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hd_structureddata/Resources/Public/Icons/product.svg',
+    ],
 ];

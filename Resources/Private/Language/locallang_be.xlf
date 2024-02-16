@@ -441,6 +441,60 @@
 			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_person.columns.type.PerformingGroup">
 				<source>Performing group</source>
 			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.type.product">
+				<source>Product</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.sku">
+				<source>SKU</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.gtin14">
+				<source>GTIN-14</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.brands">
+				<source>Brands</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_brand">
+				<source>Brand</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_brand.palette.access">
+				<source>Access</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_brand.div.access">
+				<source>Access</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_brand.columns.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_offer.columns.valid_until">
+				<source>Valid until</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.reviews">
+				<source>Reviews</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.review.subtypes.reviewedItem">
+				<source>Reviewed item</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_reviewnote">
+				<source>Review note</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_reviewnote.palette.access">
+				<source>Access</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_reviewnote.div.access">
+				<source>Access</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_reviewnote.columns.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.positive_notes">
+				<source>Positive notes</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.negative_notes">
+				<source>Negative notes</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.palette.product-agregaterating">
+				<source>Product agregate rating</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

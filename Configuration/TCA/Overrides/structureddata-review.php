@@ -3,7 +3,7 @@ defined('TYPO3') || die();
 
 (function () {
     $GLOBALS['TCA']['tx_hdstructureddata_domain_model_structureddata']['palettes']['review'] = [
-        'showitem' => 'subtype,--linebreak--,rating_value,rating_count,--linebreak--,best_rating,worst_rating,--linebreak--,authors',
+        'showitem' => 'subtype,--linebreak--,rating_value,rating_count,--linebreak--,best_rating,worst_rating,--linebreak--,authors,--linebreak--,positive_notes,negative_notes',
     ];
     $GLOBALS['TCA']['tx_hdstructureddata_domain_model_structureddata']['palettes']['reviewItem'] = [
         'showitem' => 'title,legal_name,--linebreak--,telephone,email,--linebreak--,url,--linebreak--,price_range,serves_cuisine,--linebreak--,accepts_reservations,menu,--linebreak--,opening_hours,--linebreak--,date_published,vat_id,tax_id,--linebreak--,description,--linebreak--,logo,--linebreak--,images,--linebreak--,addresses',

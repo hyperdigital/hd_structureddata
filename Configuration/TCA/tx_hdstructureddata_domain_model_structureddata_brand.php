@@ -3,10 +3,8 @@ defined('TYPO3') || die();
 
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer',
-        'label' => 'availability',
-        'label_alt' => 'price,valid_from,valid_until',
-        'label_alt_force' => true,
+        'title' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_brand',
+        'label' => 'name',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'versioningWS' => true,
@@ -16,7 +14,7 @@ return [
         'transOrigDiffSourceField' => 'l10n_diffsource',
         'translationSource' => 'l10n_source',
         'delete' => 'deleted',
-        'iconfile' => 'EXT:hd_structureddata/Resources/Public/Icons/clock.svg',
+        'iconfile' => 'EXT:hd_structureddata/Resources/Public/Icons/faq.svg',
         'enablecolumns' => [
             'disabled' => 'hidden',
             'starttime' => 'starttime',
@@ -30,99 +28,27 @@ return [
     ],
     'palettes' => [
         'access' => [
-            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.palette.access',
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_brand.palette.access',
             'showitem' => 'hidden, --linebreak--,starttime,endtime,--linebreak--,fe_group,'
         ],
         'base' => [
-            'showitem' => 'availability,--linebreak--,valid_from,valid_until,--linebreak--,price,price_currency,--linebreak--,url'
+            'showitem' => 'name'
         ],
     ],
     'types' => [
         '0' => [
-            'showitem' => '--palette--;;type,--palette--;;base,
-            --div--;LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.div.access,--palette--;;access,'
-        ],
+            'showitem' => '--palette--;;base,
+            --div--;LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_brand.div.access,--palette--;;access,'
+        ]
     ],
     'columns' => [
-        'availability' => [
-            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.availability',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'default' => 'InStock',
-                'items' => [
-                    [
-                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.availability.InStock',
-                        'value' => 'InStock'
-                    ],
-                    [
-                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.availability.SoldOut',
-                        'value' => 'SoldOut'
-                    ],
-                    [
-                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.availability.PreOrder',
-                        'value' => 'PreOrder'
-                    ]
-                ]
-            ]
-        ],
-        'url' => [
-            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.url',
-            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:recommended',
-            'config' => [
-                'type' => 'link',
-                'appearance' => [
-                    'allowedOptions' => ['params'],
-                ],
-            ]
-        ],
-        'price' => [
-            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.price',
-            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:recommended',
-            'config' => [
-                'default' => 0,
-                'type' => 'number',
-                'format' => 'decimal',
-            ]
-        ],
-        'price_currency' => [
-            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.priceCurrency',
-            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:recommended',
+        'name' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_brand.columns.name',
             'config' => [
                 'type' => 'input',
-                'valuePicker' => [
-                    'prepend' => true,
-                    'items' => [
-                        [
-                            'EUR',
-                            'EUR',
-                        ],
-                        [
-                            'USD',
-                            'USD',
-                        ],
-                    ],
-                ],
-            ]
-        ],
-        'valid_from' => [
-            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.valid_from',
-            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:recommended',
-            'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'dbType' => 'datetime',
-                'nullable' => true,
-            ]
-        ],
-        'valid_until' => [
-            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.valid_until',
-            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:recommended',
-            'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'dbType' => 'datetime',
-                'nullable' => true,
+                'eval' => 'trim',
+                'required' => true,
             ]
         ],
         'hidden' => [
@@ -224,10 +150,10 @@ return [
                         'value' => 0,
                     ],
                 ],
-                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata_offer',
+                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata_brand',
                 'foreign_table_where' =>
-                    'AND {#tx_hdstructureddata_domain_model_structureddata_offer}.{#pid}=###CURRENT_PID###'
-                    . ' AND {#tx_hdstructureddata_domain_model_structureddata_offer}.{#sys_language_uid} IN (-1,0)',
+                    'AND {#tx_hdstructureddata_domain_model_structureddata_brand}.{#pid}=###CURRENT_PID###'
+                    . ' AND {#tx_hdstructureddata_domain_model_structureddata_brand}.{#sys_language_uid} IN (-1,0)',
                 'default' => 0,
             ],
         ],

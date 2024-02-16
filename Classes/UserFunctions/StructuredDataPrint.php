@@ -6,6 +6,7 @@ use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Event;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Faq;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\LearningVideo;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Organization;
+use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Product;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Review;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Video;
 use TYPO3\CMS\Core\Database\Connection;
@@ -150,6 +151,9 @@ class StructuredDataPrint
                         $return = GeneralUtility::makeInstance(Organization::class)->setOriginalRow($row)->returnData();
                         break;
                 }
+                break;
+            case 'product':
+                $return = GeneralUtility::makeInstance(Product::class)->setOriginalRow($row)->returnData();
                 break;
             case 'video':
                 $return = GeneralUtility::makeInstance(Video::class)->setOriginalRow($row)->returnData();

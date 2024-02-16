@@ -42,6 +42,21 @@ CREATE TABLE tx_hdstructureddata_domain_model_structureddata (
 	organizers_pointer int(11) NULL,
 	pointed_as_organizer int(11) NULL,
 	performers int(11) NULL,
+	brands int(11) NULL,
+	sku varchar(255) DEFAULT '' NOT NULL,
+	gtin14 varchar(255) DEFAULT '' NOT NULL,
+	reviews int(11) NULL,
+	positive_notes int(11) NULL,
+	negative_notes int(11) NULL,
+
+	t3ver_label varchar(255) DEFAULT '' NOT NULL,
+	tablename varchar(255) DEFAULT '' NOT NULL,
+	foreign_uid int(11) DEFAULT 0 NOT NULL,
+	fieldname varchar(255) DEFAULT '' NOT NULL,
+);
+
+CREATE TABLE tx_hdstructureddata_domain_model_structureddata_reviewnote(
+	name varchar(255) DEFAULT '' NOT NULL,
 
 	t3ver_label varchar(255) DEFAULT '' NOT NULL,
 	tablename varchar(255) DEFAULT '' NOT NULL,
@@ -119,7 +134,16 @@ CREATE TABLE tx_hdstructureddata_domain_model_structureddata_offer(
 	price float(14) DEFAULT 0 NOT NULL,
 	price_currency varchar(255) DEFAULT '' NOT NULL,
 	valid_from datetime default NULL,
+	valid_until datetime default NULL,
 	url varchar(255) DEFAULT '' NOT NULL,
+
+	t3ver_label varchar(255) DEFAULT '' NOT NULL,
+	tablename varchar(255) DEFAULT '' NOT NULL,
+	foreign_uid int(11) DEFAULT 0 NOT NULL,
+	fieldname varchar(255) DEFAULT '' NOT NULL,
+);
+CREATE TABLE tx_hdstructureddata_domain_model_structureddata_brand(
+	name varchar(255) DEFAULT '' NOT NULL,
 
 	t3ver_label varchar(255) DEFAULT '' NOT NULL,
 	tablename varchar(255) DEFAULT '' NOT NULL,

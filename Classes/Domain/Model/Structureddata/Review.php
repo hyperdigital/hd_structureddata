@@ -27,12 +27,35 @@ class Review extends AbstractData
                     $return['reviewRating'] = $rating;
                 }
                 break;
+            case 'reviewedItem':
+                $rating = $this->reviewRating();
+                if ($rating) {
+                    $return['reviewRating'] = $rating;
+                }
+                break;
         }
 
         if (!empty($itemReviewed)) {
             $return['itemReviewed'] = $itemReviewed;
-        } else {
-            return false;
+        }
+
+        if (!empty($this->originalRow['positive_notes'])) {
+            $notes = $this->getReviewNotes($this->originalRow['uid'], 'positive_notes', 'tx_hdstructureddata_domain_model_structureddata');
+            if (!empty($notes)) {
+                $return['positiveNotes'] = [
+                    '@type' => 'ItemList',
+                    'itemListElement' => $notes
+                ];
+            }
+        }
+        if (!empty($this->originalRow['negative_notes'])) {
+            $notes = $this->getReviewNotes($this->originalRow['uid'], 'negative_notes', 'tx_hdstructureddata_domain_model_structureddata');
+            if (!empty($notes)) {
+                $return['negativeNotes'] = [
+                    '@type' => 'ItemList',
+                    'itemListElement' => $notes
+                ];
+            }
         }
 
         if (!empty($this->originalRow['authors'])) {

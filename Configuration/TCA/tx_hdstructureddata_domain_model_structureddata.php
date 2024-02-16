@@ -77,6 +77,20 @@ return [
                 'type' => 'input',
             ]
         ],
+        'sku' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.sku',
+            'config' => [
+                'type' => 'input',
+            ]
+        ],
+        'gtin14' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.gtin14',
+            'config' => [
+                'type' => 'input',
+            ]
+        ],
         'legal_name' => [
             'exclude' => true,
             'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.legal_name',
@@ -264,6 +278,40 @@ return [
                 ],
             ],
         ],
+        'negative_notes' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.negative_notes',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata_reviewnote',
+                'foreign_field' => 'foreign_uid',
+                'foreign_sortby' => 'sorting',
+                'foreign_table_field' => 'tablename',
+                'foreign_match_fields' => [
+                    'fieldname' => 'negative_notes',
+                ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ],
+            ],
+        ],
+        'positive_notes' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.positive_notes',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata_reviewnote',
+                'foreign_field' => 'foreign_uid',
+                'foreign_sortby' => 'sorting',
+                'foreign_table_field' => 'tablename',
+                'foreign_match_fields' => [
+                    'fieldname' => 'positive_notes',
+                ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ],
+            ],
+        ],
         'offers' => [
             'exclude' => true,
             'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.offers',
@@ -309,6 +357,50 @@ return [
                             'config' => [
                                 'required' => false,
                             ]
+                        ]
+                    ]
+                ]
+            ],
+        ],
+        'reviews' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.reviews',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata',
+                'foreign_field' => 'foreign_uid',
+                'foreign_sortby' => 'sorting',
+                'foreign_table_field' => 'tablename',
+                'foreign_match_fields' => [
+                    'fieldname' => 'reviews',
+                ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ],
+                'overrideChildTca' => [
+                    'columns' => [
+                        'type' => [
+                            'config' => [
+                                'type' => 'user',
+                                'renderType' => 'hdNotEditableField',
+                                'default' => 'review'
+                            ]
+                        ],
+                        'subtype' => [
+                            'config' => [
+                                'type' => 'user',
+                                'renderType' => 'hdNotEditableField',
+                                'default' => 'reviewedItem',
+                                'items' => [
+                                    ['LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.review.subtypes.reviewedItem', 'reviewedItem']
+                                ]
+                            ]
+                        ],
+                    ],
+                    'types' => [
+                        'review' => [
+                            'showitem' => '--palette--;;type,--palette--;;review,
+                            --div--;LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.div.access,--palette--;;access,'
                         ]
                     ]
                 ]
@@ -469,6 +561,23 @@ return [
                 'foreign_table_field' => 'tablename',
                 'foreign_match_fields' => [
                     'fieldname' => 'opening_hours',
+                ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ],
+            ],
+        ],
+        'brands' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.brands',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata_brand',
+                'foreign_field' => 'foreign_uid',
+                'foreign_sortby' => 'sorting',
+                'foreign_table_field' => 'tablename',
+                'foreign_match_fields' => [
+                    'fieldname' => 'brands',
                 ],
                 'behaviour' => [
                     'allowLanguageSynchronization' => true
