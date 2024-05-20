@@ -26,8 +26,18 @@ abstract class AbstractData
 
     protected function getUrl($typolink)
     {
-        $contentObjectRenderer = $contentObjectRenderer ?? GeneralUtility::makeInstance(ContentObjectRenderer::class);
-        $url = $contentObjectRenderer->createUrl(['parameter' => $typolink, 'forceAbsoluteUrl' => true]);
+        $version = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class);
+        if ($version->getMajorVersion() > 11) {
+            $contentObjectRenderer = $contentObjectRenderer ?? GeneralUtility::makeInstance(ContentObjectRenderer::class);
+            $url = $contentObjectRenderer->createUrl(['parameter' => $typolink, 'forceAbsoluteUrl' => true]);
+        } else {
+            $url = $GLOBALS['TSFE']->cObj->typoLink_URL(
+                array(
+                    'parameter' => $typolink,
+                    'forceAbsoluteUrl' => true,
+                )
+            );
+        }
 
         return $url;
     }
