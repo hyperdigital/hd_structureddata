@@ -402,6 +402,12 @@
 			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_offer.columns.url">
 				<source>URL (where wo buy tickets)</source>
 			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_offer.columns.category">
+				<source>Category</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_offer.columns.category.description">
+				<source>Information about the total price to complete the course, including service fees. Do not include extra fees for certifications or discounts for only some users.</source>
+			</trans-unit>
 			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_offer.columns.availability">
 				<source>Availability</source>
 			</trans-unit>
@@ -494,6 +500,60 @@
 			</trans-unit>
 			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.palette.product-agregaterating">
 				<source>Product agregate rating</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.type.course">
+				<source>Course</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.type.course.organizers">
+				<source>Providers</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_courseinstance">
+				<source>Course instance</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_courseinstance.palette.schedule">
+				<source>Schedule</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_courseinstance.columns.course_mode">
+				<source>Course mode</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_courseinstance.columns.course_mode.online">
+				<source>Online</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_courseinstance.columns.course_mode.onsite">
+				<source>Onsite</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_courseinstance.columns.course_mode.blended">
+				<source>Blended (both online and onsite)</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_courseinstance.columns.course_schedule_repeat_count">
+				<source>Schedule: Repeat Count</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_courseinstance.columns.course_schedule_repeat_frequency">
+				<source>Schedule: Repeat Frequency</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_courseinstance.columns.course_schedule_repeat_frequency.Daily">
+				<source>Daily</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_courseinstance.columns.course_schedule_repeat_frequency.Weekly">
+				<source>Weekly</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_courseinstance.columns.course_schedule_repeat_frequency.Monthly">
+				<source>Monthly</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_courseinstance.columns.course_schedule_repeat_frequency.Yearly">
+				<source>Yearly</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_courseinstance.columns.course_schedule_start_date">
+				<source>Schedule: Start date</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_courseinstance.columns.course_schedule_end_date">
+				<source>Schedule: End date</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_courseinstance.columns.instructors">
+				<source>Instructors</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.courseinstances">
+				<source>Course Instances</source>
 			</trans-unit>
 		</body>
 	</file>

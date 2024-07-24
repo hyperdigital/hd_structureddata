@@ -48,6 +48,7 @@ CREATE TABLE tx_hdstructureddata_domain_model_structureddata (
 	reviews int(11) NULL,
 	positive_notes int(11) NULL,
 	negative_notes int(11) NULL,
+    courseinstances int(11) NULL,
 
 	t3ver_label varchar(255) DEFAULT '' NOT NULL,
 	tablename varchar(255) DEFAULT '' NOT NULL,
@@ -136,6 +137,7 @@ CREATE TABLE tx_hdstructureddata_domain_model_structureddata_offer(
 	valid_from datetime default NULL,
 	valid_until datetime default NULL,
 	url varchar(255) DEFAULT '' NOT NULL,
+    category varchar(255) DEFAULT '' NOT NULL,
 
 	t3ver_label varchar(255) DEFAULT '' NOT NULL,
 	tablename varchar(255) DEFAULT '' NOT NULL,
@@ -159,4 +161,20 @@ CREATE TABLE tx_hdstructureddata_structureddata_organizers_mm (
 
 		 KEY uid_local (uid_local),
 		 KEY uid_foreign (uid_foreign)
+);
+
+CREATE TABLE tx_hdstructureddata_domain_model_structureddata_courseinstance(
+   course_mode varchar(255) DEFAULT '' NOT NULL,
+   course_schedule_repeat_count int(11) DEFAULT 0 NOT NULL,
+   course_schedule_repeat_frequency varchar(255) DEFAULT '' NOT NULL,
+   course_schedule_start_date datetime default NULL,
+   course_schedule_end_date datetime default NULL,
+   images int(11) DEFAULT 0 NOT NULL,
+   instructors int(11) DEFAULT 0 NOT NULL,
+   locations int(11) DEFAULT 0 NOT NULL,
+
+    t3ver_label varchar(255) DEFAULT '' NOT NULL,
+    tablename varchar(255) DEFAULT '' NOT NULL,
+    foreign_uid int(11) DEFAULT 0 NOT NULL,
+    fieldname varchar(255) DEFAULT '' NOT NULL,
 );

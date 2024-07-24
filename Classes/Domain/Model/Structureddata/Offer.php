@@ -40,6 +40,9 @@ class Offer extends AbstractData
         if (!empty($this->originalRow['url'])) {
             $return['url'] = $this->getUrl($this->originalRow['url']);
         }
+        if (!empty($this->originalRow['category'])) {
+            $return['category'] = $this->originalRow['category'];
+        }
 
         return $return;
     }

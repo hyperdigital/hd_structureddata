@@ -12,6 +12,7 @@ if ($version->getMajorVersion() == 11) {
         'tx_hdstructureddata_domain_model_structureddata_openinghour',
         'tx_hdstructureddata_domain_model_structureddata_person',
         'tx_hdstructureddata_domain_model_structureddata_reviewnote',
+        'tx_hdstructureddata_domain_model_structureddata_courseinstance'
     ];
 
     function replaceSelectV12BySelectV11($table) {

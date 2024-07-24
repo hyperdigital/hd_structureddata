@@ -34,7 +34,7 @@ return [
             'showitem' => 'hidden, --linebreak--,starttime,endtime,--linebreak--,fe_group,'
         ],
         'base' => [
-            'showitem' => 'availability,--linebreak--,valid_from,valid_until,--linebreak--,price,price_currency,--linebreak--,url'
+            'showitem' => 'availability,--linebreak--,valid_from,valid_until,--linebreak--,price,price_currency,category,--linebreak--,url'
         ],
     ],
     'types' => [
@@ -100,6 +100,26 @@ return [
                         [
                             'USD',
                             'USD',
+                        ],
+                    ],
+                ],
+            ]
+        ],
+        'category' => [
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.category',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.category.description',
+            'config' => [
+                'type' => 'input',
+                'valuePicker' => [
+                    'prepend' => true,
+                    'items' => [
+                        [
+                            'Paid',
+                            'Paid',
+                        ],
+                        [
+                            'Free',
+                            'Free',
                         ],
                     ],
                 ],

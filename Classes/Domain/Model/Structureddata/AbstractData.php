@@ -354,6 +354,45 @@ abstract class AbstractData
         return $return;
     }
 
+    protected function getCourseInstances($uid, $parentField, $parentTable)
+    {
+        $return = [];
+
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getQueryBuilderForTable('tx_hdstructureddata_domain_model_structureddata_courseinstance');
+
+        $where = [
+            $queryBuilder->expr()->eq('foreign_uid', $queryBuilder->createNamedParameter($uid, Connection::PARAM_INT)),
+            $queryBuilder->expr()->eq('tablename',  $queryBuilder->createNamedParameter($parentTable)),
+            $queryBuilder->expr()->eq('fieldname',  $queryBuilder->createNamedParameter($parentField))
+        ];
+
+        if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('workspaces')) {
+            $where[] = $queryBuilder->expr()->eq('t3ver_wsid', $queryBuilder->createNamedParameter(0, Connection::PARAM_INT));
+        }
+
+        $result = $queryBuilder
+            ->select('*')
+            ->from('tx_hdstructureddata_domain_model_structureddata_courseinstance')
+            ->where(
+                ...$where
+            )
+            ->addOrderBy('sorting')
+            ->executeQuery();
+
+        while ($row = $result->fetchAssociative()) {
+            $GLOBALS['TSFE']->sys_page->versionOL('tx_hdstructureddata_domain_model_structureddata_courseinstance',$row);
+            if (is_array($row)) {
+                $output = GeneralUtility::makeInstance(Courseinstance::class)->setOriginalRow($row)->returnData();
+                if ($output) {
+                    $return[] = $output;
+                }
+            }
+        }
+
+        return $return;
+    }
+
     protected function getReviews($uid, $parentField, $parentTable)
     {
         $return = [];
