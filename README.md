@@ -12,6 +12,9 @@ TYPO3 extension for handling Google structured data into your page.
 ### Article
 Source: https://developers.google.com/search/docs/appearance/structured-data/article
 
+### Course
+Source: https://developers.google.com/search/docs/appearance/structured-data/course-info
+
 ### FAQ
 Source: https://developers.google.com/search/docs/appearance/structured-data/faqpage
 
