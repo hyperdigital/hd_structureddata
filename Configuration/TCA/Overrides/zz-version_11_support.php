@@ -109,12 +109,26 @@ if ($version->getMajorVersion() == 11) {
         foreach ($GLOBALS['TCA'][$table]['columns'] as $key => $field) {
             if ($field['config']['type'] == 'file') {
 
-                switch ($field['config']['allowed']) {
-                    case 'common-image-types':
-                        $allowed = $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'];
-                        break;
-                    default:
-                        $allowed = $field['config']['allowed'];
+                if (is_array($field['config']['allowed'])) {
+                    $allowed = [];
+                    foreach ($field['config']['allowed'] as $tempAllowed) {
+                        switch ($tempAllowed) {
+                            case 'common-image-types':
+                                $allowed[] = $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'];
+                                break;
+                            default:
+                                $allowed[] = $tempAllowed;
+                        }
+                    }
+                    $allowed = implode(',', $allowed);
+                } else {
+                    switch ($field['config']['allowed']) {
+                        case 'common-image-types':
+                            $allowed = $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'];
+                            break;
+                        default:
+                            $allowed = $field['config']['allowed'];
+                    }
                 }
 
                 unset($field['config']['type']);

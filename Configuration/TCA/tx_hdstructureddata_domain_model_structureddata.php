@@ -198,7 +198,7 @@ return [
             'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.medias',
             'config' => [
                 'type' => 'file',
-                'allowed' => '*'
+                'allowed' => ['common-image-types', 'mov', 'mp4', 'avi', 'webm']
             ]
         ],
         'logo' => [
