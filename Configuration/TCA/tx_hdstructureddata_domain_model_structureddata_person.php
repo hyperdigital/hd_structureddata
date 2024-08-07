@@ -17,6 +17,7 @@ return [
         'translationSource' => 'l10n_source',
         'delete' => 'deleted',
         'iconfile' => 'EXT:hd_structureddata/Resources/Public/Icons/person.svg',
+        'rootLevel' => -1,
         'enablecolumns' => [
             'disabled' => 'hidden',
             'starttime' => 'starttime',
@@ -26,6 +27,8 @@ return [
         'hideTable' => true,
         'security' => [
             'ignorePageTypeRestriction' => true,
+            'ignoreRootLevelRestriction' => true,
+            'ignoreWebMountRestriction' => true
         ],
         'type' => 'type',
     ],

@@ -555,6 +555,36 @@
 			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.courseinstances">
 				<source>Course Instances</source>
 			</trans-unit>
+			<trans-unit id="sys_file_metadata.creator">
+				<source>Creator</source>
+			</trans-unit>
+			<trans-unit id="sys_file_metadata.creator.description">
+				<source>The creator of the image. This is usually the photographer, but it may be a company or organization (if appropriate).</source>
+			</trans-unit>
+			<trans-unit id="sys_file_metadata.credit_text">
+				<source>Credit Text</source>
+			</trans-unit>
+			<trans-unit id="sys_file_metadata.credit_text.description">
+				<source>The name of the person and/or organization that is credited for the image when it's published.</source>
+			</trans-unit>
+			<trans-unit id="sys_file_metadata.copyright_notice">
+				<source>Copyright Notice</source>
+			</trans-unit>
+			<trans-unit id="sys_file_metadata.copyright_notice.description">
+				<source>The copyright notice for claiming the intellectual property for this photograph. This identifies the current owner of the copyright for the photograph.</source>
+			</trans-unit>
+			<trans-unit id="sys_file_metadata.license">
+				<source>License</source>
+			</trans-unit>
+			<trans-unit id="sys_file_metadata.license.description">
+				<source>A URL to a page that describes the license governing an image's use. For example, it could be the terms and conditions that you have on your website. Where applicable, it could also be a Creative Commons License.</source>
+			</trans-unit>
+			<trans-unit id="sys_file_metadata.acquire_license_page">
+				<source>Acquire License Page</source>
+			</trans-unit>
+			<trans-unit id="sys_file_metadata.acquire_license_page.description">
+				<source>A URL to a page where the user can find information on how to license that image. (A general page that explains how to contact you, A check-out page for that image where the user can select specific resolutions or usage rights)</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

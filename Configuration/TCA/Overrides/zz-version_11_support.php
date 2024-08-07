@@ -12,36 +12,47 @@ if ($version->getMajorVersion() == 11) {
         'tx_hdstructureddata_domain_model_structureddata_openinghour',
         'tx_hdstructureddata_domain_model_structureddata_person',
         'tx_hdstructureddata_domain_model_structureddata_reviewnote',
-        'tx_hdstructureddata_domain_model_structureddata_courseinstance'
+        'tx_hdstructureddata_domain_model_structureddata_courseinstance',
+        'sys_file_metadata'
     ];
 
     function replaceSelectV12BySelectV11($table) {
 
         foreach ($GLOBALS['TCA'][$table]['columns'] as $key => $field) {
-            if ($field['config']['type'] == 'select' || ($field['config']['type'] == 'check' && $field['config']['renderType'] == 'checkboxToggle')) {
-                $originalItems = $field['config']['items'];
-                $newItems = [];
-                foreach ($originalItems as $item) {
-                    $newItems[] = [$item['label'], $item['value']];
-                }
-
-                $GLOBALS['TCA'][$table]['columns'][$key]['config']['items'] = $newItems;
-            }
-        }
-        foreach ($GLOBALS['TCA'][$table]['types'] as $type => $settings) {
-            if($settings['columnsOverrides']) {
-                foreach ($settings['columnsOverrides'] as $key => $field) {
-                    if (
-                        ($field['config']['type'] && $field['config']['type'] == 'select')
-                        || (empty($field['config']['type']) && $GLOBALS['TCA'][$table]['columns'][$key]['config']['type'] == 'select')
-                    ) {
+            if (!empty($field['config']['type'])) {
+                if ($field['config']['type'] == 'select' || ($field['config']['type'] == 'check' && $field['config']['renderType'] == 'checkboxToggle')) {
+                    if (!empty($field['config']['items'])) {
                         $originalItems = $field['config']['items'];
                         $newItems = [];
                         foreach ($originalItems as $item) {
-                            $newItems[] = [$item['label'], $item['value']];
+                            if (isset($item['label']) && isset($item['value'])) {
+                                $newItems[] = [$item['label'], $item['value']];
+                            } else if (isset($item[0]) && isset($item[1])) {
+                                $newItems[] = [$item[0], $item[1]];
+                            }
                         }
 
-                        $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['items'] = $newItems;
+                        $GLOBALS['TCA'][$table]['columns'][$key]['config']['items'] = $newItems;
+                    }
+                }
+            }
+        }
+        foreach ($GLOBALS['TCA'][$table]['types'] as $type => $settings) {
+            if(!empty($settings['columnsOverrides'])) {
+                foreach ($settings['columnsOverrides'] as $key => $field) {
+                    if (!empty($field['config']['type'])) {
+                        if (
+                            ($field['config']['type'] && $field['config']['type'] == 'select')
+                            || (empty($field['config']['type']) && $GLOBALS['TCA'][$table]['columns'][$key]['config']['type'] == 'select')
+                        ) {
+                            $originalItems = $field['config']['items'];
+                            $newItems = [];
+                            foreach ($originalItems as $item) {
+                                $newItems[] = [$item['label'], $item['value']];
+                            }
+
+                            $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['items'] = $newItems;
+                        }
                     }
                 }
             }
@@ -51,27 +62,31 @@ if ($version->getMajorVersion() == 11) {
 
     function replaceV12DateByV11Date ($table) {
         foreach ($GLOBALS['TCA'][$table]['columns'] as $key => $field) {
-            if (!empty($field['config']['renderType']) && $field['config']['renderType'] == 'inputDateTime') {
-                if (!empty($GLOBALS['TCA'][$table]['columns'][$key]['config']['eval'])) {
-                    $GLOBALS['TCA'][$table]['columns'][$key]['config']['eval'] .= ',';
-                } else {
-                    $GLOBALS['TCA'][$table]['columns'][$key]['config']['eval'] = '';
+            if (!empty($field['config']['renderType'])) {
+                if (!empty($field['config']['renderType']) && $field['config']['renderType'] == 'inputDateTime') {
+                    if (!empty($GLOBALS['TCA'][$table]['columns'][$key]['config']['eval'])) {
+                        $GLOBALS['TCA'][$table]['columns'][$key]['config']['eval'] .= ',';
+                    } else {
+                        $GLOBALS['TCA'][$table]['columns'][$key]['config']['eval'] = '';
+                    }
+                    $GLOBALS['TCA'][$table]['columns'][$key]['config']['eval'] .= 'datetime';
                 }
-                $GLOBALS['TCA'][$table]['columns'][$key]['config']['eval'] .= 'datetime';
             }
         }
         foreach ($GLOBALS['TCA'][$table]['types'] as $type => $settings) {
-            if($settings['columnsOverrides']) {
+            if(!empty($settings['columnsOverrides'])) {
                 foreach ($settings['columnsOverrides'] as $key => $field) {
-                    if (
-                        !empty($field['config']['renderType']) && $field['config']['renderType'] == 'inputDateTime'
-                    ) {
-                        if (!empty($GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['eval'])) {
-                            $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['eval'] .= ',';
-                        } else {
-                            $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['eval'] = '';
+                    if (!empty($field['config']['renderType'])) {
+                        if (
+                            !empty($field['config']['renderType']) && $field['config']['renderType'] == 'inputDateTime'
+                        ) {
+                            if (!empty($GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['eval'])) {
+                                $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['eval'] .= ',';
+                            } else {
+                                $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['eval'] = '';
+                            }
+                            $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['eval'] .= 'datetime';
                         }
-                        $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['eval'] .= 'datetime';
                     }
                 }
             }
@@ -90,7 +105,7 @@ if ($version->getMajorVersion() == 11) {
             }
         }
         foreach ($GLOBALS['TCA'][$table]['types'] as $type => $settings) {
-            if($settings['columnsOverrides']) {
+            if(!empty($settings['columnsOverrides'])) {
                 foreach ($settings['columnsOverrides'] as $key => $field) {
                     if (!empty($field['config']['nullable'])) {
                         if (!empty($GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['eval'])) {
@@ -144,9 +159,9 @@ if ($version->getMajorVersion() == 11) {
             }
         }
         foreach ($GLOBALS['TCA'][$table]['types'] as $type => $settings) {
-            if($settings['columnsOverrides']) {
+            if(!empty($settings['columnsOverrides'])) {
                 foreach ($settings['columnsOverrides'] as $key => $field) {
-                    if ($field['config']['type'] == 'file') {
+                    if (!empty($field['config']['type']) && $field['config']['type'] == 'file') {
 
                         switch ($field['config']['allowed']) {
                             case 'common-image-types':
@@ -174,46 +189,54 @@ if ($version->getMajorVersion() == 11) {
 
     function replaceV12SpecialInputs11($table)
     {
-        foreach ($GLOBALS['TCA'][$table]['columns'] as $key => $field) {
-            if ($field['config']['type'] == 'link') {
-                $GLOBALS['TCA'][$table]['columns'][$key]['config']['type'] = 'input';
-                $GLOBALS['TCA'][$table]['columns'][$key]['config']['renderType'] = 'inputLink';
-            } else if ($field['config']['type'] == 'email') {
-                $GLOBALS['TCA'][$table]['columns'][$key]['config']['type'] = 'input';
+        if (!empty($GLOBALS['TCA'][$table]['types'])) {
+            foreach ($GLOBALS['TCA'][$table]['columns'] as $key => $field) {
+                if (!empty($field['config']['type'])) {
+                    if ($field['config']['type'] == 'link') {
+                        $GLOBALS['TCA'][$table]['columns'][$key]['config']['type'] = 'input';
+                        $GLOBALS['TCA'][$table]['columns'][$key]['config']['renderType'] = 'inputLink';
+                    } else if ($field['config']['type'] == 'email') {
+                        $GLOBALS['TCA'][$table]['columns'][$key]['config']['type'] = 'input';
 
-            } else if ($field['config']['type'] == 'number') {
-                $GLOBALS['TCA'][$table]['columns'][$key]['config']['type'] = 'input';
-                if (!empty($GLOBALS['TCA'][$table]['columns'][$key]['config']['eval'])) {
-                    $GLOBALS['TCA'][$table]['columns'][$key]['config']['eval'] .= ',';
-                } else {
-                    $GLOBALS['TCA'][$table]['columns'][$key]['config']['eval'] = '';
-                }
-                if (!empty($field['config']['format']) && $field['config']['format'] == 'decimal') {
-                    $GLOBALS['TCA'][$table]['columns'][$key]['config']['eval'] .= 'double2';
-                } else {
-                    $GLOBALS['TCA'][$table]['columns'][$key]['config']['eval'] .= 'int';
+                    } else if ($field['config']['type'] == 'number') {
+                        $GLOBALS['TCA'][$table]['columns'][$key]['config']['type'] = 'input';
+                        if (!empty($GLOBALS['TCA'][$table]['columns'][$key]['config']['eval'])) {
+                            $GLOBALS['TCA'][$table]['columns'][$key]['config']['eval'] .= ',';
+                        } else {
+                            $GLOBALS['TCA'][$table]['columns'][$key]['config']['eval'] = '';
+                        }
+                        if (!empty($field['config']['format']) && $field['config']['format'] == 'decimal') {
+                            $GLOBALS['TCA'][$table]['columns'][$key]['config']['eval'] .= 'double2';
+                        } else {
+                            $GLOBALS['TCA'][$table]['columns'][$key]['config']['eval'] .= 'int';
+                        }
+                    }
                 }
             }
         }
-        foreach ($GLOBALS['TCA'][$table]['types'] as $type => $settings) {
-            if($settings['columnsOverrides']) {
-                foreach ($settings['columnsOverrides'] as $key => $field) {
-                    if ($field['config']['type'] == 'link') {
-                        $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['type'] = 'input';
-                        $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['renderType'] = 'inputLink';
-                    } else if ($field['config']['type'] == 'email') {
-                        $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['type'] = 'input';
-                    } else if ($field['config']['type'] == 'number') {
-                        $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['type'] = 'input';
-                        if (!empty($GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['eval'])) {
-                            $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['eval'] .= ',';
-                        } else {
-                            $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['eval'] = '';
-                        }
-                        if (!empty($field['config']['format']) && $field['config']['format'] == 'decimal') {
-                            $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['eval'] .= 'double2';
-                        } else {
-                            $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['eval'] .= 'int';
+        if (!empty($GLOBALS['TCA'][$table]['types'])) {
+            foreach ($GLOBALS['TCA'][$table]['types'] as $type => $settings) {
+                if (!empty($settings['columnsOverrides'])) {
+                    foreach ($settings['columnsOverrides'] as $key => $field) {
+                        if (!empty($field['config']['type'])) {
+                            if ($field['config']['type'] == 'link') {
+                                $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['type'] = 'input';
+                                $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['renderType'] = 'inputLink';
+                            } else if ($field['config']['type'] == 'email') {
+                                $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['type'] = 'input';
+                            } else if ($field['config']['type'] == 'number') {
+                                $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['type'] = 'input';
+                                if (!empty($GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['eval'])) {
+                                    $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['eval'] .= ',';
+                                } else {
+                                    $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['eval'] = '';
+                                }
+                                if (!empty($field['config']['format']) && $field['config']['format'] == 'decimal') {
+                                    $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['eval'] .= 'double2';
+                                } else {
+                                    $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['eval'] .= 'int';
+                                }
+                            }
                         }
                     }
                 }

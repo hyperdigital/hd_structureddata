@@ -178,3 +178,11 @@ CREATE TABLE tx_hdstructureddata_domain_model_structureddata_courseinstance(
     foreign_uid int(11) DEFAULT 0 NOT NULL,
     fieldname varchar(255) DEFAULT '' NOT NULL,
 );
+
+CREATE TABLE sys_file_metadata (
+    creator int(11) NULL,
+    credit_text TEXT NULL,
+    copyright_notice TEXT NULL,
+    license TEXT NULL,
+    acquire_license_page TEXT NULL,
+);

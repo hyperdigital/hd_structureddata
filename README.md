@@ -33,6 +33,19 @@ Source: https://developers.google.com/search/docs/appearance/structured-data/pro
 ### Events
 Source: https://developers.google.com/search/docs/appearance/structured-data/event
 
+### Image
+Source: https://developers.google.com/search/docs/appearance/structured-data/image-license-metadata
+After installing this extension, a new ViewHelper with empty output is available for use in your Fluid templates: `{f:imageStructuredData(image: image, uri: 'https:\\www.web.com\fileadmin\img.jpg')}`. This ViewHelper integrates structured data for images across your TYPO3 website. The `image` parameter is used to pass the image object. If you need to provide an alternative URL instead of publicUrl, use the `uri` parameter (of type string).
+
+#### Usage
+
+To use the `imageStructuredData` ViewHelper, include it in your Fluid templates as follows:
+
+```html
+<f:image image="{image}" ...  />
+<f:imageStructuredData(image: image) />
+```
+
 #### Possibility to attach already used Organization as organizer
 Events should contain organizer. It's possible to attach already exiting organization over field "Pointer to already existing organizers" where is possible to choose different structured data entries, but only Organization type would be used in Frontend output.
 
