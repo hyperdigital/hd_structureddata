@@ -2,6 +2,7 @@
 namespace Hyperdigital\HdStructureddata\UserFunctions;
 
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Article;
+use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Image;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Course;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Event;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Faq;
@@ -102,7 +103,10 @@ class StructuredDataPrint
         while ($row = $result->fetchAssociative()) {
             $GLOBALS['TSFE']->sys_page->versionOL('tx_hdstructureddata_domain_model_structureddata',$row);
             if (is_array($row)) {
-                $return[] = self::getSpecificStructuredData($row);
+                $temp = self::getSpecificStructuredData($row);
+                if (!empty($temp)) {
+                    $return[] = $temp;
+                }
             }
         }
 
@@ -145,6 +149,12 @@ class StructuredDataPrint
                 break;
             case 'faq':
                 $return = GeneralUtility::makeInstance(Faq::class)->setOriginalRow($row)->returnData();
+                break;
+            case 'image':
+                $return = GeneralUtility::makeInstance(Image::class)->prepareData($row)->returnData();
+                break;
+            case 'video':
+                $return = GeneralUtility::makeInstance(Video::class)->setOriginalRow($row)->returnData();
                 break;
             case 'organization':
                 switch ($row['subtype']) {

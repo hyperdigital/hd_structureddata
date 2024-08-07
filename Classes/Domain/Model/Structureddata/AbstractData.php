@@ -515,16 +515,19 @@ abstract class AbstractData
         return $return;
     }
 
-    protected function getImages($uid, $field, $table, $single = false)
+    protected function getImages($uid, $field, $table, $single = false, $asObject = false)
     {
         $fileRepository = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Resource\FileRepository::class);
         $fileObjects = $fileRepository->findByRelation($table, $field, $uid);
         $return = [];
         foreach ($fileObjects as $fileObject) {
-
-            $url = $this->getUrl($fileObject->getPublicUrl());
-            if ($url) {
-                $return[] = $url;
+            if ($asObject) {
+                $return[] = $fileObject;
+            } else {
+                $url = $this->getUrl($fileObject->getPublicUrl());
+                if ($url) {
+                    $return[] = $url;
+                }
             }
         }
 

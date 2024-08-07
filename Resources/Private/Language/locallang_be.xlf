@@ -585,6 +585,15 @@
 			<trans-unit id="sys_file_metadata.acquire_license_page.description">
 				<source>A URL to a page where the user can find information on how to license that image. (A general page that explains how to contact you, A check-out page for that image where the user can select specific resolutions or usage rights)</source>
 			</trans-unit>
+            <trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.type.image">
+                <source>Image</source>
+            </trans-unit>
+            <trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.type.image.images">
+                <source>Image</source>
+            </trans-unit>
+            <trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.type.image.images.description">
+                <source>The structured data are editable as metadata of the files in the filelist.</source>
+            </trans-unit>
 		</body>
 	</file>
 </xliff>

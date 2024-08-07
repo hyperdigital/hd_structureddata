@@ -33,41 +33,8 @@ final class ImageStructuredDataViewHelper extends AbstractViewHelper
         RenderingContextInterface $renderingContext,
     ): string {
         $image = $arguments['image'];
-        if (!empty($arguments['image'])) {
-            if ($image instanceof FileReference) {
-                self::outputOfFileReference($image, $arguments);
-            } elseif ($image instanceof File) {
-                self::outputOfFile($image, $arguments);
-            }
-        }
+        \Hyperdigital\HdStructureddata\Service\ImageMetadataService::parseImage($image, ['output' => true, 'uri' => $arguments['uri']]);
 
         return '';
-    }
-
-    public static function outputOfFileReference($image, $arguments)
-    {
-        self::outputOfFile($image->getOriginalFile(), $arguments);
-    }
-
-    public static function outputOfFile($image, $arguments)
-    {
-        $metaData = $image->getMetaData();
-        if (
-            $image->getType() == 2 &&
-            ($metaData['creator'] || $metaData['credit_text'] || $metaData['copyright_notice']  || $metaData['license'])
-        ) {
-            if (empty($arguments['uri'])) {
-                $metaData['publicUrl'] = $image->getPublicUrl();
-            } else {
-                $metaData['publicUrl'] = $arguments['uri'];
-            }
-            $result = GeneralUtility::makeInstance(\Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Image::class)->setOriginalRow($metaData)->returnData();
-
-            if (!empty($result)) {
-                $output = '<script type="application/ld+json">'.json_encode($result).'</script>';
-                $pageRenderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
-                $pageRenderer->addHeaderData($output);
-            }
-        }
     }
 }
