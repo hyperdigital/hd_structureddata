@@ -44,7 +44,7 @@ To use the `imageStructuredData` ViewHelper, include it in your Fluid templates 
 
 ```html
 <f:image image="{image}" ...  />
-<f:imageStructuredData(image: image) />
+<f:imageStructuredData image="{image}" />
 ```
 
 #### Possibility to attach already used Organization as organizer
