@@ -21,6 +21,23 @@ defined('TYPO3') || die();
                 ],
             ],
         ],
+        'hd_caption' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:sys_file_metadata.hd_caption',
+            'config' => [
+                'type' => 'text',
+                'eval' => 'trim'
+            ]
+        ],
+        'hd_keywords' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:sys_file_metadata.hd_keywords',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:sys_file_metadata.hd_keywords.description',
+            'config' => [
+                'type' => 'text',
+                'eval' => 'trim'
+            ]
+        ],
         'credit_text' => [
             'exclude' => true,
             'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:sys_file_metadata.credit_text',
@@ -86,6 +103,7 @@ defined('TYPO3') || die();
     ];
 
     $GLOBALS['TCA']['sys_file_metadata']['palettes']['hd_structured_data'] = ['showitem' => 'creator,--linebreak--,
+    --linebreak--, hd_caption, 
     credit_text,--linebreak--,copyright_notice,--linebreak--,license,--linebreak--,acquire_license_page'];
 
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns("sys_file_metadata", $tempColumns);

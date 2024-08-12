@@ -594,6 +594,15 @@
             <trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.type.image.images.description">
                 <source>The structured data are editable as metadata of the files in the filelist.</source>
             </trans-unit>
+			<trans-unit id="sys_file_metadata.hd_caption">
+				<source>Caption</source>
+			</trans-unit>
+			<trans-unit id="sys_file_metadata.hd_keywords">
+				<source>Keywords</source>
+			</trans-unit>
+			<trans-unit id="sys_file_metadata.hd_keywords.description">
+				<source>Single keywords separated by comma</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

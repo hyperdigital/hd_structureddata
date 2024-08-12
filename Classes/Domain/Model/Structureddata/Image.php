@@ -28,6 +28,13 @@ class Image extends AbstractData
             $return['@context'] = 'https://schema.org/';
             $return['@type'] = 'ImageObject';
             $return['contentUrl'] = $this->getUrl($this->originalRow['publicUrl']);
+
+            if (!empty($this->originalRow['hd_caption'])) {
+                $return['caption'] = $this->originalRow['hd_caption'];
+            }
+            if (!empty($this->originalRow['hd_keywords'])) {
+                $return['keywords'] = $this->originalRow['hd_keywords'];
+            }
             if (!empty($this->originalRow['license'])) {
                 $return['license'] = $this->getUrl($this->originalRow['license']);
             }
