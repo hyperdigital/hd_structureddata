@@ -183,6 +183,7 @@ CREATE TABLE sys_file_metadata (
     creator int(11) NULL,
     hd_caption TEXT NULL,
     hd_keywords TEXT NULL,
+    hd_description TEXT NULL,
     credit_text TEXT NULL,
     copyright_notice TEXT NULL,
     license TEXT NULL,

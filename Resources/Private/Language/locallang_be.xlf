@@ -603,6 +603,9 @@
 			<trans-unit id="sys_file_metadata.hd_keywords.description">
 				<source>Single keywords separated by comma</source>
 			</trans-unit>
+            <trans-unit id="sys_file_metadata.hd_description">
+                <source>Description</source>
+            </trans-unit>
 		</body>
 	</file>
 </xliff>

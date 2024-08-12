@@ -35,6 +35,9 @@ class Image extends AbstractData
             if (!empty($this->originalRow['hd_keywords'])) {
                 $return['keywords'] = $this->originalRow['hd_keywords'];
             }
+            if (!empty($this->originalRow['hd_description'])) {
+                $return['description'] = $this->originalRow['hd_description'];
+            }
             if (!empty($this->originalRow['license'])) {
                 $return['license'] = $this->getUrl($this->originalRow['license']);
             }
