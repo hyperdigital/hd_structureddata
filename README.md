@@ -33,6 +33,9 @@ Source: https://developers.google.com/search/docs/appearance/structured-data/pro
 ### Events
 Source: https://developers.google.com/search/docs/appearance/structured-data/event
 
+#### Possibility to attach already used Organization as organizer
+Events should contain organizer. It's possible to attach already exiting organization over field "Pointer to already existing organizers" where is possible to choose different structured data entries, but only Organization type would be used in Frontend output.
+
 ### Image
 Source: https://developers.google.com/search/docs/appearance/structured-data/image-license-metadata
 
@@ -46,9 +49,6 @@ To use the `imageStructuredData` ViewHelper, include it in your Fluid templates 
 <f:image image="{image}" ...  />
 <f:imageStructuredData image="{image}" />
 ```
-
-#### Possibility to attach already used Organization as organizer
-Events should contain organizer. It's possible to attach already exiting organization over field "Pointer to already existing organizers" where is possible to choose different structured data entries, but only Organization type would be used in Frontend output.
 
 ## Possibility to use it on detail pages (news, products, etc.)
 
