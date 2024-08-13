@@ -50,6 +50,8 @@ To use the `imageStructuredData` ViewHelper, include it in your Fluid templates 
 <f:imageStructuredData image="{image}" />
 ```
 
+After installing this extension, a new ViewHelper with empty output is available for use in your Fluid templates: `{f:imageStructuredData(image: image, uri: 'https:\\www.web.com\fileadmin\img.jpg')}`. This ViewHelper integrates structured data for images across your TYPO3 website. The `image` parameter is used to pass the image object. If you need to provide an alternative URL instead of publicUrl, use the `uri` parameter (of type string).
+
 ### Sitelinks search box
 Source: https://developers.google.com/search/docs/appearance/structured-data/sitelinks-searchbox
 
@@ -62,9 +64,6 @@ This data should be included only on homepage.
 | ------ | ------|
 | Indexed search (indexed_search)  | tx_indexedsearch_pi2%5Baction%5D=search&tx_indexedsearch_pi2[search][sword]=###SWORD###&no_cache=1 |
 | Faceted Search (ke_search) | tx_kesearch_pi1[sword]=###SWORD###&no_cache=1 |
-
-After installing this extension, a new ViewHelper with empty output is available for use in your Fluid templates: `{f:imageStructuredData(image: image, uri: 'https:\\www.web.com\fileadmin\img.jpg')}`. This ViewHelper integrates structured data for images across your TYPO3 website. The `image` parameter is used to pass the image object. If you need to provide an alternative URL instead of publicUrl, use the `uri` parameter (of type string).
-
 
 ## Possibility to use it on detail pages (news, products, etc.)
 
