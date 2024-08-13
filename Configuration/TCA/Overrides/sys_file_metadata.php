@@ -70,6 +70,7 @@ defined('TYPO3') || die();
             'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:sys_file_metadata.license.description',
             'config' => [
                 'type' => 'link',
+                'size' => 100,
                 'valuePicker' => [
                     'items' => [
                         [

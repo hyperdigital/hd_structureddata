@@ -12,6 +12,7 @@ CREATE TABLE tx_hdstructureddata_domain_model_structureddata (
 	description TEXT,
 	abstract TEXT,
 	url varchar(255) DEFAULT '' NOT NULL,
+	search_parameter varchar(255) DEFAULT '' NOT NULL,
 	email varchar(255) DEFAULT '' NOT NULL,
 	authors int(11) DEFAULT 0 NOT NULL,
 	logo int(11) DEFAULT 0 NOT NULL,

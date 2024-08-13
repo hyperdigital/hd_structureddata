@@ -1,6 +1,8 @@
 <?php
 defined('TYPO3') || die();
 
+$searchParamPickerValues = \Hyperdigital\HdStructureddata\Service\SearchParamService::getTcaPickerValuesForSearchParam();
+
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata',
@@ -38,7 +40,7 @@ return [
             'showitem' => 'hidden, --linebreak--,starttime,endtime,--linebreak--,fe_group,'
         ],
         'type' => [
-            'showitem' => 'type'
+            'showitem' => 'type,--linebreak--,datatype_note'
         ],
     ],
     'types' => [
@@ -48,6 +50,15 @@ return [
         ]
     ],
     'columns' => [
+        'datatype_note' => [
+            'config' => [
+                'type' => 'user',
+                'renderType' => 'hdDescriptionField',
+                'parameters' => [
+                    // key (== type value) => path to HTML template
+                ]
+            ]
+        ],
         'type' => [
             'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.type',
             'onChange' => 'reload',
@@ -225,6 +236,18 @@ return [
                 'appearance' => [
                     'allowedOptions' => ['params'],
                 ],
+            ]
+        ],
+        'search_parameter' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.search_parameter',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.search_parameter.description',
+            'config' => [
+                'type' => 'input',
+                'size' => 35,
+                'valuePicker' => [
+                    'items' => $searchParamPickerValues
+                ]
             ]
         ],
         'faqs' => [

@@ -11,6 +11,7 @@ use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Organization;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Product;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Review;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Video;
+use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\SitelinkSearchbox;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -47,6 +48,15 @@ class StructuredDataPrint
         foreach ($structuredData as $data) {
             if (!empty($data)) {
                 $output[] = '<script type="application/ld+json">'.json_encode($data).'</script>';
+            }
+        }
+
+        $singleDisplayData = \Hyperdigital\HdStructureddata\Domain\Model\Structureddata\SingleDisplayData::getData();
+        if (!empty($singleDisplayData)) {
+            foreach ($singleDisplayData as $data) {
+                if (!empty($data)) {
+                    $output[] = '<script type="application/ld+json">'.json_encode($data).'</script>';
+                }
             }
         }
 
@@ -174,6 +184,10 @@ class StructuredDataPrint
                 break;
             case 'review':
                 $return = GeneralUtility::makeInstance(Review::class)->setOriginalRow($row)->returnData();
+                break;
+            case 'sitelinkssearchbox':
+                GeneralUtility::makeInstance(SitelinkSearchbox::class)->setOriginalRow($row)->updateData();
+                $return = false;
                 break;
         }
 

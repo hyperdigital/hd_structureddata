@@ -606,6 +606,24 @@
             <trans-unit id="sys_file_metadata.hd_description">
                 <source>Description</source>
             </trans-unit>
+            <trans-unit id="tx_hdstructureddata_domain_model_structureddata.palette.sitelinkssearchbox">
+                <source>Sitelinks searchbox</source>
+            </trans-unit>
+            <trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.type.sitelinkssearchbox">
+                <source>Sitelinks searchbox</source>
+            </trans-unit>
+            <trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.url.sitelinkssearchbox">
+                <source>Search page</source>
+            </trans-unit>
+            <trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.url.sitelinkssearchbox.description">
+                <source>Entry point to your search page</source>
+            </trans-unit>
+            <trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.search_parameter">
+                <source>Search parameter (<![CDATA[###SWORD###`]]> as changable parameter)</source>
+            </trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.search_parameter.description">
+				<source><![CDATA[`q=###SWORD###` for https://query.example.com/search?q= Example for indexed_search: `tx_indexedsearch_pi2%5Baction%5D=search&tx_indexedsearch_pi2[search][sword]=###SWORD###&no_cache=1`]]></source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -12,6 +12,8 @@ abstract class AbstractData
 {
     protected $originalRow = [];
 
+    public static $singleDisplayData = [];
+
     public function setOriginalRow($row)
     {
         $this->originalRow = $row;
@@ -24,19 +26,23 @@ abstract class AbstractData
         return false;
     }
 
-    protected function getUrl($typolink)
+    protected function getUrl($typolink, $additionalParams = '')
     {
+        $urlParams = ['parameter' => $typolink, 'forceAbsoluteUrl' => true];
+
+        if (!empty($additionalParams)) {
+            if (substr($additionalParams, 0, 1) != '&') {
+                $additionalParams = '&' . $additionalParams;
+            }
+            $urlParams['additionalParams'] = $additionalParams;
+        }
+
         $version = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class);
         if ($version->getMajorVersion() > 11) {
             $contentObjectRenderer = $contentObjectRenderer ?? GeneralUtility::makeInstance(ContentObjectRenderer::class);
-            $url = $contentObjectRenderer->createUrl(['parameter' => $typolink, 'forceAbsoluteUrl' => true]);
+            $url = $contentObjectRenderer->createUrl($urlParams);
         } else {
-            $url = $GLOBALS['TSFE']->cObj->typoLink_URL(
-                array(
-                    'parameter' => $typolink,
-                    'forceAbsoluteUrl' => true,
-                )
-            );
+            $url = $GLOBALS['TSFE']->cObj->typoLink_URL($urlParams);
         }
 
         return $url;
