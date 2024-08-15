@@ -76,4 +76,6 @@ defined('TYPO3') || die();
         'value' => 'organization'
     ];
     $GLOBALS['TCA']['tx_hdstructureddata_domain_model_structureddata']['ctrl']['typeicon_classes']['organization'] = 'hd_structureddata_organization';
+    $GLOBALS['TCA']['tx_hdstructureddata_domain_model_structureddata']['columns']['datatype_note']['config']['parameters']['organization'] = 'EXT:hd_structureddata/Resources/Private/Templates/DataTypeNotes/Organization.html';
+
 })();

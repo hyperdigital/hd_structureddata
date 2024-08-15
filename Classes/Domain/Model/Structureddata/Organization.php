@@ -44,7 +44,7 @@ class Organization extends AbstractData
                 $return['image'] = $images;
             }
         }
-        if (!empty($this->originalRow['images'])) {
+        if (!empty($this->originalRow['logo'])) {
             $image = $this->getImages($this->originalRow['uid'], 'logo', 'tx_hdstructureddata_domain_model_structureddata', true);
             if (!empty($image)) {
                 $return['logo'] = $image;
