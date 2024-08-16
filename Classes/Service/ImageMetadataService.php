@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Hyperdigital\HdStructureddata\Service;
 
+use TYPO3\CMS\Core\LinkHandling\LinkService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Resource\OriginalFileReference;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class ImageMetadataService
 {
@@ -24,6 +26,14 @@ class ImageMetadataService
                 $file = $resourceFactory->getFileObjectFromCombinedIdentifier($image['id']);
                 if ($file) {
                     return self::outputOfFile($file, $arguments);
+                }
+            } else if (is_string($image)) {
+                $linkService = GeneralUtility::makeInstance(LinkService::class);
+                $uri = $linkService->resolve($image);
+                if ($uri && $uri['type'] == 'file' && !empty($uri['file'])) {
+                    if ($uri['file'] instanceof File) {
+                        return self::outputOfFile($uri['file'], $arguments);
+                    }
                 }
             }
         }

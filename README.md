@@ -56,6 +56,7 @@ Available image sources are:
 + FileReference
 + File
 + Array where `id` is combined identifier  ($image['id'] = '1:/foo.txt';)
++ String like file typolink `t3://file?uid=12345`
 
 ### Sitelinks search box
 Source: https://developers.google.com/search/docs/appearance/structured-data/sitelinks-searchbox
