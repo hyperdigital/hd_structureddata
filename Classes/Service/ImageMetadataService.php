@@ -18,6 +18,12 @@ class ImageMetadataService
                 return self::outputOfFileReference($image, $arguments);
             } elseif ($image instanceof File) {
                 return self::outputOfFile($image, $arguments);
+            } elseif (is_array($image) && !empty($image['id'])) {
+                $resourceFactory = GeneralUtility::makeInstance(ResourceFactory::class);
+                $file = $resourceFactory->getFileObjectFromCombinedIdentifier($image['id']);
+                if ($file) {
+                    return self::outputOfFile($file, $arguments);
+                }
             }
         }
     }
