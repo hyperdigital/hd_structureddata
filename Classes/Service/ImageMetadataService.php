@@ -8,6 +8,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Resource\OriginalFileReference;
+use TYPO3\CMS\Core\Resource\ResourceFactory;
 
 class ImageMetadataService
 {
