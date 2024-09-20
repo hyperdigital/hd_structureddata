@@ -12,6 +12,5 @@ if ($version->getMajorVersion() == 11) {
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_hdstructureddata_domain_model_structureddata_person');
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_hdstructureddata_domain_model_structureddata_reviewnote');
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_hdstructureddata_domain_model_structureddata_courseinstance');
-
-   
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_hdstructureddata_domain_model_structureddata_identifier');
 }

@@ -32,6 +32,15 @@ class Location extends AbstractData
                     }
                 }
                 break;
+            case 'Remote':
+                // This is used only for JOBS right now and it's not real output
+                $return['_type'] = 'Remote';
+                if (!empty($this->originalRow['addresses'])) {
+                    $address = $this->getAddresses($this->originalRow['uid'], 'addresses', 'tx_hdstructureddata_domain_model_structureddata_location');
+                    if (!empty($address)) {
+                        $return['address'] = $address;
+                    }
+                }
         }
 
         return $return;

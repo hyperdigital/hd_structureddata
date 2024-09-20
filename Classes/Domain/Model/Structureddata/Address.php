@@ -24,10 +24,10 @@ class Address extends AbstractData
                     $return['addressLocality'] = $this->originalRow['address_locality'];
                 }
                 if (!empty($this->originalRow['postal_code'])) {
-                    $return['addressRegion'] = $this->originalRow['postal_code'];
+                    $return['postalCode'] = $this->originalRow['postal_code'];
                 }
                 if (!empty($this->originalRow['address_region'])) {
-                    $return['postalCode'] = $this->originalRow['address_region'];
+                    $return['addressRegion'] = $this->originalRow['address_region'];
                 }
                 if (!empty($this->originalRow['address_country'])) {
                     $country = $this->getCountry($this->originalRow['address_country']);
@@ -36,6 +36,14 @@ class Address extends AbstractData
                     }
                 }
                 break;
+            case 'Country':
+                $return['@type'] = 'Country';
+                if (!empty($this->originalRow['address_country'])) {
+                    $country = $this->getCountry($this->originalRow['address_country']);
+                    if ($country && !empty($country['cn_iso_2'])) {
+                        $return['name'] = $country['cn_iso_2'];
+                    }
+                }
         }
 
         return $return;

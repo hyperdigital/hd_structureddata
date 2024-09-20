@@ -6,6 +6,8 @@ CREATE TABLE tx_hdstructureddata_domain_model_structureddata (
 	type varchar(255) DEFAULT '' NOT NULL,
 	subtype varchar(255) DEFAULT '' NOT NULL,
 
+	identifier int(11) DEFAULT 0 NOT NULL,
+
 	title varchar(255) DEFAULT '' NOT NULL,
 	legal_name varchar(255) DEFAULT '' NOT NULL,
 	telephone varchar(255) DEFAULT '' NOT NULL,
@@ -25,6 +27,11 @@ CREATE TABLE tx_hdstructureddata_domain_model_structureddata (
 	vat_id varchar(255) DEFAULT '' NOT NULL,
 	tax_id varchar(255) DEFAULT '' NOT NULL,
 	price_range varchar(255) DEFAULT '' NOT NULL,
+	price_min float(14) DEFAULT NULL,
+	price_max float(14) DEFAULT NULL,
+	price_currency varchar(255) DEFAULT '' NOT NULL,
+	price_unit varchar(255) DEFAULT '' NOT NULL,
+	employment_type  varchar(255) DEFAULT '' NOT NULL,
 	serves_cuisine TEXT,
 	opening_hours int(11) DEFAULT 0 NOT NULL,
 	menu varchar(255) DEFAULT '' NOT NULL,
@@ -178,6 +185,16 @@ CREATE TABLE tx_hdstructureddata_domain_model_structureddata_courseinstance(
     tablename varchar(255) DEFAULT '' NOT NULL,
     foreign_uid int(11) DEFAULT 0 NOT NULL,
     fieldname varchar(255) DEFAULT '' NOT NULL,
+);
+
+CREATE TABLE tx_hdstructureddata_domain_model_structureddata_identifier(
+	name varchar(255) DEFAULT '' NOT NULL,
+	value varchar(255) DEFAULT '' NOT NULL,
+
+	t3ver_label varchar(255) DEFAULT '' NOT NULL,
+	tablename varchar(255) DEFAULT '' NOT NULL,
+	foreign_uid int(11) DEFAULT 0 NOT NULL,
+	fieldname varchar(255) DEFAULT '' NOT NULL,
 );
 
 CREATE TABLE sys_file_metadata (

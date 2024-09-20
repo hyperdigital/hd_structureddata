@@ -81,6 +81,23 @@ return [
                 ]
             ]
         ],
+        'identifier' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.identifier',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata_identifier',
+                'foreign_field' => 'foreign_uid',
+                'foreign_sortby' => 'sorting',
+                'foreign_table_field' => 'tablename',
+                'foreign_match_fields' => [
+                    'fieldname' => 'identifier',
+                ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ],
+            ],
+        ],
         'title' => [
             'exclude' => true,
             'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.title',
@@ -530,6 +547,116 @@ return [
             'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.price_range.description',
             'config' => [
                 'type' => 'input',
+            ]
+        ],
+        'price_min' => [
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.priceMin',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:recommended',
+            'config' => [
+                'type' => 'number',
+                'format' => 'decimal',
+                'nullable' => true,
+            ]
+        ],
+        'price_max' => [
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.priceMax',
+            'config' => [
+                'type' => 'number',
+                'format' => 'decimal',
+                'nullable' => true,
+            ]
+        ],
+        'price_currency' => [
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.priceCurrency',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:recommended',
+            'config' => [
+                'type' => 'input',
+                'valuePicker' => [
+                    'items' => [
+                        [
+                            'EUR',
+                            'EUR',
+                        ],
+                        [
+                            'USD',
+                            'USD',
+                        ],
+                    ],
+                ],
+            ]
+        ],
+        'price_unit' => [
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.price_unit',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    [
+                        'label' => '',
+                        'value' => ''
+                    ],
+                    [
+                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.price_unit.HOUR',
+                        'value' => 'HOUR'
+                    ],
+                    [
+                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.price_unit.DAY',
+                        'value' => 'DAY'
+                    ],
+                    [
+                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.price_unit.WEEK',
+                        'value' => 'WEEK'
+                    ],
+                    [
+                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.price_unit.MONTH',
+                        'value' => 'MONTH'
+                    ],
+                    [
+                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.price_unit.YEAR',
+                        'value' => 'YEAR'
+                    ],
+                ],
+            ]
+        ],
+        'employment_type' => [
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.employment_type',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectCheckBox',
+                'items' => [
+                    [
+                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.employment_type.FULL_TIME',
+                        'value' => 'FULL_TIME'
+                    ],
+                    [
+                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.employment_type.PART_TIME',
+                        'value' => 'PART_TIME'
+                    ],
+                    [
+                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.employment_type.CONTRACTOR',
+                        'value' => 'CONTRACTOR'
+                    ],
+                    [
+                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.employment_type.TEMPORARY',
+                        'value' => 'TEMPORARY'
+                    ],
+                    [
+                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.employment_type.INTERN',
+                        'value' => 'INTERN'
+                    ],
+                    [
+                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.employment_type.VOLUNTEER',
+                        'value' => 'VOLUNTEER'
+                    ],
+                    [
+                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.employment_type.PER_DIEM',
+                        'value' => 'PER_DIEM'
+                    ],
+                    [
+                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.employment_type.OTHER',
+                        'value' => 'OTHER'
+                    ],
+                ],
             ]
         ],
         'serves_cuisine' => [

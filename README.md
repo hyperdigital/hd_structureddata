@@ -21,6 +21,9 @@ Source: https://developers.google.com/search/docs/appearance/structured-data/faq
 ### Organization
 Source: https://developers.google.com/search/docs/appearance/structured-data/organization
 
+### Job Posting
+Source: https://developers.google.com/search/docs/appearance/structured-data/job-posting
+
 ### Video
 Source: https://developers.google.com/search/docs/appearance/structured-data/video
 

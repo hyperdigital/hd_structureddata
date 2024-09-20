@@ -12,6 +12,7 @@ use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Product;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Review;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Video;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\SitelinkSearchbox;
+use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\JobPosting;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -188,6 +189,9 @@ class StructuredDataPrint
             case 'sitelinkssearchbox':
                 GeneralUtility::makeInstance(SitelinkSearchbox::class)->setOriginalRow($row)->updateData();
                 $return = false;
+                break;
+            case 'job_posting':
+                $return = GeneralUtility::makeInstance(JobPosting::class)->setOriginalRow($row)->returnData();
                 break;
         }
 

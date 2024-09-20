@@ -13,6 +13,7 @@ if ($version->getMajorVersion() == 11) {
         'tx_hdstructureddata_domain_model_structureddata_person',
         'tx_hdstructureddata_domain_model_structureddata_reviewnote',
         'tx_hdstructureddata_domain_model_structureddata_courseinstance',
+        'tx_hdstructureddata_domain_model_structureddata_identifier',
         'sys_file_metadata'
     ];
 
@@ -54,10 +55,23 @@ if ($version->getMajorVersion() == 11) {
                             $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['items'] = $newItems;
                         }
                     }
+                    if (!empty($field['config']['overrideChildTca']['columns'])) {
+                        foreach ($field['config']['overrideChildTca']['columns'] as $childCol => $childField) {
+                            if (!empty($childField['config']['items'])) {
+                                $originalSubitems = $childField['config']['items'];
+                                $newSubitems = [];
+                                foreach ($originalSubitems as $item) {
+                                    $newSubitems[] = [$item['label'], $item['value']];
+                                }
+
+                                $GLOBALS['TCA'][$table]['types'][$type]['columnsOverrides'][$key]['config']['overrideChildTca']['columns'][$childCol]['config']['items'] = $newSubitems;
+
+                            }
+                        }
+                    }
                 }
             }
         }
-
     }
 
     function replaceV12DateByV11Date ($table) {

@@ -56,4 +56,8 @@ return [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hd_structureddata/Resources/Public/Icons/search.svg',
     ],
+    'hd_structureddata_job' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hd_structureddata/Resources/Public/Icons/job.svg',
+    ],
 ];

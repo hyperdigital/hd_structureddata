@@ -42,7 +42,10 @@ return [
         ],
         'VirtualLocation' => [
             'showitem' => 'url'
-        ]
+        ],
+        'Remote' => [
+            'showitem' => 'addresses',
+        ],
     ],
     'types' => [
         '0' => [
@@ -73,7 +76,28 @@ return [
                     ]
                 ]
             ]
-        ]
+        ],
+        'Remote' => [
+            'showitem' => '--palette--;;type,--palette--;;Remote,
+                                    --div--;LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_location.div.access,--palette--;;access,',
+            'columnsOverrides' => [
+                'addresses' => [
+                    'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_location.columns.name.remote',
+                    'config' => [
+                        'minitems' => 1,
+                        'overrideChildTca' => [
+                            'columns' => [
+                                'type' => [
+                                    'config' => [
+                                        'default' => 'Country'
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ],
     ],
     'columns' => [
         'type' => [

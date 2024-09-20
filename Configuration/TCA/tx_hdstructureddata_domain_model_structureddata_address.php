@@ -40,6 +40,9 @@ return [
         'postalAddress' => [
             'showitem' => 'street_address, address_locality, postal_code, --linebreak--, address_region, address_country'
         ],
+        'country' => [
+            'showitem' => 'address_country'
+        ]
     ],
     'types' => [
         '0' => [
@@ -48,6 +51,10 @@ return [
         ],
         'PostalAddress' => [
             'showitem' => '--palette--;;type,--palette--;;postalAddress,
+            --div--;LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.div.access,--palette--;;access,'
+        ],
+        'Country' => [
+            'showitem' => '--palette--;;type,--palette--;;country,
             --div--;LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.div.access,--palette--;;access,'
         ],
     ],
@@ -62,6 +69,10 @@ return [
                     [
                         'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.columns.type.PostalAddress',
                         'value' => 'PostalAddress'
+                    ],
+                    [
+                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_address.columns.type.Country',
+                        'value' => 'Country'
                     ]
                 ]
             ]
