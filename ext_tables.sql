@@ -57,6 +57,7 @@ CREATE TABLE tx_hdstructureddata_domain_model_structureddata (
 	positive_notes int(11) NULL,
 	negative_notes int(11) NULL,
     courseinstances int(11) NULL,
+    sameas int(11) DEFAULT 0 NOT NULL,
 
 	t3ver_label varchar(255) DEFAULT '' NOT NULL,
 	tablename varchar(255) DEFAULT '' NOT NULL,
@@ -196,6 +197,16 @@ CREATE TABLE tx_hdstructureddata_domain_model_structureddata_identifier(
 	foreign_uid int(11) DEFAULT 0 NOT NULL,
 	fieldname varchar(255) DEFAULT '' NOT NULL,
 );
+
+CREATE TABLE tx_hdstructureddata_domain_model_structureddata_sameas(
+	url varchar(255) DEFAULT '' NOT NULL,
+
+	t3ver_label varchar(255) DEFAULT '' NOT NULL,
+	tablename varchar(255) DEFAULT '' NOT NULL,
+	foreign_uid int(11) DEFAULT 0 NOT NULL,
+	fieldname varchar(255) DEFAULT '' NOT NULL,
+);
+
 
 CREATE TABLE sys_file_metadata (
     creator int(11) NULL,

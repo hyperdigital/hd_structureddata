@@ -14,6 +14,7 @@ if ($version->getMajorVersion() == 11) {
         'tx_hdstructureddata_domain_model_structureddata_reviewnote',
         'tx_hdstructureddata_domain_model_structureddata_courseinstance',
         'tx_hdstructureddata_domain_model_structureddata_identifier',
+        'tx_hdstructureddata_domain_model_structureddata_sameas',
         'sys_file_metadata'
     ];
 
