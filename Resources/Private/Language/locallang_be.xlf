@@ -126,6 +126,9 @@
             <trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.sameas.description">
                 <source>The URL of a page on another website with additional information about your organization. (Socials, Wikipedia, etc..)</source>
             </trans-unit>
+            <trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.sameas.description.event">
+                <source>The URL of a page on another website with additional information about your event. (Socials, Wikipedia, etc..)</source>
+            </trans-unit>
 			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.subtype.article.article">
 				<source>Article</source>
 			</trans-unit>

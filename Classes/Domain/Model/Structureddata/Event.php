@@ -124,6 +124,13 @@ class Event extends AbstractData
             }
         }
 
-            return $return;
+        if (!empty($this->originalRow['sameas'])) {
+            $sameas = $this->getSameas($this->originalRow['uid'], 'sameas', 'tx_hdstructureddata_domain_model_structureddata');
+            if (!empty($sameas)) {
+                $return['sameAs'] = $sameas;
+            }
+        }
+
+        return $return;
     }
 }
