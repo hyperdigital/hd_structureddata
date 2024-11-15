@@ -45,11 +45,14 @@ return [
         ],
         'url' => [
             'showitem' => 'url'
-        ]
+        ],
+        'images' => [
+            'showitem' => 'images'
+        ],
     ],
     'types' => [
         '0' => [
-            'showitem' => '--palette--;;type,--palette--;;name,--palette--;;url,
+            'showitem' => '--palette--;;type,--palette--;;name,--palette--;;url,--palette--;;images,
             --div--;LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_person.div.access,--palette--;;access,'
         ]
     ],
@@ -88,6 +91,14 @@ return [
                 'appearance' => [
                     'allowedOptions' => ['params'],
                 ],
+            ]
+        ],
+        'images' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.images',
+            'config' => [
+                'type' => 'file',
+                'allowed' => 'common-image-types'
             ]
         ],
         'hidden' => [

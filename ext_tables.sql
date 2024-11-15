@@ -79,6 +79,8 @@ CREATE TABLE tx_hdstructureddata_domain_model_structureddata_person(
 	name varchar(255) DEFAULT '' NOT NULL,
 	url varchar(255) DEFAULT '' NOT NULL,
 
+	images int(11) DEFAULT 0 NOT NULL,
+
 	t3ver_label varchar(255) DEFAULT '' NOT NULL,
 	tablename varchar(255) DEFAULT '' NOT NULL,
 	foreign_uid int(11) DEFAULT 0 NOT NULL,

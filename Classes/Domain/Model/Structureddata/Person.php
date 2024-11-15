@@ -26,6 +26,12 @@ class Person extends AbstractData
                 $return['url'] = $url;
             }
         }
+        if (!empty($this->originalRow['images'])) {
+            $images = $this->getImages($this->originalRow['uid'], 'images', 'tx_hdstructureddata_domain_model_structureddata_person');
+            if (!empty($images)) {
+                $return['image'] = $images;
+            }
+        }
 
         return $return;
     }
