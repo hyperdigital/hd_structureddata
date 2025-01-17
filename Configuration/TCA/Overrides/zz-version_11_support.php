@@ -22,7 +22,7 @@ if ($version->getMajorVersion() == 11) {
 
         foreach ($GLOBALS['TCA'][$table]['columns'] as $key => $field) {
             if (!empty($field['config']['type'])) {
-                if ($field['config']['type'] == 'select' || ($field['config']['type'] == 'check' && $field['config']['renderType'] == 'checkboxToggle')) {
+                if ($field['config']['type'] == 'select' || ($field['config']['type'] == 'check' && isset($field['config']['renderType']) && $field['config']['renderType'] == 'checkboxToggle')) {
                     if (!empty($field['config']['items'])) {
                         $originalItems = $field['config']['items'];
                         $newItems = [];
