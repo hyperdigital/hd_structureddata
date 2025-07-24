@@ -133,12 +133,12 @@ The viewhelper has 2 possible ways:
 
 **Using parent object**
 ```html
-<f:gererateStructuredData tablename="tx_news_domain_model_news" fieldname="structured_data" object="{newsItem}" />
+<f:generateStructuredData tablename="tx_news_domain_model_news" fieldname="structured_data" object="{newsItem}" />
 ```
 
 **Using row uid**, but here be careful and use the in the translations the uid of the translated row instead of the default language.
 ```html
-<f:gererateStructuredData tablename="tx_news_domain_model_news" fieldname="structured_data" parentUid="{newsItem.uid}" />
+<f:generateStructuredData tablename="tx_news_domain_model_news" fieldname="structured_data" parentUid="{newsItem.uid}" />
 ```
 
 Or there is also a possibility to use the data directly over controller:

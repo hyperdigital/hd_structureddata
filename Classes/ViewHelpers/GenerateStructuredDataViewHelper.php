@@ -13,7 +13,7 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 use Hyperdigital\HdStructureddata\UserFunctions\StructuredDataPrint;
 
-final class GererateStructuredDataViewHelper extends AbstractViewHelper
+final class GenerateStructuredDataViewHelper extends AbstractViewHelper
 {
     use CompileWithRenderStatic;
 
