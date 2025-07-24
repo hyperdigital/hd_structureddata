@@ -99,6 +99,9 @@ $tempColumns = [
             'foreign_match_fields' => [
                 'fieldname' => 'structured_data',
             ],
+            'behaviour' => [
+                'allowLanguageSynchronization' => true
+            ],
         ],
     ]
 ];
