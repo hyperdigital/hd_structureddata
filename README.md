@@ -140,3 +140,13 @@ The viewhelper has 2 possible ways:
 ```html
 <f:gererateStructuredData tablename="tx_news_domain_model_news" fieldname="structured_data" parentUid="{newsItem.uid}" />
 ```
+
+Or there is also a possibility to use the data directly over controller:
+
+```php
+ $dataService = GeneralUtility::makeInstance(GenerateDataService::class);
+ $dataService->generateDataFromObject('tx_news_domain_model_news', 'structured_data', $newsItem);
+
+ //Or for the specific UID
+ $dataService->generateDataFromUid('tx_news_domain_model_news', 'structured_data', $newsItem->getUid());
+```

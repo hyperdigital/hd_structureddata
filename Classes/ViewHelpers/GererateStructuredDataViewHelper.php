@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Hyperdigital\HdStructureddata\ViewHelpers;
 
-use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Article;
+use Hyperdigital\HdStructureddata\Service\GenerateDataService;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
@@ -33,30 +33,12 @@ final class GererateStructuredDataViewHelper extends AbstractViewHelper
         \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext,
     ): string {
-        $parentUid = $arguments['parentUid'] ?? 0;
+        $dataService = GeneralUtility::makeInstance(GenerateDataService::class);
+
         if (!empty($arguments['object'])) {
-            if ($localizedUid = $arguments['object']->_getProperty('_localizedUid')){
-                $parentUid = $localizedUid;
-            } else {
-                $parentUid = $arguments['object']->getUid();
-            }
-        }
-
-        if ($parentUid) {
-            $conf = [
-                'tableName' => $arguments['tablename'],
-                'fieldName' => $arguments['fieldname'],
-                'parentUid' => $parentUid,
-            ];
-            $structuredDataPrint = GeneralUtility::makeInstance(StructuredDataPrint::class);
-            $content = $structuredDataPrint->printTags('', $conf);
-
-            if (!empty($content)) {
-                /** @var PageRenderer $pageRenderer */
-                $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
-                // Add the content to the header section
-                $pageRenderer->addHeaderData($content);
-            }
+            $dataService->generateDataFromObject($arguments['tablename'], $arguments['fieldname'], $arguments['object']);
+        } else if (!empty($arguments['parentUid'])) {
+            $dataService->generateDataFromUid($arguments['tablename'], $arguments['fieldname'], $arguments['parentUid']);
         }
 
         return '';
