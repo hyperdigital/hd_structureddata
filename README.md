@@ -126,3 +126,17 @@ _TypoScript_
     }
 [end]
 ```
+## Possibility to use it on listing pages (news, products, etc.)
+This needs template adaption. You can use fluid viewhelper for append the structured data for a specific table, like in the deail pages above.
+
+The viewhelper has 2 possible ways:
+
+**Using parent object**
+```html
+<f:gererateStructuredData tablename="tx_news_domain_model_news" fieldname="structured_data" object="{newsItem}" />
+```
+
+**Using row uid**, but here be careful and use the in the translations the uid of the translated row instead of the default language.
+```html
+<f:gererateStructuredData tablename="tx_news_domain_model_news" fieldname="structured_data" parentUid="{newsItem.uid}" />
+```
