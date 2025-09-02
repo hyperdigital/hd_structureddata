@@ -24,6 +24,12 @@ defined('TYPO3') || die();
                     'required' => true
                 ]
             ],
+            'description' => [
+                'config' => [
+                    'eval' => 'trim',
+                    'required' => true
+                ]
+            ],
             'identifier' => [
                 'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.identifier.jobposting'
             ],

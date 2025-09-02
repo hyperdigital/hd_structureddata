@@ -112,7 +112,7 @@ class StructuredDataPrint
             ->executeQuery();
 
         while ($row = $result->fetchAssociative()) {
-            $GLOBALS['TSFE']->sys_page->versionOL('tx_hdstructureddata_domain_model_structureddata',$row);
+            \TYPO3\CMS\Backend\Utility\BackendUtility::workspaceOL('tx_hdstructureddata_domain_model_structureddata',$row);
             if (is_array($row)) {
                 $temp = self::getSpecificStructuredData($row);
                 if (!empty($temp)) {

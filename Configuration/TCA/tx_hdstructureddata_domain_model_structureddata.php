@@ -50,6 +50,11 @@ return [
         ]
     ],
     'columns' => [
+        'fieldname' => [
+            'config' => [
+                'type' => 'input'
+            ],
+        ],
         'datatype_note' => [
             'config' => [
                 'type' => 'user',

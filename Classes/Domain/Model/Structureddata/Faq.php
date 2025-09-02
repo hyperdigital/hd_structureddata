@@ -35,7 +35,7 @@ class Faq extends AbstractData
             ->executeQuery();
 
         while ($row = $result->fetchAssociative()) {
-            $GLOBALS['TSFE']->sys_page->versionOL('tx_hdstructureddata_domain_model_structureddata_faq',$row);
+            \TYPO3\CMS\Backend\Utility\BackendUtility::workspaceOL('tx_hdstructureddata_domain_model_structureddata_faq',$row);
             if (is_array($row)) {
                 $return[] = $row;
             }

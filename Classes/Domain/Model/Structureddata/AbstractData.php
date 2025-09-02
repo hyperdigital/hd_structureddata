@@ -26,6 +26,11 @@ abstract class AbstractData
         return false;
     }
 
+    /**
+     * @param $typolink
+     * @param string $additionalParams
+     * @return string
+     */
     protected function getUrl($typolink, $additionalParams = '')
     {
         $urlParams = ['parameter' => $typolink, 'forceAbsoluteUrl' => true];
@@ -37,13 +42,8 @@ abstract class AbstractData
             $urlParams['additionalParams'] = $additionalParams;
         }
 
-        $version = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class);
-        if ($version->getMajorVersion() > 11) {
-            $contentObjectRenderer = $contentObjectRenderer ?? GeneralUtility::makeInstance(ContentObjectRenderer::class);
-            $url = $contentObjectRenderer->createUrl($urlParams);
-        } else {
-            $url = $GLOBALS['TSFE']->cObj->typoLink_URL($urlParams);
-        }
+        $contentObjectRenderer = $contentObjectRenderer ?? GeneralUtility::makeInstance(ContentObjectRenderer::class);
+        $url = $contentObjectRenderer->createUrl($urlParams);
 
         return $url;
     }
@@ -75,7 +75,7 @@ abstract class AbstractData
             ->executeQuery();
 
         while ($row = $result->fetchAssociative()) {
-            $GLOBALS['TSFE']->sys_page->versionOL('tx_hdstructureddata_domain_model_structureddata_person',$row);
+            \TYPO3\CMS\Backend\Utility\BackendUtility::workspaceOL('tx_hdstructureddata_domain_model_structureddata_person', $row);
             if (is_array($row)) {
                 $output = GeneralUtility::makeInstance(Person::class)->setOriginalRow($row)->returnData();
                 if ($output) {
@@ -114,7 +114,7 @@ abstract class AbstractData
             ->executeQuery();
 
         while ($row = $result->fetchAssociative()) {
-            $GLOBALS['TSFE']->sys_page->versionOL('tx_hdstructureddata_domain_model_structureddata_address',$row);
+            \TYPO3\CMS\Backend\Utility\BackendUtility::workspaceOL('tx_hdstructureddata_domain_model_structureddata_address', $row);
             if (is_array($row)) {
                 $output = GeneralUtility::makeInstance(Address::class)->setOriginalRow($row)->returnData();
                 if ($output) {
@@ -153,7 +153,7 @@ abstract class AbstractData
             ->executeQuery();
 
         while ($row = $result->fetchAssociative()) {
-            $GLOBALS['TSFE']->sys_page->versionOL('tx_hdstructureddata_domain_model_structureddata_location',$row);
+            \TYPO3\CMS\Backend\Utility\BackendUtility::workspaceOL('tx_hdstructureddata_domain_model_structureddata_location', $row);
             if (is_array($row)) {
                 $output = GeneralUtility::makeInstance(Location::class)->setOriginalRow($row)->returnData();
                 if ($output) {
@@ -192,7 +192,7 @@ abstract class AbstractData
             ->executeQuery();
 
         while ($row = $result->fetchAssociative()) {
-            $GLOBALS['TSFE']->sys_page->versionOL('tx_hdstructureddata_domain_model_structureddata_offer',$row);
+            \TYPO3\CMS\Backend\Utility\BackendUtility::workspaceOL('tx_hdstructureddata_domain_model_structureddata_offer', $row);
             if (is_array($row)) {
                 $output = GeneralUtility::makeInstance(Offer::class)->setOriginalRow($row)->returnData();
                 if ($output) {
@@ -231,7 +231,7 @@ abstract class AbstractData
             ->executeQuery();
 
         while ($row = $result->fetchAssociative()) {
-            $GLOBALS['TSFE']->sys_page->versionOL('tx_hdstructureddata_domain_model_structureddata_clip',$row);
+            \TYPO3\CMS\Backend\Utility\BackendUtility::workspaceOL('tx_hdstructureddata_domain_model_structureddata_clip', $row);
             if (is_array($row)) {
                 $output = GeneralUtility::makeInstance(Clip::class)->setOriginalRow($row)->returnData();
                 if ($output) {
@@ -270,7 +270,7 @@ abstract class AbstractData
             ->executeQuery();
 
         while ($row = $result->fetchAssociative()) {
-            $GLOBALS['TSFE']->sys_page->versionOL('tx_hdstructureddata_domain_model_structureddata_clip',$row);
+            \TYPO3\CMS\Backend\Utility\BackendUtility::workspaceOL('tx_hdstructureddata_domain_model_structureddata_clip', $row);
             if (is_array($row)) {
                 $output = GeneralUtility::makeInstance(OpeningHours::class)->setOriginalRow($row)->returnData();
                 if ($output) {
@@ -309,7 +309,7 @@ abstract class AbstractData
             ->executeQuery();
 
         while ($row = $result->fetchAssociative()) {
-            $GLOBALS['TSFE']->sys_page->versionOL('tx_hdstructureddata_domain_model_structureddata',$row);
+            \TYPO3\CMS\Backend\Utility\BackendUtility::workspaceOL('tx_hdstructureddata_domain_model_structureddata', $row);
             if (is_array($row)) {
                 $output =  StructuredDataPrint::getSpecificStructuredData($row);
                 if ($output) {
@@ -348,7 +348,7 @@ abstract class AbstractData
             ->executeQuery();
 
         while ($row = $result->fetchAssociative()) {
-            $GLOBALS['TSFE']->sys_page->versionOL('tx_hdstructureddata_domain_model_structureddata_brand',$row);
+            \TYPO3\CMS\Backend\Utility\BackendUtility::workspaceOL('tx_hdstructureddata_domain_model_structureddata_brand', $row);
             if (is_array($row)) {
                 $output = GeneralUtility::makeInstance(Brand::class)->setOriginalRow($row)->returnData();
                 if ($output) {
@@ -387,7 +387,7 @@ abstract class AbstractData
             ->executeQuery();
 
         while ($row = $result->fetchAssociative()) {
-            $GLOBALS['TSFE']->sys_page->versionOL('tx_hdstructureddata_domain_model_structureddata_identifier',$row);
+            \TYPO3\CMS\Backend\Utility\BackendUtility::workspaceOL('tx_hdstructureddata_domain_model_structureddata_identifier',$row);
             if (is_array($row)) {
                 $output = GeneralUtility::makeInstance(Identifier::class)->setOriginalRow($row)->returnData();
                 if ($output) {
@@ -426,7 +426,7 @@ abstract class AbstractData
             ->executeQuery();
 
         while ($row = $result->fetchAssociative()) {
-            $GLOBALS['TSFE']->sys_page->versionOL('tx_hdstructureddata_domain_model_structureddata_sameas',$row);
+            \TYPO3\CMS\Backend\Utility\BackendUtility::workspaceOL('tx_hdstructureddata_domain_model_structureddata_sameas',$row);
             if (is_array($row)) {
                 $output = GeneralUtility::makeInstance(SameAs::class)->setOriginalRow($row)->returnData();
                 if ($output) {
@@ -465,7 +465,7 @@ abstract class AbstractData
             ->executeQuery();
 
         while ($row = $result->fetchAssociative()) {
-            $GLOBALS['TSFE']->sys_page->versionOL('tx_hdstructureddata_domain_model_structureddata_courseinstance',$row);
+            \TYPO3\CMS\Backend\Utility\BackendUtility::workspaceOL('tx_hdstructureddata_domain_model_structureddata_courseinstance',$row);
             if (is_array($row)) {
                 $output = GeneralUtility::makeInstance(Courseinstance::class)->setOriginalRow($row)->returnData();
                 if ($output) {
@@ -505,7 +505,7 @@ abstract class AbstractData
             ->executeQuery();
 
         while ($row = $result->fetchAssociative()) {
-            $GLOBALS['TSFE']->sys_page->versionOL('tx_hdstructureddata_domain_model_structureddata',$row);
+            \TYPO3\CMS\Backend\Utility\BackendUtility::workspaceOL('tx_hdstructureddata_domain_model_structureddata',$row);
             if (is_array($row)) {
                 $output = GeneralUtility::makeInstance(Review::class)->setOriginalRow($row)->returnData();
                 if ($output) {
@@ -544,7 +544,7 @@ abstract class AbstractData
             ->executeQuery();
 
         while ($row = $result->fetchAssociative()) {
-            $GLOBALS['TSFE']->sys_page->versionOL('tx_hdstructureddata_domain_model_structureddata_reviewnote',$row);
+            \TYPO3\CMS\Backend\Utility\BackendUtility::workspaceOL('tx_hdstructureddata_domain_model_structureddata_reviewnote',$row);
             if (is_array($row)) {
                 $output = GeneralUtility::makeInstance(ReviewNote::class)->setOriginalRow($row)->returnData();
                 if ($output) {
@@ -587,7 +587,7 @@ abstract class AbstractData
             )
             ->executeQuery();
         while ($row = $result->fetchAssociative()) {
-            $GLOBALS['TSFE']->sys_page->versionOL('tx_hdstructureddata_domain_model_structureddata',$row);
+            \TYPO3\CMS\Backend\Utility\BackendUtility::workspaceOL('tx_hdstructureddata_domain_model_structureddata',$row);
             if (is_array($row)) {
                 $output =  StructuredDataPrint::getSpecificStructuredData($row);
                 if ($output) {

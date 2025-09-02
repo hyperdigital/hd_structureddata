@@ -51,6 +51,11 @@ return [
         ]
     ],
     'columns' => [
+        'fieldname' => [
+            'config' => [
+                'type' => 'input'
+            ],
+        ],
         'course_mode' => [
             'exclude' => true,
             'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_courseinstance.columns.course_mode',

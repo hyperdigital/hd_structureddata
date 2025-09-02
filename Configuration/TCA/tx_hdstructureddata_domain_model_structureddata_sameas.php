@@ -42,6 +42,11 @@ return [
         ]
     ],
     'columns' => [
+        'fieldname' => [
+            'config' => [
+                'type' => 'input'
+            ],
+        ],
         'url' => [
             'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_sameas.columns.url',
             'config' => [

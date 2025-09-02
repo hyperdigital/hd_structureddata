@@ -17,7 +17,6 @@ use TYPO3\CMS\Core\Resource\OriginalFileReference;
 
 final class ImageStructuredDataViewHelper extends AbstractViewHelper
 {
-    use CompileWithRenderStatic;
 
     protected $escapeOutput = false;
 
@@ -27,13 +26,11 @@ final class ImageStructuredDataViewHelper extends AbstractViewHelper
         $this->registerArgument('uri', 'string', 'The image uri, if there should be different then the publicUrl()');
     }
 
-    public static function renderStatic(
-        array $arguments,
-        \Closure $renderChildrenClosure,
-        RenderingContextInterface $renderingContext,
-    ): string {
-        $image = $arguments['image'];
-        \Hyperdigital\HdStructureddata\Service\ImageMetadataService::parseImage($image, ['output' => true, 'uri' => $arguments['uri']]);
+    public function render(): string
+    {
+        $image = $this->arguments['image'];
+
+        \Hyperdigital\HdStructureddata\Service\ImageMetadataService::parseImage($image, ['output' => true, 'uri' => $this->arguments['uri']]);
 
         return '';
     }

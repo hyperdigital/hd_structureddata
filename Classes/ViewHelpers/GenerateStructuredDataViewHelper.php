@@ -15,7 +15,6 @@ use Hyperdigital\HdStructureddata\UserFunctions\StructuredDataPrint;
 
 final class GenerateStructuredDataViewHelper extends AbstractViewHelper
 {
-    use CompileWithRenderStatic;
 
     protected $escapeOutput = false;
 
@@ -28,17 +27,14 @@ final class GenerateStructuredDataViewHelper extends AbstractViewHelper
 
     }
 
-    public static function renderStatic(
-        array $arguments,
-        \Closure $renderChildrenClosure,
-        RenderingContextInterface $renderingContext,
-    ): string {
+    public function render(): string
+    {
         $dataService = GeneralUtility::makeInstance(GenerateDataService::class);
 
-        if (!empty($arguments['object'])) {
-            $dataService->generateDataFromObject($arguments['tablename'], $arguments['fieldname'], $arguments['object']);
-        } else if (!empty($arguments['parentUid'])) {
-            $dataService->generateDataFromUid($arguments['tablename'], $arguments['fieldname'], $arguments['parentUid']);
+        if (!empty($this->arguments['object'])) {
+            $dataService->generateDataFromObject($this->arguments['tablename'], $this->arguments['fieldname'], $this->arguments['object']);
+        } else if (!empty($this->arguments['parentUid'])) {
+            $dataService->generateDataFromUid($this->arguments['tablename'], $this->arguments['fieldname'], $this->arguments['parentUid']);
         }
 
         return '';
