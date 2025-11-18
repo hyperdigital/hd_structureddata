@@ -120,6 +120,9 @@
 			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.images.video">
 				<source>Thumbnails</source>
 			</trans-unit>
+            <trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.images.video.description">
+                <source>Required, but YouTube can reuse the thumbnail from the entry</source>
+            </trans-unit>
             <trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.sameas">
                 <source>Same as</source>
             </trans-unit>

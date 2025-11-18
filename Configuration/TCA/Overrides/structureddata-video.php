@@ -32,8 +32,10 @@ defined('TYPO3') || die();
             ],
             'images' => [
                 'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.images.video',
+                'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.images.video.description',
                 'config' => [
-                    'minitems' => 1,
+                    'minitems' => 0,
+                    'required' => false
                 ]
             ]
         ]
