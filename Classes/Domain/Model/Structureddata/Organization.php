@@ -32,7 +32,7 @@ class Organization extends AbstractData
         }
          if (!empty($this->originalRow['date_published'])) {
              $date = new \DateTime($this->originalRow['date_published']);
-             $return['foundingDate'] = $date;
+             $return['foundingDate'] = $date->format(DATE_ATOM);
          }
         if (!empty($this->originalRow['url'])) {
             $url = $this->getUrl($this->originalRow['url']);
