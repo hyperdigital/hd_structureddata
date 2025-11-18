@@ -1,6 +1,9 @@
 <?php
 namespace Hyperdigital\HdStructureddata\Domain\Model\Structureddata;
 
+use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Core\Resource\OnlineMedia\Helpers\VimeoHelper;
+use TYPO3\CMS\Core\Resource\OnlineMedia\Helpers\YouTubeHelper;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
@@ -28,6 +31,29 @@ class Video extends AbstractData
             $date = new \DateTime();
             $date->setTimestamp($fileObject->getOriginalFile()->getProperty('crdate'));
             $url = $this->getUrl($fileObject->getPublicUrl());
+
+            if (empty($return['thumbnailUrl'])) {
+                switch ($fileObject->getOriginalFile()->getExtension()) {
+                    case 'youtube':
+                        $youTubeHelper = GeneralUtility::makeInstance(YouTubeHelper::class, $fileObject->getOriginalFile()->getExtension());
+                        $preview = $youTubeHelper->getPreviewImage($fileObject->getOriginalFile());
+                        if ($preview) {
+                            $preview = $this->getUrl(substr($preview, strlen(Environment::getPublicPath())));
+                        }
+                        break;
+                    case 'vimeo':
+                        $youTubeHelper = GeneralUtility::makeInstance(VimeoHelper::class, $fileObject->getOriginalFile()->getExtension());
+                        $preview = $youTubeHelper->getPreviewImage($fileObject->getOriginalFile());
+                        if ($preview) {
+                            $preview = $this->getUrl(substr($preview, strlen(Environment::getPublicPath())));
+                        }
+                        break;
+                }
+
+                if ($preview) {
+                    $return['thumbnailUrl'] = $preview;
+                }
+            }
 
             $return['uploadDate'] = $date->format(DATE_ATOM);
             if ($url) {
