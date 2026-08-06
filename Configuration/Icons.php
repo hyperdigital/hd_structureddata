@@ -60,4 +60,40 @@ return [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hd_structureddata/Resources/Public/Icons/job.svg',
     ],
+    'hd_structureddata_software' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hd_structureddata/Resources/Public/Icons/software.svg',
+    ],
+    'hd_structureddata_recipe' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hd_structureddata/Resources/Public/Icons/recipe.svg',
+    ],
+    'hd_structureddata_book' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hd_structureddata/Resources/Public/Icons/book.svg',
+    ],
+    'hd_structureddata_movie' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hd_structureddata/Resources/Public/Icons/movie.svg',
+    ],
+    'hd_structureddata_dataset' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hd_structureddata/Resources/Public/Icons/dataset.svg',
+    ],
+    'hd_structureddata_vehicle' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hd_structureddata/Resources/Public/Icons/vehicle.svg',
+    ],
+    'hd_structureddata_podcast' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hd_structureddata/Resources/Public/Icons/podcast.svg',
+    ],
+    'hd_structureddata_service' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hd_structureddata/Resources/Public/Icons/service.svg',
+    ],
+    'hd_structureddata_discussion' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hd_structureddata/Resources/Public/Icons/discussion.svg',
+    ],
 ];

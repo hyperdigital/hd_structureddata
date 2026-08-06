@@ -11,7 +11,7 @@ defined('TYPO3') || die();
         locations, --linebreak--,
         price_min, price_max, price_currency, price_unit,--linebreak--,
         employment_type, --linebreak--,
-        '
+        ,--linebreak--,experience_requirements, educational_requirements,--linebreak--,direct_apply,--linebreak--,job_benefits'
     ];
 
     $GLOBALS['TCA']['tx_hdstructureddata_domain_model_structureddata']['types']['job_posting'] = [

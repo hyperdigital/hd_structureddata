@@ -6,18 +6,28 @@ use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Image;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Course;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Event;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Faq;
-use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\LearningVideo;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Organization;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Product;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Review;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Video;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\SitelinkSearchbox;
+use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\SoftwareApplication;
+use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Book;
+use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Dataset;
+use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\DiscussionForumPosting;
+use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Movie;
+use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Person;
+use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\PodcastEpisode;
+use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\ProfilePage;
+use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Recipe;
+use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Service;
+use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Vehicle;
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\JobPosting;
+use TYPO3\CMS\Core\Attribute\AsAllowedCallable;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Context\Context;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class StructuredDataPrint
 {
@@ -35,12 +45,13 @@ class StructuredDataPrint
     }
 
     /**
-     * Output the current time in red letters
+     * Render all structured data of the current scope as JSON-LD script tags.
      *
-     * @param string          Empty string (no content to process)
-     * @param array           TypoScript configuration
-     * @return        string          HTML output, showing the current server time.
+     * @param string $content Empty string (no content to process)
+     * @param array $conf TypoScript configuration
+     * @return string The JSON-LD script tags
      */
+    #[AsAllowedCallable]
     public function printTags(string $content, array $conf)
     {
         $output = [];
@@ -85,7 +96,7 @@ class StructuredDataPrint
             $parentField = 'fieldname';
 
             if (empty($parentUid)) {
-                return '';
+                return [];
             }
 
             $where = [
@@ -180,9 +191,6 @@ class StructuredDataPrint
             case 'product':
                 $return = GeneralUtility::makeInstance(Product::class)->setOriginalRow($row)->returnData();
                 break;
-            case 'video':
-                $return = GeneralUtility::makeInstance(Video::class)->setOriginalRow($row)->returnData();
-                break;
             case 'review':
                 $return = GeneralUtility::makeInstance(Review::class)->setOriginalRow($row)->returnData();
                 break;
@@ -192,6 +200,42 @@ class StructuredDataPrint
                 break;
             case 'job_posting':
                 $return = GeneralUtility::makeInstance(JobPosting::class)->setOriginalRow($row)->returnData();
+                break;
+            case 'person':
+                $return = GeneralUtility::makeInstance(Person::class)
+                    ->setTable('tx_hdstructureddata_domain_model_structureddata')
+                    ->setOriginalRow($row)
+                    ->returnData();
+                break;
+            case 'recipe':
+                $return = GeneralUtility::makeInstance(Recipe::class)->setOriginalRow($row)->returnData();
+                break;
+            case 'profile_page':
+                $return = GeneralUtility::makeInstance(ProfilePage::class)->setOriginalRow($row)->returnData();
+                break;
+            case 'discussion_forum_posting':
+                $return = GeneralUtility::makeInstance(DiscussionForumPosting::class)->setOriginalRow($row)->returnData();
+                break;
+            case 'service':
+                $return = GeneralUtility::makeInstance(Service::class)->setOriginalRow($row)->returnData();
+                break;
+            case 'book':
+                $return = GeneralUtility::makeInstance(Book::class)->setOriginalRow($row)->returnData();
+                break;
+            case 'movie':
+                $return = GeneralUtility::makeInstance(Movie::class)->setOriginalRow($row)->returnData();
+                break;
+            case 'dataset':
+                $return = GeneralUtility::makeInstance(Dataset::class)->setOriginalRow($row)->returnData();
+                break;
+            case 'vehicle':
+                $return = GeneralUtility::makeInstance(Vehicle::class)->setOriginalRow($row)->returnData();
+                break;
+            case 'podcast_episode':
+                $return = GeneralUtility::makeInstance(PodcastEpisode::class)->setOriginalRow($row)->returnData();
+                break;
+            case 'software_application':
+                $return = GeneralUtility::makeInstance(SoftwareApplication::class)->setOriginalRow($row)->returnData();
                 break;
         }
 

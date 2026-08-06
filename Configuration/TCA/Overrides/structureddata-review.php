@@ -66,6 +66,41 @@ defined('TYPO3') || die();
                             'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.subtype.review.Restaurant',
                             'value' => 'Restaurant',
                             'group' => 'organization'
+                        ],
+                        [
+                            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.subtype.organization.localBusiness',
+                            'value' => 'LocalBusiness',
+                            'group' => 'organization'
+                        ],
+                        [
+                            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.subtype.organization.store',
+                            'value' => 'Store',
+                            'group' => 'organization'
+                        ],
+                        [
+                            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.subtype.organization.onlineStore',
+                            'value' => 'OnlineStore',
+                            'group' => 'organization'
+                        ],
+                        [
+                            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.subtype.organization.hotel',
+                            'value' => 'Hotel',
+                            'group' => 'organization'
+                        ],
+                        [
+                            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.subtype.organization.professionalService',
+                            'value' => 'ProfessionalService',
+                            'group' => 'organization'
+                        ],
+                        [
+                            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.subtype.organization.medicalOrganization',
+                            'value' => 'MedicalOrganization',
+                            'group' => 'organization'
+                        ],
+                        [
+                            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.subtype.organization.educationalOrganization',
+                            'value' => 'EducationalOrganization',
+                            'group' => 'organization'
                         ]
                     ],
                     'itemGroups' => [

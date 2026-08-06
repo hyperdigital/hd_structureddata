@@ -1,8 +1,11 @@
 # HD Structured data
 TYPO3 extension for handling Google structured data into your page.
+
+Supports TYPO3 v13.4 and v14.3 from a single code base (PHP 8.2 - 8.5).
+
 ## Initialization
 - install the extension
-- include static typoscript file (HD Structured data)
+- add the site set "Structured Data - Main" to your site configuration (or, on v13, include the static TypoScript file "HD Structured data")
 - go to edit page properties
 - open tab "Structured data"
 - add a new structured data item

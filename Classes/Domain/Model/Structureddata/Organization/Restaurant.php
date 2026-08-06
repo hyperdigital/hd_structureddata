@@ -1,7 +1,6 @@
 <?php
 namespace Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Organization;
 
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class Restaurant extends \Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Organization
 {
@@ -13,9 +12,9 @@ class Restaurant extends \Hyperdigital\HdStructureddata\Domain\Model\Structuredd
             $return['servesCuisine'] = $this->originalRow['serves_cuisine'];
         }
 
-        if ($this->originalRow['accepts_reservations'] == 1) {
+        if (($this->originalRow['accepts_reservations'] ?? 0) == 1) {
             $return['acceptsReservations'] = 'True';
-        } else if ($this->originalRow['accepts_reservations'] == -1) {
+        } else if (($this->originalRow['accepts_reservations'] ?? 0) == -1) {
             $return['acceptsReservations'] = 'False';
         }
 

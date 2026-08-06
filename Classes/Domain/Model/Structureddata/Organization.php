@@ -1,15 +1,31 @@
 <?php
 namespace Hyperdigital\HdStructureddata\Domain\Model\Structureddata;
 
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class Organization extends AbstractData
 {
+    /**
+     * Subtypes that only narrow the schema.org @type and add no properties of their
+     * own. Subtypes that do add properties get their own class in Organization/.
+     */
+    const ALLOWED_SUBTYPES = [
+        'LocalBusiness',
+        'Store',
+        'OnlineStore',
+        'Hotel',
+        'MedicalOrganization',
+        'EducationalOrganization',
+        'ProfessionalService',
+    ];
+
     public function returnData()
     {
         $return = [];
         $return['@context'] = 'https://schema.org';
         $return['@type'] = 'Organization';
+        if (in_array($this->originalRow['subtype'] ?? '', self::ALLOWED_SUBTYPES, true)) {
+            $return['@type'] = $this->originalRow['subtype'];
+        }
         $return['name'] = $this->originalRow['title'] ?? '';
         $return['telephone'] = $this->originalRow['telephone'] ?? '';
         if (!empty($this->originalRow['email'])) {
@@ -30,10 +46,28 @@ class Organization extends AbstractData
         if (!empty($this->originalRow['price_range'])) {
             $return['priceRange'] = $this->originalRow['price_range'];
         }
-         if (!empty($this->originalRow['date_published'])) {
-             $date = new \DateTime($this->originalRow['date_published']);
-             $return['foundingDate'] = $date->format(DATE_ATOM);
-         }
+        // founding_date is the dedicated column; date_published is kept as a fallback
+        // so records created before it existed keep working.
+        $founding = $this->originalRow['founding_date'] ?? null;
+        if (empty($founding)) {
+            $founding = $this->originalRow['date_published'] ?? null;
+        }
+        if (!empty($founding)) {
+            $date = new \DateTime($founding);
+            $return['foundingDate'] = $date->format('Y-m-d');
+        }
+        if (!is_null($this->originalRow['number_of_employees'] ?? null)) {
+            $return['numberOfEmployees'] = [
+                '@type' => 'QuantitativeValue',
+                'value' => (int)$this->originalRow['number_of_employees']
+            ];
+        }
+        if (!empty($this->originalRow['contact_points'])) {
+            $contactPoints = $this->getContactPoints($this->originalRow['uid'], 'contact_points', 'tx_hdstructureddata_domain_model_structureddata');
+            if (!empty($contactPoints)) {
+                $return['contactPoint'] = $contactPoints;
+            }
+        }
         if (!empty($this->originalRow['url'])) {
             $url = $this->getUrl($this->originalRow['url']);
             $return['url'] = $url;
@@ -60,6 +94,12 @@ class Organization extends AbstractData
             $openingHours = $this->getOpeningHours($this->originalRow['uid'], 'opening_hours', 'tx_hdstructureddata_domain_model_structureddata');
             if (!empty($openingHours)) {
                 $return['openingHoursSpecification'] = $openingHours;
+            }
+        }
+        if (!empty($this->originalRow['geo'])) {
+            $geo = $this->getGeo($this->originalRow['uid'], 'geo', 'tx_hdstructureddata_domain_model_structureddata');
+            if (!empty($geo)) {
+                $return['geo'] = reset($geo);
             }
         }
         if (!empty($this->originalRow['sameas'])) {

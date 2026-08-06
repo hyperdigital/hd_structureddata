@@ -18,8 +18,9 @@
 	}
   ],
   "require": {
-    "typo3/cms-core": "^13.0",
-  	"sjbr/static-info-tables":  "^13.0"
+    "php": "^8.2",
+    "typo3/cms-core": "^13.4 || ^14.3",
+  	"sjbr/static-info-tables":  "^13.4 || ^14.3"
   },
   "extra": {
     "typo3/cms": {

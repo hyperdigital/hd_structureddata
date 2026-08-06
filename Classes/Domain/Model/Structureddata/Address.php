@@ -10,8 +10,9 @@ class Address extends AbstractData
 {
     public function returnData()
     {
+        // No @context here: an Address is always emitted as a nested node of a
+        // parent object, which already carries the context.
         $return = [];
-        $return['@context'] = 'https://schema.org';
 
         switch ($this->originalRow['type']) {
             case 'PostalAddress':

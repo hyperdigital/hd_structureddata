@@ -5,7 +5,6 @@ use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Resource\OnlineMedia\Helpers\VimeoHelper;
 use TYPO3\CMS\Core\Resource\OnlineMedia\Helpers\YouTubeHelper;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class Video extends AbstractData
 {
@@ -33,6 +32,7 @@ class Video extends AbstractData
             $url = $this->getUrl($fileObject->getPublicUrl());
 
             if (empty($return['thumbnailUrl'])) {
+                $preview = null;
                 switch ($fileObject->getOriginalFile()->getExtension()) {
                     case 'youtube':
                         $youTubeHelper = GeneralUtility::makeInstance(YouTubeHelper::class, $fileObject->getOriginalFile()->getExtension());
@@ -73,6 +73,22 @@ class Video extends AbstractData
             if (!empty($clips)) {
                 $return['hasPart'] = $clips;
             }
+        }
+
+        if (!empty($this->originalRow['is_live_broadcast'])) {
+            $broadcast = ['@type' => 'BroadcastEvent', 'isLiveBroadcast' => true];
+            if (!empty($this->originalRow['title'])) {
+                $broadcast['name'] = $this->originalRow['title'];
+            }
+            if (!empty($this->originalRow['broadcast_start_date'])) {
+                $date = new \DateTime($this->originalRow['broadcast_start_date']);
+                $broadcast['startDate'] = $date->format(DATE_ATOM);
+            }
+            if (!empty($this->originalRow['broadcast_end_date'])) {
+                $date = new \DateTime($this->originalRow['broadcast_end_date']);
+                $broadcast['endDate'] = $date->format(DATE_ATOM);
+            }
+            $return['publication'] = $broadcast;
         }
 
         if (empty($return['contentUrl']) && empty($return['embedUrl'])) {

@@ -7,10 +7,8 @@ namespace Hyperdigital\HdStructureddata\ViewHelpers;
 use Hyperdigital\HdStructureddata\Service\GenerateDataService;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
-use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 use Hyperdigital\HdStructureddata\UserFunctions\StructuredDataPrint;
 
 final class GenerateStructuredDataViewHelper extends AbstractViewHelper

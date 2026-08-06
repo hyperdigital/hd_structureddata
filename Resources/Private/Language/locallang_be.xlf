@@ -39,6 +39,69 @@
 			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.type.faq">
 				<source>FAQ</source>
 			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.type.software_application">
+				<source>Software application</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.title.software_application">
+				<source>Application name</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.application_category">
+				<source>Application category</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.application_category.description">
+				<source>Type of the application, e.g. BusinessApplication or GameApplication</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.operating_system">
+				<source>Operating system</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.operating_system.description">
+				<source>Operating systems the application runs on, comma separated for more than one</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.geo">
+				<source>Geo coordinates</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.subtype.organization.localBusiness">
+				<source>Local business</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.subtype.organization.store">
+				<source>Store</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.subtype.organization.onlineStore">
+				<source>Online store</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.subtype.organization.hotel">
+				<source>Hotel</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.subtype.organization.professionalService">
+				<source>Professional service</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.subtype.organization.medicalOrganization">
+				<source>Medical organization</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.subtype.organization.educationalOrganization">
+				<source>Educational organization</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_geo">
+				<source>Geo coordinates</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_geo.palette.access">
+				<source>Access</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_geo.div.access">
+				<source>Access</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_geo.columns.latitude">
+				<source>Latitude</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_geo.columns.latitude.description">
+				<source>Decimal degrees between -90 and 90, e.g. 50.0755</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_geo.columns.longitude">
+				<source>Longitude</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_geo.columns.longitude.description">
+				<source>Decimal degrees between -180 and 180, e.g. 14.4378</source>
+			</trans-unit>
 			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.type.organization">
 				<source>Organization</source>
 			</trans-unit>
@@ -697,13 +760,13 @@
                 <source>Sitelinks searchbox</source>
             </trans-unit>
             <trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.type.sitelinkssearchbox">
-                <source>Sitelinks searchbox</source>
+                <source>Sitelinks searchbox (deprecated by Google)</source>
             </trans-unit>
             <trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.url.sitelinkssearchbox">
                 <source>Search page</source>
             </trans-unit>
             <trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.url.sitelinkssearchbox.description">
-                <source>Entry point to your search page</source>
+                <source>Entry point to your search page. Note: Google removed the sitelinks search box from search results on 2024-11-21. This markup is harmless but no longer produces a rich result.</source>
             </trans-unit>
             <trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.search_parameter">
                 <source>Search parameter (<![CDATA[###SWORD###`]]> as changable parameter)</source>
@@ -738,6 +801,459 @@
             <trans-unit id="tx_hdstructureddata_domain_model_structureddata_sameas.columns.url">
                 <source>URL</source>
             </trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.type.person">
+				<source>Person</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.title.person">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.type.recipe">
+				<source>Recipe</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.title.recipe">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.type.profile_page">
+				<source>Profile page</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.title.profile_page">
+				<source>Headline</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.type.discussion_forum_posting">
+				<source>Forum posting</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.title.discussion_forum_posting">
+				<source>Headline</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.type.service">
+				<source>Service</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.title.service">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.type.book">
+				<source>Book</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.title.book">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.type.movie">
+				<source>Movie</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.title.movie">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.type.dataset">
+				<source>Dataset</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.title.dataset">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.type.vehicle">
+				<source>Vehicle</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.title.vehicle">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.type.podcast_episode">
+				<source>Podcast episode</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.title.podcast_episode">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.subtype.person.person">
+				<source>Person</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.subtype.person.performingGroup">
+				<source>Performing group</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.subtype.article.techArticle">
+				<source>Tech article</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.subtype.article.scholarlyArticle">
+				<source>Scholarly article</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.subtype.article.report">
+				<source>Report</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.organizers_pointer.person">
+				<source>Works for</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.authors.movie">
+				<source>Directors</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.performers.movie">
+				<source>Actors</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.medias.podcast_episode">
+				<source>Audio file</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.job_title">
+				<source>Job title</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.speakable">
+				<source>Speakable sections</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.speakable.description">
+				<source>CSS selectors of the sections suitable for text-to-speech, one per line</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.prep_time">
+				<source>Preparation time</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.prep_time.description">
+				<source>In whole minutes</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.cook_time">
+				<source>Cooking time</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.cook_time.description">
+				<source>In whole minutes</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.recipe_yield">
+				<source>Yield</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.recipe_yield.description">
+				<source>How much the recipe makes, e.g. "4 servings"</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.recipe_category">
+				<source>Category</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.recipe_cuisine">
+				<source>Cuisine</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.calories">
+				<source>Calories</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.calories.description">
+				<source>Calories per serving</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.ingredients">
+				<source>Ingredients</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.ingredients.description">
+				<source>One ingredient per row, including quantity</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.instructions">
+				<source>Instructions</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.instructions.description">
+				<source>One step per row, in order</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.follower_count">
+				<source>Follower count</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.post_count">
+				<source>Post count</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.comment_count">
+				<source>Comment count</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.service_type">
+				<source>Service type</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.service_type.description">
+				<source>Free text, e.g. "Plumbing" or "Tax advice"</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.area_served">
+				<source>Area served</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.area_served.description">
+				<source>Comma separated list of regions, cities or countries</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.isbn">
+				<source>ISBN</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.book_edition">
+				<source>Edition</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.book_format">
+				<source>Format</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.duration_minutes">
+				<source>Duration</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.duration_minutes.description">
+				<source>In whole minutes</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.keywords">
+				<source>Keywords</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.keywords.description">
+				<source>Comma separated</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.license_url">
+				<source>License</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.license_url.description">
+				<source>URL of the license the dataset is published under</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.vehicle_model_date">
+				<source>Model year</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.vehicle_model_date.description">
+				<source>Four digit year, e.g. 2024</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.vehicle_mileage">
+				<source>Mileage (km)</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.vehicle_engine">
+				<source>Engine</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.vehicle_transmission">
+				<source>Transmission</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.vehicle_fuel_type">
+				<source>Fuel type</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.vehicle_seating_capacity">
+				<source>Seating capacity</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.episode_number">
+				<source>Episode number</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.series_name">
+				<source>Series name</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.contact_points">
+				<source>Contact points</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.number_of_employees">
+				<source>Number of employees</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.founding_date">
+				<source>Founding date</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.founding_date.description">
+				<source>Replaces the older "Date published" field for organizations</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.gtin8">
+				<source>GTIN-8</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.gtin13">
+				<source>GTIN-13</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.mpn">
+				<source>MPN</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.product_size">
+				<source>Size</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.product_color">
+				<source>Color</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.product_material">
+				<source>Material</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.product_pattern">
+				<source>Pattern</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.experience_requirements">
+				<source>Experience required</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.experience_requirements.description">
+				<source>In months</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.educational_requirements">
+				<source>Education required</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.educational_requirements.description">
+				<source>Lowest acceptable credential</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.direct_apply">
+				<source>Direct apply</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.job_benefits">
+				<source>Benefits</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.educational_credential_awarded">
+				<source>Credential awarded</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.course_workload">
+				<source>Workload</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.course_workload.description">
+				<source>In whole hours</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.course_prerequisites">
+				<source>Prerequisites</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.course_prerequisites.description">
+				<source>One prerequisite per line</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.maximum_attendee_capacity">
+				<source>Maximum attendee capacity</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.is_live_broadcast">
+				<source>Live broadcast</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.is_live_broadcast.description">
+				<source>Mark the video as a livestream</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.broadcast_start_date">
+				<source>Broadcast start</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.broadcast_start_date.description">
+				<source>When the livestream starts</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.broadcast_end_date">
+				<source>Broadcast end</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata.columns.broadcast_end_date.description">
+				<source>When the livestream ends</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_shipping">
+				<source>Shipping details</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_shipping.palette.access">
+				<source>Access</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_shipping.div.access">
+				<source>Access</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_shipping.columns.shipping_destination">
+				<source>Destination countries</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_shipping.columns.shipping_destination.description">
+				<source>Comma separated ISO 3166-1 alpha-2 codes, e.g. DE, AT, CH</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_shipping.columns.shipping_rate">
+				<source>Shipping rate</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_shipping.columns.shipping_currency">
+				<source>Currency</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_shipping.columns.handling_time_min">
+				<source>Handling time from (days)</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_shipping.columns.handling_time_max">
+				<source>Handling time to (days)</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_shipping.columns.transit_time_min">
+				<source>Transit time from (days)</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_shipping.columns.transit_time_max">
+				<source>Transit time to (days)</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_returnpolicy">
+				<source>Return policy</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_returnpolicy.palette.access">
+				<source>Access</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_returnpolicy.div.access">
+				<source>Access</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_returnpolicy.columns.return_policy_category">
+				<source>Return policy</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_returnpolicy.columns.merchant_return_days">
+				<source>Return window (days)</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_returnpolicy.columns.return_method">
+				<source>Return method</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_returnpolicy.columns.return_fees">
+				<source>Return fees</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_returnpolicy.columns.return_country">
+				<source>Applicable country</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_returnpolicy.columns.return_country.description">
+				<source>ISO 3166-1 alpha-2 code</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_ingredient">
+				<source>Ingredient</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_ingredient.palette.access">
+				<source>Access</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_ingredient.div.access">
+				<source>Access</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_ingredient.columns.name">
+				<source>Ingredient</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_ingredient.columns.name.description">
+				<source>Including quantity, e.g. "200 g flour"</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_instruction">
+				<source>Instruction step</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_instruction.palette.access">
+				<source>Access</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_instruction.div.access">
+				<source>Access</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_instruction.columns.name">
+				<source>Step name</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_instruction.columns.text">
+				<source>Step text</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_instruction.columns.url">
+				<source>Anchor URL</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_instruction.columns.url.description">
+				<source>Link to this step on the page</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_contactpoint">
+				<source>Contact point</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_contactpoint.palette.access">
+				<source>Access</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_contactpoint.div.access">
+				<source>Access</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_contactpoint.columns.contact_type">
+				<source>Contact type</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_contactpoint.columns.telephone">
+				<source>Telephone</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_contactpoint.columns.email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_contactpoint.columns.area_served">
+				<source>Area served</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_contactpoint.columns.area_served.description">
+				<source>Comma separated</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_contactpoint.columns.available_language">
+				<source>Languages</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_contactpoint.columns.available_language.description">
+				<source>Comma separated</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_offer.columns.shipping_details">
+				<source>Shipping details</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_offer.columns.shipping_details.description">
+				<source>Required by Google for merchant listings</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_offer.columns.return_policy">
+				<source>Return policy</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_offer.columns.return_policy.description">
+				<source>Required by Google for merchant listings</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_contactpoint.columns.contact_type.description">
+				<source>e.g. customer service, technical support or sales</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_instruction.columns.name.description">
+				<source>Optional short title for this step</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_returnpolicy.columns.merchant_return_days.description">
+				<source>Days after delivery within which the product can be returned</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_shipping.columns.handling_time_min.description">
+				<source>Working days between order and dispatch</source>
+			</trans-unit>
+			<trans-unit id="tx_hdstructureddata_domain_model_structureddata_shipping.columns.transit_time_min.description">
+				<source>Working days between dispatch and delivery</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -3,7 +3,7 @@ defined('TYPO3') || die();
 
 (function () {
     $GLOBALS['TCA']['tx_hdstructureddata_domain_model_structureddata']['palettes']['product'] = [
-        'showitem' => 'title,--linebreak--,sku,gtin14,--linebreak--,description,--linebreak--,brands,--linebreak--,images,--linebreak--,offers,--linebreak--,reviews,'
+        'showitem' => 'title,--linebreak--,sku,gtin14,--linebreak--,description,--linebreak--,brands,--linebreak--,images,--linebreak--,offers,--linebreak--,reviews,,--linebreak--,gtin8, gtin13, mpn,--linebreak--,product_size, product_color,--linebreak--,product_material, product_pattern'
     ];
     $GLOBALS['TCA']['tx_hdstructureddata_domain_model_structureddata']['palettes']['product-agregaterating'] = [
         'showitem' => 'rating_value,rating_count,--linebreak--,best_rating,worst_rating'

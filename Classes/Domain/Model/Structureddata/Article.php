@@ -1,7 +1,8 @@
 <?php
 namespace Hyperdigital\HdStructureddata\Domain\Model\Structureddata;
 
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 
 class Article extends AbstractData
 {
@@ -15,6 +16,15 @@ class Article extends AbstractData
                 break;
             case 'BlogPosting':
                 $return['@type'] = 'BlogPosting';
+                break;
+            case 'TechArticle':
+                $return['@type'] = 'TechArticle';
+                break;
+            case 'ScholarlyArticle':
+                $return['@type'] = 'ScholarlyArticle';
+                break;
+            case 'Report':
+                $return['@type'] = 'Report';
                 break;
             default:
                 $return['@type'] = 'Article';
@@ -43,6 +53,15 @@ class Article extends AbstractData
         }
         if (!empty($this->originalRow['abstract'])) {
             $return['abstract'] = $this->originalRow['abstract'];
+        }
+        if (!empty($this->originalRow['speakable'])) {
+            $selectors = GeneralUtility::trimExplode(',', str_replace(["\r", "\n"], ',', $this->originalRow['speakable']), true);
+            if (!empty($selectors)) {
+                $return['speakable'] = [
+                    '@type' => 'SpeakableSpecification',
+                    'cssSelector' => $selectors
+                ];
+            }
         }
 
         return $return;

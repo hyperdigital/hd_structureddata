@@ -1,7 +1,6 @@
 <?php
 namespace Hyperdigital\HdStructureddata\Domain\Model\Structureddata;
 
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class Clip extends AbstractData
 {
@@ -13,7 +12,7 @@ class Clip extends AbstractData
         $return['name'] = $this->originalRow['name'] ?? '';
         $return['startOffset'] = $this->originalRow['start_offset'] ?? 0;
 
-        if (!is_null($this->originalRow['end_offset'])) {
+        if (!is_null($this->originalRow['end_offset'] ?? null)) {
             $return['endOffset'] = $this->originalRow['end_offset'];
         }
 

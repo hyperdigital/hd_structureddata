@@ -3,7 +3,6 @@ namespace Hyperdigital\HdStructureddata\Domain\Model\Structureddata;
 
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Organization\Restaurant;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class Review extends AbstractData
 {
@@ -12,27 +11,23 @@ class Review extends AbstractData
         $return = [];
         $return['@context'] = 'https://schema.org';
         $return['@type'] = 'Review';
-        switch ($this->originalRow['subtype']) {
-            case 'Restaurant':
-                $itemReviewed = GeneralUtility::makeInstance(Restaurant::class)->setOriginalRow($this->originalRow)->returnData();
-                $rating = $this->reviewRating();
-                if ($rating) {
-                    $return['reviewRating'] = $rating;
-                }
-                break;
-            case 'Organization':
-                $itemReviewed = GeneralUtility::makeInstance(Organization::class)->setOriginalRow($this->originalRow)->returnData();
-                $rating = $this->reviewRating();
-                if ($rating) {
-                    $return['reviewRating'] = $rating;
-                }
-                break;
-            case 'reviewedItem':
-                $rating = $this->reviewRating();
-                if ($rating) {
-                    $return['reviewRating'] = $rating;
-                }
-                break;
+        $subtype = $this->originalRow['subtype'] ?? '';
+
+        // Every reviewable subtype carries a rating; only the ones that describe a
+        // concrete thing also produce an itemReviewed node.
+        $itemReviewed = false;
+        if ($subtype === 'Restaurant') {
+            // The only organization subtype with properties of its own
+            $itemReviewed = GeneralUtility::makeInstance(Restaurant::class)->setOriginalRow($this->originalRow)->returnData();
+        } elseif ($subtype === 'Organization' || in_array($subtype, Organization::ALLOWED_SUBTYPES, true)) {
+            $itemReviewed = GeneralUtility::makeInstance(Organization::class)->setOriginalRow($this->originalRow)->returnData();
+        }
+
+        if ($subtype !== '') {
+            $rating = $this->getRating('Rating');
+            if ($rating) {
+                $return['reviewRating'] = $rating;
+            }
         }
 
         if (!empty($itemReviewed)) {
@@ -65,29 +60,6 @@ class Review extends AbstractData
             }
         }
 
-        return $return;
-    }
-
-    protected function reviewRating()
-    {
-        $return = [];
-        $return['@type'] = 'Rating';
-        if (!is_null($this->originalRow['rating_value'])) {
-            $return['ratingValue'] = $this->originalRow['rating_value'];
-        }
-        if (!is_null($this->originalRow['rating_count'])) {
-            $return['ratingCount'] = $this->originalRow['rating_count'];
-        }
-        if (!is_null($this->originalRow['best_rating'])) {
-            $return['bestRating'] = $this->originalRow['best_rating'];
-        }
-        if (!is_null($this->originalRow['worst_rating'])) {
-            $return['worstRating'] = $this->originalRow['worst_rating'];
-        }
-
-        if (count($return) < 2) {
-            return false;
-        }
         return $return;
     }
 }

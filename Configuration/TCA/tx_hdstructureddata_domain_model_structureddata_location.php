@@ -38,7 +38,7 @@ return [
             'showitem' => 'type'
         ],
         'Place' => [
-            'showitem' => 'name,--linebreak--,addresses'
+            'showitem' => 'name,--linebreak--,addresses,--linebreak--,geo'
         ],
         'VirtualLocation' => [
             'showitem' => 'url'
@@ -156,6 +156,25 @@ return [
                 ],
             ],
         ],
+        'geo' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.geo',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:recommended',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata_geo',
+                'foreign_field' => 'foreign_uid',
+                'foreign_sortby' => 'sorting',
+                'foreign_table_field' => 'tablename',
+                'foreign_match_fields' => [
+                    'fieldname' => 'geo',
+                ],
+                'maxitems' => 1,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ],
+            ],
+        ],
         'hidden' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.enabled',
@@ -227,10 +246,10 @@ return [
                 'renderType' => 'selectSingle',
                 'items' => [
                     [
-                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple'
-                    ]
+                        'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
+                        'value' => -1,
+                        'icon' => 'flags-multiple',
+                    ],
                 ],
                 'default' => 0,
             ],

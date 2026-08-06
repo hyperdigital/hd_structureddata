@@ -1,7 +1,6 @@
 <?php
 namespace Hyperdigital\HdStructureddata\Domain\Model\Structureddata;
 
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class Course extends AbstractData
 {
@@ -52,6 +51,15 @@ class Course extends AbstractData
         }
         if (!empty($organizers)) {
             $return['provider'] = $organizers;
+        }
+        if (!empty($this->originalRow['educational_credential_awarded'])) {
+            $return['educationalCredentialAwarded'] = $this->originalRow['educational_credential_awarded'];
+        }
+        if (!is_null($this->originalRow['course_workload'] ?? null) && (int)$this->originalRow['course_workload'] > 0) {
+            $return['courseWorkload'] = 'PT' . (int)$this->originalRow['course_workload'] . 'H';
+        }
+        if (!empty($this->originalRow['course_prerequisites'])) {
+            $return['coursePrerequisites'] = $this->originalRow['course_prerequisites'];
         }
         if (!empty($this->originalRow['courseinstances'])) {
             $offers = $this->getCourseInstances($this->originalRow['uid'], 'courseinstances', 'tx_hdstructureddata_domain_model_structureddata');

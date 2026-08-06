@@ -3,7 +3,6 @@ namespace Hyperdigital\HdStructureddata\Domain\Model\Structureddata;
 
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Organization\Restaurant;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class SitelinkSearchbox extends AbstractData
 {

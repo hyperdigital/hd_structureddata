@@ -4,7 +4,6 @@ namespace Hyperdigital\HdStructureddata\Domain\Model\Structureddata;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class Offer extends AbstractData
 {
@@ -14,7 +13,7 @@ class Offer extends AbstractData
     {
         $return = [];
         $return['@type'] = 'Offer';
-        switch($this->originalRow['availability']) {
+        switch($this->originalRow['availability'] ?? '') {
             case 'InStock':
                 $return['availability'] = 'https://schema.org/InStock';
                 break;
@@ -25,15 +24,17 @@ class Offer extends AbstractData
                 $return['availability'] = 'https://schema.org/PreOrder';
                 break;
         }
-        $return['price'] = $this->originalRow['price'];
+        if (isset($this->originalRow['price']) && $this->originalRow['price'] !== '') {
+            $return['price'] = $this->originalRow['price'];
+        }
         if (!empty($this->originalRow['price_currency'])) {
             $return['priceCurrency'] = strtoupper($this->originalRow['price_currency']);
         }
-        if(!is_null($this->originalRow['valid_from'])) {
+        if(!is_null($this->originalRow['valid_from'] ?? null)) {
             $date = new \DateTime($this->originalRow['valid_from']);
             $return['validFrom'] = $date->format(DATE_ATOM);
         }
-        if(!is_null($this->originalRow['valid_until'])) {
+        if(!is_null($this->originalRow['valid_until'] ?? null)) {
             $date = new \DateTime($this->originalRow['valid_until']);
             $return['priceValidUntil'] = $date->format(DATE_ATOM);
         }
@@ -42,6 +43,18 @@ class Offer extends AbstractData
         }
         if (!empty($this->originalRow['category'])) {
             $return['category'] = $this->originalRow['category'];
+        }
+        if (!empty($this->originalRow['shipping_details'])) {
+            $shipping = $this->getShippingDetails($this->originalRow['uid'], 'shipping_details', 'tx_hdstructureddata_domain_model_structureddata_offer');
+            if (!empty($shipping)) {
+                $return['shippingDetails'] = $shipping;
+            }
+        }
+        if (!empty($this->originalRow['return_policy'])) {
+            $returnPolicy = $this->getReturnPolicies($this->originalRow['uid'], 'return_policy', 'tx_hdstructureddata_domain_model_structureddata_offer');
+            if (!empty($returnPolicy)) {
+                $return['hasMerchantReturnPolicy'] = reset($returnPolicy);
+            }
         }
 
         return $return;

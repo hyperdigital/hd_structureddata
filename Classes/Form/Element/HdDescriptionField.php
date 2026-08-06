@@ -6,8 +6,8 @@ namespace Hyperdigital\HdStructureddata\Form\Element;
 
 use TYPO3\CMS\Backend\Form\Element\AbstractFormElement;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Core\Utility\StringUtility;
-use TYPO3\CMS\Fluid\View\StandaloneView;
+use TYPO3\CMS\Core\View\ViewFactoryData;
+use TYPO3\CMS\Core\View\ViewFactoryInterface;
 
 class HdDescriptionField extends AbstractFormElement
 {
@@ -47,8 +47,11 @@ class HdDescriptionField extends AbstractFormElement
             $absoluteTemplatePath = GeneralUtility::getFileAbsFileName($path);
 
             try {
-                $view = GeneralUtility::makeInstance(StandaloneView::class);
-                $view->setTemplatePathAndFilename($absoluteTemplatePath);
+                $viewFactory = GeneralUtility::makeInstance(ViewFactoryInterface::class);
+                $view = $viewFactory->create(new ViewFactoryData(
+                    templatePathAndFilename: $absoluteTemplatePath,
+                    request: $this->data['request'] ?? null,
+                ));
 
                 $html = $view->render();
             } catch (\Exception $e) {

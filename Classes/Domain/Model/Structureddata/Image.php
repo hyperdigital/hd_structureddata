@@ -4,7 +4,6 @@ namespace Hyperdigital\HdStructureddata\Domain\Model\Structureddata;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class Image extends AbstractData
 {
@@ -15,7 +14,7 @@ class Image extends AbstractData
 
         $tempData = \Hyperdigital\HdStructureddata\Service\ImageMetadataService::parseImage($file, ['output' => false]);
 
-        $this->originalRow = $tempData;
+        $this->originalRow = is_array($tempData) ? $tempData : [];
 
         return $this;
     }
@@ -24,7 +23,7 @@ class Image extends AbstractData
     {
         $return = [];
 
-        if ($this->originalRow['publicUrl']) {
+        if (!empty($this->originalRow['publicUrl'])) {
             $return['@context'] = 'https://schema.org/';
             $return['@type'] = 'ImageObject';
             $return['contentUrl'] = $this->getUrl($this->originalRow['publicUrl']);

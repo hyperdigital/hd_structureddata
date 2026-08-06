@@ -4,7 +4,6 @@ namespace Hyperdigital\HdStructureddata\Domain\Model\Structureddata;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class Location extends AbstractData
 {
@@ -29,6 +28,12 @@ class Location extends AbstractData
                     $address = $this->getAddresses($this->originalRow['uid'], 'addresses', 'tx_hdstructureddata_domain_model_structureddata_location');
                     if (!empty($address)) {
                         $return['address'] = $address;
+                    }
+                }
+                if (!empty($this->originalRow['geo'])) {
+                    $geo = $this->getGeo($this->originalRow['uid'], 'geo', 'tx_hdstructureddata_domain_model_structureddata_location');
+                    if (!empty($geo)) {
+                        $return['geo'] = reset($geo);
                     }
                 }
                 break;

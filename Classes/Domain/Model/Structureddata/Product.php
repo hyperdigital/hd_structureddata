@@ -4,7 +4,6 @@ namespace Hyperdigital\HdStructureddata\Domain\Model\Structureddata;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class Product extends AbstractData
 {
@@ -20,8 +19,15 @@ class Product extends AbstractData
         if (!empty($this->originalRow['sku'])) {
             $return['sku'] = $this->originalRow['sku'];
         }
-        if (!empty($this->originalRow['gtin14'])) {
-            $return['gtin14'] = $this->originalRow['gtin14'];
+        foreach (['gtin8', 'gtin13', 'gtin14', 'mpn'] as $identifierField) {
+            if (!empty($this->originalRow[$identifierField])) {
+                $return[$identifierField] = $this->originalRow[$identifierField];
+            }
+        }
+        foreach (['product_size' => 'size', 'product_color' => 'color', 'product_material' => 'material', 'product_pattern' => 'pattern'] as $column => $property) {
+            if (!empty($this->originalRow[$column])) {
+                $return[$property] = $this->originalRow[$column];
+            }
         }
         if (!empty($this->originalRow['brands'])) {
             $brands = $this->getBrands($this->originalRow['uid'], 'brands', 'tx_hdstructureddata_domain_model_structureddata');
@@ -48,34 +54,11 @@ class Product extends AbstractData
             }
         }
 
-        $rating = $this->reviewRating();
+        $rating = $this->getRating('AggregateRating');
         if (!empty($rating)) {
             $return['aggregateRating'] = $rating;
         }
 
-        return $return;
-    }
-
-    protected function reviewRating()
-    {
-        $return = [];
-        $return['@type'] = 'AggregateRating';
-        if (!is_null($this->originalRow['rating_value'])) {
-            $return['ratingValue'] = $this->originalRow['rating_value'];
-        }
-        if (!is_null($this->originalRow['rating_count'])) {
-            $return['ratingCount'] = $this->originalRow['rating_count'];
-        }
-        if (!is_null($this->originalRow['best_rating'])) {
-            $return['bestRating'] = $this->originalRow['best_rating'];
-        }
-        if (!is_null($this->originalRow['worst_rating'])) {
-            $return['worstRating'] = $this->originalRow['worst_rating'];
-        }
-
-        if (count($return) < 2) {
-            return false;
-        }
         return $return;
     }
 }

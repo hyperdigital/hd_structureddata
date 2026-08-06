@@ -34,7 +34,7 @@ return [
             'showitem' => 'hidden, --linebreak--,starttime,endtime,--linebreak--,fe_group,'
         ],
         'base' => [
-            'showitem' => 'availability,--linebreak--,valid_from,valid_until,--linebreak--,price,price_currency,category,--linebreak--,url'
+            'showitem' => 'availability,--linebreak--,valid_from,valid_until,--linebreak--,price,price_currency,category,--linebreak--,url,--linebreak--,shipping_details,--linebreak--,return_policy'
         ],
     ],
     'types' => [
@@ -96,17 +96,16 @@ return [
             'config' => [
                 'type' => 'input',
                 'valuePicker' => [
-                    'prepend' => true,
-                    'items' => [
+                    'items' => \Hyperdigital\HdStructureddata\Service\TcaService::valuePickerItems([
                         [
-                            'EUR',
-                            'EUR',
+                            'label' => 'EUR',
+                            'value' => 'EUR',
                         ],
                         [
-                            'USD',
-                            'USD',
+                            'label' => 'USD',
+                            'value' => 'USD',
                         ],
-                    ],
+                    ]),
                 ],
             ]
         ],
@@ -116,17 +115,16 @@ return [
             'config' => [
                 'type' => 'input',
                 'valuePicker' => [
-                    'prepend' => true,
-                    'items' => [
+                    'items' => \Hyperdigital\HdStructureddata\Service\TcaService::valuePickerItems([
                         [
-                            'Paid',
-                            'Paid',
+                            'label' => 'Paid',
+                            'value' => 'Paid',
                         ],
                         [
-                            'Free',
-                            'Free',
+                            'label' => 'Free',
+                            'value' => 'Free',
                         ],
-                    ],
+                    ]),
                 ],
             ]
         ],
@@ -134,8 +132,7 @@ return [
             'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.valid_from',
             'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:recommended',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'type' => 'datetime',
                 'dbType' => 'datetime',
                 'nullable' => true,
             ]
@@ -144,10 +141,46 @@ return [
             'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.valid_until',
             'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:recommended',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'type' => 'datetime',
                 'dbType' => 'datetime',
                 'nullable' => true,
+            ]
+        ],
+        'shipping_details' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.shipping_details',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.shipping_details.description',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata_shipping',
+                'foreign_field' => 'foreign_uid',
+                'foreign_sortby' => 'sorting',
+                'foreign_table_field' => 'tablename',
+                'foreign_match_fields' => [
+                    'fieldname' => 'shipping_details',
+                ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ],
+            ]
+        ],
+        'return_policy' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.return_policy',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_offer.columns.return_policy.description',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata_returnpolicy',
+                'foreign_field' => 'foreign_uid',
+                'foreign_sortby' => 'sorting',
+                'foreign_table_field' => 'tablename',
+                'foreign_match_fields' => [
+                    'fieldname' => 'return_policy',
+                ],
+                'maxitems' => 1,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ],
             ]
         ],
         'hidden' => [
@@ -221,10 +254,10 @@ return [
                 'renderType' => 'selectSingle',
                 'items' => [
                     [
-                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple'
-                    ]
+                        'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
+                        'value' => -1,
+                        'icon' => 'flags-multiple',
+                    ],
                 ],
                 'default' => 0,
             ],

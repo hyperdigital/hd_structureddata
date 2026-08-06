@@ -5,7 +5,6 @@ use Hyperdigital\HdStructureddata\UserFunctions\StructuredDataPrint;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 abstract class AbstractData
@@ -42,7 +41,12 @@ abstract class AbstractData
             $urlParams['additionalParams'] = $additionalParams;
         }
 
-        $contentObjectRenderer = $contentObjectRenderer ?? GeneralUtility::makeInstance(ContentObjectRenderer::class);
+        $contentObjectRenderer = GeneralUtility::makeInstance(ContentObjectRenderer::class);
+        // TYPO3 v14 resolves the content object from the request, so pass it explicitly
+        // instead of relying on a global fallback.
+        if ($GLOBALS['TYPO3_REQUEST'] ?? null) {
+            $contentObjectRenderer->setRequest($GLOBALS['TYPO3_REQUEST']);
+        }
         $url = $contentObjectRenderer->createUrl($urlParams);
 
         return $url;
@@ -270,7 +274,7 @@ abstract class AbstractData
             ->executeQuery();
 
         while ($row = $result->fetchAssociative()) {
-            \TYPO3\CMS\Backend\Utility\BackendUtility::workspaceOL('tx_hdstructureddata_domain_model_structureddata_clip', $row);
+            \TYPO3\CMS\Backend\Utility\BackendUtility::workspaceOL('tx_hdstructureddata_domain_model_structureddata_openinghour', $row);
             if (is_array($row)) {
                 $output = GeneralUtility::makeInstance(OpeningHours::class)->setOriginalRow($row)->returnData();
                 if ($output) {
@@ -594,6 +598,300 @@ abstract class AbstractData
                     $return[] = $output;
                 }
             }
+        }
+
+        return $return;
+    }
+
+    protected function getShippingDetails($uid, $parentField, $parentTable)
+    {
+        $return = [];
+
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getQueryBuilderForTable('tx_hdstructureddata_domain_model_structureddata_shipping');
+
+        $where = [
+            $queryBuilder->expr()->eq('foreign_uid', $queryBuilder->createNamedParameter($uid, Connection::PARAM_INT)),
+            $queryBuilder->expr()->eq('tablename',  $queryBuilder->createNamedParameter($parentTable)),
+            $queryBuilder->expr()->eq('fieldname',  $queryBuilder->createNamedParameter($parentField))
+        ];
+
+        if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('workspaces')) {
+            $where[] = $queryBuilder->expr()->eq('t3ver_wsid', $queryBuilder->createNamedParameter(0, Connection::PARAM_INT));
+        }
+
+        $result = $queryBuilder
+            ->select('*')
+            ->from('tx_hdstructureddata_domain_model_structureddata_shipping')
+            ->where(
+                ...$where
+            )
+            ->addOrderBy('sorting')
+            ->executeQuery();
+
+        while ($row = $result->fetchAssociative()) {
+            \TYPO3\CMS\Backend\Utility\BackendUtility::workspaceOL('tx_hdstructureddata_domain_model_structureddata_shipping', $row);
+            if (is_array($row)) {
+                $output = GeneralUtility::makeInstance(OfferShippingDetails::class)->setOriginalRow($row)->returnData();
+                if ($output) {
+                    $return[] = $output;
+                }
+            }
+        }
+
+        return $return;
+    }
+
+    protected function getReturnPolicies($uid, $parentField, $parentTable)
+    {
+        $return = [];
+
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getQueryBuilderForTable('tx_hdstructureddata_domain_model_structureddata_returnpolicy');
+
+        $where = [
+            $queryBuilder->expr()->eq('foreign_uid', $queryBuilder->createNamedParameter($uid, Connection::PARAM_INT)),
+            $queryBuilder->expr()->eq('tablename',  $queryBuilder->createNamedParameter($parentTable)),
+            $queryBuilder->expr()->eq('fieldname',  $queryBuilder->createNamedParameter($parentField))
+        ];
+
+        if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('workspaces')) {
+            $where[] = $queryBuilder->expr()->eq('t3ver_wsid', $queryBuilder->createNamedParameter(0, Connection::PARAM_INT));
+        }
+
+        $result = $queryBuilder
+            ->select('*')
+            ->from('tx_hdstructureddata_domain_model_structureddata_returnpolicy')
+            ->where(
+                ...$where
+            )
+            ->addOrderBy('sorting')
+            ->executeQuery();
+
+        while ($row = $result->fetchAssociative()) {
+            \TYPO3\CMS\Backend\Utility\BackendUtility::workspaceOL('tx_hdstructureddata_domain_model_structureddata_returnpolicy', $row);
+            if (is_array($row)) {
+                $output = GeneralUtility::makeInstance(MerchantReturnPolicy::class)->setOriginalRow($row)->returnData();
+                if ($output) {
+                    $return[] = $output;
+                }
+            }
+        }
+
+        return $return;
+    }
+
+    protected function getIngredients($uid, $parentField, $parentTable)
+    {
+        $return = [];
+
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getQueryBuilderForTable('tx_hdstructureddata_domain_model_structureddata_ingredient');
+
+        $where = [
+            $queryBuilder->expr()->eq('foreign_uid', $queryBuilder->createNamedParameter($uid, Connection::PARAM_INT)),
+            $queryBuilder->expr()->eq('tablename',  $queryBuilder->createNamedParameter($parentTable)),
+            $queryBuilder->expr()->eq('fieldname',  $queryBuilder->createNamedParameter($parentField))
+        ];
+
+        if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('workspaces')) {
+            $where[] = $queryBuilder->expr()->eq('t3ver_wsid', $queryBuilder->createNamedParameter(0, Connection::PARAM_INT));
+        }
+
+        $result = $queryBuilder
+            ->select('*')
+            ->from('tx_hdstructureddata_domain_model_structureddata_ingredient')
+            ->where(
+                ...$where
+            )
+            ->addOrderBy('sorting')
+            ->executeQuery();
+
+        while ($row = $result->fetchAssociative()) {
+            \TYPO3\CMS\Backend\Utility\BackendUtility::workspaceOL('tx_hdstructureddata_domain_model_structureddata_ingredient', $row);
+            if (is_array($row)) {
+                if (!empty($row['name'])) {
+                    $return[] = $row['name'];
+                }
+            }
+        }
+
+        return $return;
+    }
+
+    protected function getInstructions($uid, $parentField, $parentTable)
+    {
+        $return = [];
+
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getQueryBuilderForTable('tx_hdstructureddata_domain_model_structureddata_instruction');
+
+        $where = [
+            $queryBuilder->expr()->eq('foreign_uid', $queryBuilder->createNamedParameter($uid, Connection::PARAM_INT)),
+            $queryBuilder->expr()->eq('tablename',  $queryBuilder->createNamedParameter($parentTable)),
+            $queryBuilder->expr()->eq('fieldname',  $queryBuilder->createNamedParameter($parentField))
+        ];
+
+        if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('workspaces')) {
+            $where[] = $queryBuilder->expr()->eq('t3ver_wsid', $queryBuilder->createNamedParameter(0, Connection::PARAM_INT));
+        }
+
+        $result = $queryBuilder
+            ->select('*')
+            ->from('tx_hdstructureddata_domain_model_structureddata_instruction')
+            ->where(
+                ...$where
+            )
+            ->addOrderBy('sorting')
+            ->executeQuery();
+
+        while ($row = $result->fetchAssociative()) {
+            \TYPO3\CMS\Backend\Utility\BackendUtility::workspaceOL('tx_hdstructureddata_domain_model_structureddata_instruction', $row);
+            if (is_array($row)) {
+                $output = GeneralUtility::makeInstance(HowToStep::class)->setOriginalRow($row)->returnData();
+                if ($output) {
+                    $return[] = $output;
+                }
+            }
+        }
+
+        return $return;
+    }
+
+    protected function getContactPoints($uid, $parentField, $parentTable)
+    {
+        $return = [];
+
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getQueryBuilderForTable('tx_hdstructureddata_domain_model_structureddata_contactpoint');
+
+        $where = [
+            $queryBuilder->expr()->eq('foreign_uid', $queryBuilder->createNamedParameter($uid, Connection::PARAM_INT)),
+            $queryBuilder->expr()->eq('tablename',  $queryBuilder->createNamedParameter($parentTable)),
+            $queryBuilder->expr()->eq('fieldname',  $queryBuilder->createNamedParameter($parentField))
+        ];
+
+        if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('workspaces')) {
+            $where[] = $queryBuilder->expr()->eq('t3ver_wsid', $queryBuilder->createNamedParameter(0, Connection::PARAM_INT));
+        }
+
+        $result = $queryBuilder
+            ->select('*')
+            ->from('tx_hdstructureddata_domain_model_structureddata_contactpoint')
+            ->where(
+                ...$where
+            )
+            ->addOrderBy('sorting')
+            ->executeQuery();
+
+        while ($row = $result->fetchAssociative()) {
+            \TYPO3\CMS\Backend\Utility\BackendUtility::workspaceOL('tx_hdstructureddata_domain_model_structureddata_contactpoint', $row);
+            if (is_array($row)) {
+                $output = GeneralUtility::makeInstance(ContactPoint::class)->setOriginalRow($row)->returnData();
+                if ($output) {
+                    $return[] = $output;
+                }
+            }
+        }
+
+        return $return;
+    }
+
+    protected function getGeo($uid, $parentField, $parentTable)
+    {
+        $return = [];
+
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getQueryBuilderForTable('tx_hdstructureddata_domain_model_structureddata_geo');
+
+        $where = [
+            $queryBuilder->expr()->eq('foreign_uid', $queryBuilder->createNamedParameter($uid, Connection::PARAM_INT)),
+            $queryBuilder->expr()->eq('tablename',  $queryBuilder->createNamedParameter($parentTable)),
+            $queryBuilder->expr()->eq('fieldname',  $queryBuilder->createNamedParameter($parentField))
+        ];
+
+        if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('workspaces')) {
+            $where[] = $queryBuilder->expr()->eq('t3ver_wsid', $queryBuilder->createNamedParameter(0, Connection::PARAM_INT));
+        }
+
+        $result = $queryBuilder
+            ->select('*')
+            ->from('tx_hdstructureddata_domain_model_structureddata_geo')
+            ->where(
+                ...$where
+            )
+            ->addOrderBy('sorting')
+            ->executeQuery();
+
+        while ($row = $result->fetchAssociative()) {
+            \TYPO3\CMS\Backend\Utility\BackendUtility::workspaceOL('tx_hdstructureddata_domain_model_structureddata_geo', $row);
+            if (is_array($row)) {
+                $output = GeneralUtility::makeInstance(GeoCoordinates::class)->setOriginalRow($row)->returnData();
+                if ($output) {
+                    $return[] = $output;
+                }
+            }
+        }
+
+        return $return;
+    }
+
+    /**
+     * Build a schema.org QuantitativeValue out of a min/max column pair.
+     *
+     * @param string $minColumn Column holding the lower bound
+     * @param string $maxColumn Column holding the upper bound
+     * @param string $unitCode UN/CEFACT code, e.g. "DAY" or "HUR"
+     * @return array|false The node, or false when no bound is set
+     */
+    protected function quantitativeValue($minColumn, $maxColumn, $unitCode = '')
+    {
+        $min = $this->originalRow[$minColumn] ?? null;
+        $max = $this->originalRow[$maxColumn] ?? null;
+
+        if (is_null($min) && is_null($max)) {
+            return false;
+        }
+
+        $return = ['@type' => 'QuantitativeValue'];
+        if (!is_null($min)) {
+            $return['minValue'] = (int)$min;
+        }
+        if (!is_null($max)) {
+            $return['maxValue'] = (int)$max;
+        }
+        if (!empty($unitCode)) {
+            $return['unitCode'] = $unitCode;
+        }
+
+        return $return;
+    }
+
+    /**
+     * Build a schema.org rating node out of the rating_* columns of the current row.
+     *
+     * @param string $type Either "AggregateRating" (summary of many ratings) or "Rating" (a single one)
+     * @return array|false The rating node, or false when no rating value is set at all
+     */
+    protected function getRating($type = 'AggregateRating')
+    {
+        $return = [];
+        $return['@type'] = $type;
+        if (!is_null($this->originalRow['rating_value'] ?? null)) {
+            $return['ratingValue'] = $this->originalRow['rating_value'];
+        }
+        if (!is_null($this->originalRow['rating_count'] ?? null)) {
+            $return['ratingCount'] = $this->originalRow['rating_count'];
+        }
+        if (!is_null($this->originalRow['best_rating'] ?? null)) {
+            $return['bestRating'] = $this->originalRow['best_rating'];
+        }
+        if (!is_null($this->originalRow['worst_rating'] ?? null)) {
+            $return['worstRating'] = $this->originalRow['worst_rating'];
+        }
+
+        if (count($return) < 2) {
+            return false;
         }
 
         return $return;

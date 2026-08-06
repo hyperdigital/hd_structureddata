@@ -4,7 +4,6 @@ namespace Hyperdigital\HdStructureddata\Domain\Model\Structureddata;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class Event extends AbstractData
 {
@@ -122,6 +121,10 @@ class Event extends AbstractData
             if (!empty($temp)) {
                 $return['performer'] = $temp;
             }
+        }
+
+        if (!is_null($this->originalRow['maximum_attendee_capacity'] ?? null)) {
+            $return['maximumAttendeeCapacity'] = (int)$this->originalRow['maximum_attendee_capacity'];
         }
 
         if (!empty($this->originalRow['sameas'])) {

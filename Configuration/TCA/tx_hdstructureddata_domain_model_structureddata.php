@@ -143,8 +143,7 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.start_date',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'type' => 'datetime',
                 'dbType' => 'datetime',
                 'nullable' => true,
             ]
@@ -153,8 +152,7 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.end_date',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'type' => 'datetime',
                 'dbType' => 'datetime',
                 'nullable' => true,
             ]
@@ -163,8 +161,7 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.date_published',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'type' => 'datetime',
                 'dbType' => 'datetime',
                 'nullable' => true,
             ]
@@ -173,8 +170,7 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.date_modified',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'type' => 'datetime',
                 'dbType' => 'datetime',
                 'nullable' => true,
             ]
@@ -341,6 +337,25 @@ return [
                 ],
             ],
         ],
+        'geo' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.geo',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:recommended',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata_geo',
+                'foreign_field' => 'foreign_uid',
+                'foreign_sortby' => 'sorting',
+                'foreign_table_field' => 'tablename',
+                'foreign_match_fields' => [
+                    'fieldname' => 'geo',
+                ],
+                'maxitems' => 1,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ],
+            ],
+        ],
         'negative_notes' => [
             'exclude' => true,
             'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.negative_notes',
@@ -455,7 +470,10 @@ return [
                                 'renderType' => 'hdNotEditableField',
                                 'default' => 'reviewedItem',
                                 'items' => [
-                                    ['LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.review.subtypes.reviewedItem', 'reviewedItem']
+                                    [
+                                        'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.review.subtypes.reviewedItem',
+                                        'value' => 'reviewedItem',
+                                    ],
                                 ]
                             ]
                         ],
@@ -595,16 +613,10 @@ return [
             'config' => [
                 'type' => 'input',
                 'valuePicker' => [
-                    'items' => [
-                        [
-                            'EUR',
-                            'EUR',
-                        ],
-                        [
-                            'USD',
-                            'USD',
-                        ],
-                    ],
+                    'items' => \Hyperdigital\HdStructureddata\Service\TcaService::valuePickerItems([
+                        ['label' => 'EUR', 'value' => 'EUR'],
+                        ['label' => 'USD', 'value' => 'USD'],
+                    ]),
                 ],
             ]
         ],
@@ -679,6 +691,45 @@ return [
                         'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.employment_type.OTHER',
                         'value' => 'OTHER'
                     ],
+                ],
+            ]
+        ],
+        'application_category' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.application_category',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.application_category.description',
+            'config' => [
+                'type' => 'input',
+                'valuePicker' => [
+                    'items' => \Hyperdigital\HdStructureddata\Service\TcaService::valuePickerItems([
+                        ['label' => 'BusinessApplication', 'value' => 'BusinessApplication'],
+                        ['label' => 'GameApplication', 'value' => 'GameApplication'],
+                        ['label' => 'MultimediaApplication', 'value' => 'MultimediaApplication'],
+                        ['label' => 'DeveloperApplication', 'value' => 'DeveloperApplication'],
+                        ['label' => 'EducationalApplication', 'value' => 'EducationalApplication'],
+                        ['label' => 'HealthApplication', 'value' => 'HealthApplication'],
+                        ['label' => 'SecurityApplication', 'value' => 'SecurityApplication'],
+                        ['label' => 'UtilitiesApplication', 'value' => 'UtilitiesApplication'],
+                        ['label' => 'WebApplication', 'value' => 'WebApplication'],
+                        ['label' => 'MobileApplication', 'value' => 'MobileApplication'],
+                    ]),
+                ],
+            ]
+        ],
+        'operating_system' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.operating_system',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.operating_system.description',
+            'config' => [
+                'type' => 'input',
+                'valuePicker' => [
+                    'items' => \Hyperdigital\HdStructureddata\Service\TcaService::valuePickerItems([
+                        ['label' => 'Android', 'value' => 'Android'],
+                        ['label' => 'iOS', 'value' => 'iOS'],
+                        ['label' => 'Windows', 'value' => 'Windows'],
+                        ['label' => 'macOS', 'value' => 'macOS'],
+                        ['label' => 'Linux', 'value' => 'Linux'],
+                    ]),
                 ],
             ]
         ],
@@ -791,6 +842,503 @@ return [
                 ],
             ],
         ],
+        'job_title' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.job_title',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+            ]
+        ],
+        'speakable' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.speakable',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.speakable.description',
+            'config' => [
+                'type' => 'text',
+                'eval' => 'trim',
+            ]
+        ],
+        'prep_time' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.prep_time',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.prep_time.description',
+            'config' => [
+                'type' => 'number',
+                'nullable' => true,
+            ]
+        ],
+        'cook_time' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.cook_time',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.cook_time.description',
+            'config' => [
+                'type' => 'number',
+                'nullable' => true,
+            ]
+        ],
+        'recipe_yield' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.recipe_yield',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.recipe_yield.description',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+            ]
+        ],
+        'recipe_category' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.recipe_category',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+                'valuePicker' => [
+                    'items' => \Hyperdigital\HdStructureddata\Service\TcaService::valuePickerItems([
+                        ['label' => 'Appetizer', 'value' => 'Appetizer'],
+                        ['label' => 'Main course', 'value' => 'Main course'],
+                        ['label' => 'Dessert', 'value' => 'Dessert'],
+                        ['label' => 'Snack', 'value' => 'Snack'],
+                        ['label' => 'Drink', 'value' => 'Drink'],
+                    ]),
+                ],
+            ]
+        ],
+        'recipe_cuisine' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.recipe_cuisine',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+            ]
+        ],
+        'calories' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.calories',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.calories.description',
+            'config' => [
+                'type' => 'number',
+                'nullable' => true,
+            ]
+        ],
+        'ingredients' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.ingredients',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata_ingredient',
+                'foreign_field' => 'foreign_uid',
+                'foreign_sortby' => 'sorting',
+                'foreign_table_field' => 'tablename',
+                'foreign_match_fields' => [
+                    'fieldname' => 'ingredients',
+                ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ],
+            ]
+        ],
+        'instructions' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.instructions',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata_instruction',
+                'foreign_field' => 'foreign_uid',
+                'foreign_sortby' => 'sorting',
+                'foreign_table_field' => 'tablename',
+                'foreign_match_fields' => [
+                    'fieldname' => 'instructions',
+                ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ],
+            ]
+        ],
+        'follower_count' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.follower_count',
+            'config' => [
+                'type' => 'number',
+                'nullable' => true,
+            ]
+        ],
+        'post_count' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.post_count',
+            'config' => [
+                'type' => 'number',
+                'nullable' => true,
+            ]
+        ],
+        'comment_count' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.comment_count',
+            'config' => [
+                'type' => 'number',
+                'nullable' => true,
+            ]
+        ],
+        'service_type' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.service_type',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.service_type.description',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+            ]
+        ],
+        'area_served' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.area_served',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.area_served.description',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+            ]
+        ],
+        'isbn' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.isbn',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+            ]
+        ],
+        'book_edition' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.book_edition',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+            ]
+        ],
+        'book_format' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.book_format',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    [
+                        'label' => '',
+                        'value' => '',
+                    ],
+                    [
+                        'label' => 'E-book',
+                        'value' => 'EBook',
+                    ],
+                    [
+                        'label' => 'Hardcover',
+                        'value' => 'Hardcover',
+                    ],
+                    [
+                        'label' => 'Paperback',
+                        'value' => 'Paperback',
+                    ],
+                    [
+                        'label' => 'Audiobook',
+                        'value' => 'AudiobookFormat',
+                    ],
+                ],
+            ]
+        ],
+        'duration_minutes' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.duration_minutes',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.duration_minutes.description',
+            'config' => [
+                'type' => 'number',
+                'nullable' => true,
+            ]
+        ],
+        'keywords' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.keywords',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.keywords.description',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+            ]
+        ],
+        'license_url' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.license_url',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.license_url.description',
+            'config' => [
+                'type' => 'link',
+            ]
+        ],
+        'vehicle_model_date' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.vehicle_model_date',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.vehicle_model_date.description',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+            ]
+        ],
+        'vehicle_mileage' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.vehicle_mileage',
+            'config' => [
+                'type' => 'number',
+                'nullable' => true,
+            ]
+        ],
+        'vehicle_engine' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.vehicle_engine',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+            ]
+        ],
+        'vehicle_transmission' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.vehicle_transmission',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+            ]
+        ],
+        'vehicle_fuel_type' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.vehicle_fuel_type',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+                'valuePicker' => [
+                    'items' => \Hyperdigital\HdStructureddata\Service\TcaService::valuePickerItems([
+                        ['label' => 'Gasoline', 'value' => 'Gasoline'],
+                        ['label' => 'Diesel', 'value' => 'Diesel'],
+                        ['label' => 'Electric', 'value' => 'Electric'],
+                        ['label' => 'Hybrid', 'value' => 'Hybrid'],
+                    ]),
+                ],
+            ]
+        ],
+        'vehicle_seating_capacity' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.vehicle_seating_capacity',
+            'config' => [
+                'type' => 'number',
+                'nullable' => true,
+            ]
+        ],
+        'episode_number' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.episode_number',
+            'config' => [
+                'type' => 'number',
+                'nullable' => true,
+            ]
+        ],
+        'series_name' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.series_name',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+            ]
+        ],
+        'contact_points' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.contact_points',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_hdstructureddata_domain_model_structureddata_contactpoint',
+                'foreign_field' => 'foreign_uid',
+                'foreign_sortby' => 'sorting',
+                'foreign_table_field' => 'tablename',
+                'foreign_match_fields' => [
+                    'fieldname' => 'contact_points',
+                ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ],
+            ]
+        ],
+        'number_of_employees' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.number_of_employees',
+            'config' => [
+                'type' => 'number',
+                'nullable' => true,
+            ]
+        ],
+        'founding_date' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.founding_date',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.founding_date.description',
+            'config' => [
+                'type' => 'datetime',
+                'format' => 'date',
+                'dbType' => 'datetime',
+                'nullable' => true,
+            ]
+        ],
+        'gtin8' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.gtin8',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+            ]
+        ],
+        'gtin13' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.gtin13',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+            ]
+        ],
+        'mpn' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.mpn',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+            ]
+        ],
+        'product_size' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.product_size',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+            ]
+        ],
+        'product_color' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.product_color',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+            ]
+        ],
+        'product_material' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.product_material',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+            ]
+        ],
+        'product_pattern' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.product_pattern',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+            ]
+        ],
+        'experience_requirements' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.experience_requirements',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.experience_requirements.description',
+            'config' => [
+                'type' => 'number',
+                'nullable' => true,
+            ]
+        ],
+        'educational_requirements' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.educational_requirements',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.educational_requirements.description',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+                'valuePicker' => [
+                    'items' => \Hyperdigital\HdStructureddata\Service\TcaService::valuePickerItems([
+                        ['label' => 'high school', 'value' => 'high school'],
+                        ['label' => 'associate degree', 'value' => 'associate degree'],
+                        ['label' => 'bachelor degree', 'value' => 'bachelor degree'],
+                        ['label' => 'professional certificate', 'value' => 'professional certificate'],
+                        ['label' => 'postgraduate degree', 'value' => 'postgraduate degree'],
+                    ]),
+                ],
+            ]
+        ],
+        'direct_apply' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.direct_apply',
+            'config' => [
+                'type' => 'check',
+                'renderType' => 'checkboxToggle',
+            ]
+        ],
+        'job_benefits' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.job_benefits',
+            'config' => [
+                'type' => 'text',
+                'eval' => 'trim',
+            ]
+        ],
+        'educational_credential_awarded' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.educational_credential_awarded',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+            ]
+        ],
+        'course_workload' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.course_workload',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.course_workload.description',
+            'config' => [
+                'type' => 'number',
+                'nullable' => true,
+            ]
+        ],
+        'course_prerequisites' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.course_prerequisites',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.course_prerequisites.description',
+            'config' => [
+                'type' => 'text',
+                'eval' => 'trim',
+            ]
+        ],
+        'maximum_attendee_capacity' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.maximum_attendee_capacity',
+            'config' => [
+                'type' => 'number',
+                'nullable' => true,
+            ]
+        ],
+        'is_live_broadcast' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.is_live_broadcast',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.is_live_broadcast.description',
+            'config' => [
+                'type' => 'check',
+                'renderType' => 'checkboxToggle',
+            ]
+        ],
+        'broadcast_start_date' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.broadcast_start_date',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.broadcast_start_date.description',
+            'config' => [
+                'type' => 'datetime',
+                'dbType' => 'datetime',
+                'nullable' => true,
+            ]
+        ],
+        'broadcast_end_date' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.broadcast_end_date',
+            'description' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.broadcast_end_date.description',
+            'config' => [
+                'type' => 'datetime',
+                'dbType' => 'datetime',
+                'nullable' => true,
+            ]
+        ],
         'hidden' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.enabled',
@@ -862,10 +1410,10 @@ return [
                 'renderType' => 'selectSingle',
                 'items' => [
                     [
-                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple'
-                    ]
+                        'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
+                        'value' => -1,
+                        'icon' => 'flags-multiple',
+                    ],
                 ],
                 'default' => 0,
             ],

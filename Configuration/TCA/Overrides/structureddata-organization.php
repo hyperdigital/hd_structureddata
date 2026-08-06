@@ -15,7 +15,10 @@ defined('TYPO3') || die();
         logo,--linebreak--,
         images,--linebreak--,
         addresses,--linebreak--,
-        pointed_as_organizer'
+        geo,--linebreak--,
+        pointed_as_organizer,--linebreak--,
+        founding_date, number_of_employees,--linebreak--,
+        contact_points'
     ];
 
     $GLOBALS['TCA']['tx_hdstructureddata_domain_model_structureddata']['types']['organization'] = [
@@ -74,8 +77,36 @@ defined('TYPO3') || die();
                             'value' => 'Organization',
                         ],
                         [
+                            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.subtype.organization.localBusiness',
+                            'value' => 'LocalBusiness',
+                        ],
+                        [
                             'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.subtype.review.Restaurant',
                             'value' => 'Restaurant',
+                        ],
+                        [
+                            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.subtype.organization.store',
+                            'value' => 'Store',
+                        ],
+                        [
+                            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.subtype.organization.onlineStore',
+                            'value' => 'OnlineStore',
+                        ],
+                        [
+                            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.subtype.organization.hotel',
+                            'value' => 'Hotel',
+                        ],
+                        [
+                            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.subtype.organization.professionalService',
+                            'value' => 'ProfessionalService',
+                        ],
+                        [
+                            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.subtype.organization.medicalOrganization',
+                            'value' => 'MedicalOrganization',
+                        ],
+                        [
+                            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.subtype.organization.educationalOrganization',
+                            'value' => 'EducationalOrganization',
                         ]
                     ],
                 ]

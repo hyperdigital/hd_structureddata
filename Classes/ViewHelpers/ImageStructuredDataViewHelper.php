@@ -6,14 +6,11 @@ namespace Hyperdigital\HdStructureddata\ViewHelpers;
 
 use Hyperdigital\HdStructureddata\Domain\Model\Structureddata\Article;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
-use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\FileReference;
-use TYPO3\CMS\Core\Resource\OriginalFileReference;
 
 final class ImageStructuredDataViewHelper extends AbstractViewHelper
 {

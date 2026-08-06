@@ -3,7 +3,7 @@ defined('TYPO3') || die();
 
 (function () {
     $GLOBALS['TCA']['tx_hdstructureddata_domain_model_structureddata']['palettes']['article'] = [
-        'showitem' => 'subtype,--linebreak--,title,--linebreak--,date_published, date_modified,--linebreak--,abstract,--linebreak--, authors,--linebreak--,images'
+        'showitem' => 'subtype,--linebreak--,title,--linebreak--,date_published, date_modified,--linebreak--,abstract,--linebreak--, authors,--linebreak--,images,--linebreak--,speakable'
     ];
 
     $GLOBALS['TCA']['tx_hdstructureddata_domain_model_structureddata']['types']['article'] = [
@@ -31,6 +31,18 @@ defined('TYPO3') || die();
                         [
                             'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.subtype.article.blogPosting',
                             'value' => 'BlogPosting'
+                        ],
+                        [
+                            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.subtype.article.techArticle',
+                            'value' => 'TechArticle'
+                        ],
+                        [
+                            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.subtype.article.scholarlyArticle',
+                            'value' => 'ScholarlyArticle'
+                        ],
+                        [
+                            'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata.columns.subtype.article.report',
+                            'value' => 'Report'
                         ]
                     ]
                 ]

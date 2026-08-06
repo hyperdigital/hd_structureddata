@@ -4,7 +4,6 @@ namespace Hyperdigital\HdStructureddata\Domain\Model\Structureddata;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class JobPosting extends AbstractData
 {
@@ -110,10 +109,29 @@ class JobPosting extends AbstractData
             if (!empty($this->originalRow['price_currency'])) {
                 $return['baseSalary']['currency'] = $this->originalRow['price_currency'];
             }
+        }
 
-            if (!empty($this->originalRow['employment_type'])) {
-                $return['employmentType'] = GeneralUtility::trimExplode(',', $this->originalRow['employment_type']);
-            }
+        if (!is_null($this->originalRow['experience_requirements'] ?? null)) {
+            $return['experienceRequirements'] = [
+                '@type' => 'OccupationalExperienceRequirements',
+                'monthsOfExperience' => (int)$this->originalRow['experience_requirements']
+            ];
+        }
+        if (!empty($this->originalRow['educational_requirements'])) {
+            $return['educationRequirements'] = [
+                '@type' => 'EducationalOccupationalCredential',
+                'credentialCategory' => $this->originalRow['educational_requirements']
+            ];
+        }
+        if (!empty($this->originalRow['direct_apply'])) {
+            $return['directApply'] = true;
+        }
+        if (!empty($this->originalRow['job_benefits'])) {
+            $return['jobBenefits'] = $this->originalRow['job_benefits'];
+        }
+
+        if (!empty($this->originalRow['employment_type'])) {
+            $return['employmentType'] = GeneralUtility::trimExplode(',', $this->originalRow['employment_type'], true);
         }
 
         return $return;

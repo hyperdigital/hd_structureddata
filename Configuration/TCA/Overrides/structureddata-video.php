@@ -3,7 +3,7 @@ defined('TYPO3') || die();
 
 (function () {
     $GLOBALS['TCA']['tx_hdstructureddata_domain_model_structureddata']['palettes']['video'] = [
-        'showitem' => 'title,--linebreak--,description,--linebreak--,medias,--linebreak--,images, --linebreak--, clips,'
+        'showitem' => 'title,--linebreak--,description,--linebreak--,medias,--linebreak--,images, --linebreak--, clips,,--linebreak--,is_live_broadcast,--linebreak--,broadcast_start_date, broadcast_end_date'
     ];
 
     $GLOBALS['TCA']['tx_hdstructureddata_domain_model_structureddata']['types']['video'] = [

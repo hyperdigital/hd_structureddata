@@ -116,8 +116,7 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_courseinstance.columns.course_schedule_start_date',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'type' => 'datetime',
                 'dbType' => 'datetime',
                 'nullable' => true,
             ]
@@ -126,8 +125,7 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:hd_structureddata/Resources/Private/Language/locallang_be.xlf:tx_hdstructureddata_domain_model_structureddata_courseinstance.columns.course_schedule_end_date',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'type' => 'datetime',
                 'dbType' => 'datetime',
                 'nullable' => true,
             ]
@@ -245,10 +243,10 @@ return [
                 'renderType' => 'selectSingle',
                 'items' => [
                     [
-                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple'
-                    ]
+                        'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
+                        'value' => -1,
+                        'icon' => 'flags-multiple',
+                    ],
                 ],
                 'default' => 0,
             ],
